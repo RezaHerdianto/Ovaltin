@@ -39,6 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('testimonials', TestimonialController::class)->only(['index', 'create', 'store', 'show']);
 });
 
+// Contact routes
+Route::get('/kontak', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::post('/kontak', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

@@ -45,6 +45,9 @@
                                <a href="{{ route('testimonials.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('testimonials.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                    Testimoni
                                </a>
+                               <a href="{{ route('contact.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('contact.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
+                                   Kontak
+                               </a>
                                @if(Auth::user()->isAdmin())
                                    <a href="{{ route('strawberry-products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('strawberry-products.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                        Produk Stroberi
@@ -108,6 +111,23 @@
                 @yield('content')
             </div>
         </main>
+
+        <!-- Footer -->
+        <footer class="bg-pink-600 text-white py-8 mt-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-white mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <span class="text-2xl font-bold">Ovaltin</span>
+                    </div>
+                    <p class="text-pink-100 mb-2">Strawberry Segar Berkualitas Premium</p>
+                    <p class="text-pink-200 text-sm">© {{ date('Y') }} Ovaltin. All rights reserved.</p>
+                    <p class="text-pink-200 text-xs mt-2">Dibuat dengan ❤️ untuk para pecinta strawberry</p>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
