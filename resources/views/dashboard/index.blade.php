@@ -90,16 +90,16 @@
                 <img src="{{ asset('images/WhatsApp Image 2025-10-21 at 18.40.38_e4378a0f.jpg') }}" 
                      alt="Foto Kebun Strawberry" 
                      class="w-full h-full object-cover">
-            </div>
+        </div>
             <div class="w-full h-full flex-shrink-0">
                 <img src="{{ asset('images/WhatsApp Image 2025-10-21 at 18.40.39_a11ad240.jpg') }}" 
                      alt="Foto Kebun Strawberry" 
                      class="w-full h-full object-cover">
-            </div>
+        </div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-black/30"></div>
     </div>
-    
+
     <!-- Welcome Content -->
     <div class="relative z-10 h-full flex flex-col justify-center mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div class="w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
@@ -119,11 +119,11 @@
                 <a href="{{ route('testimonials.index') }}" class="inline-flex items-center px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-white text-gray-900 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-xl text-sm sm:text-base md:text-lg border-2 border-white">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
+                            </svg>
                     Testimoni Pelanggan
             </a>
-        </div>
-    </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -175,8 +175,20 @@
                                                     <p class="text-xs text-gray-500">Per {{ $product->unit }}</p>
                                                 </div>
                                                 <div class="bg-gradient-to-r from-pink-100 to-rose-100 px-3 py-1 rounded-full">
-                                                    <p class="text-sm font-semibold text-pink-700">Stok: {{ $product->stock }}</p>
+                                                    <p class="text-sm font-semibold text-pink-700">
+                                                        Stok: 
+                                                        @if($product->status === 'out_of_stock')
+                                                            <span class="text-red-600">0</span>
+                                                        @else
+                                                            {{ $product->stock_quantity }}
+                                                        @endif
+                                                    </p>
+                                                </div>
+                                                @if($product->status === 'out_of_stock')
+                                                    <div class="bg-gradient-to-r from-red-100 to-red-200 px-3 py-1 rounded-full">
+                                                        <p class="text-sm font-semibold text-red-700">Habis Stok</p>
                     </div>
+                                                @endif
                     </div>
                 </div>
             </div>
@@ -232,8 +244,8 @@
                             <p class="text-2xl font-bold text-rose-600 mb-1">100%</p>
                             <p class="text-sm text-gray-600">Organik Murni</p>
                     </div>
-                </div>
-            </div>
+                        </div>
+                    </div>
                 <div class="relative">
                     <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] flex items-start justify-center pt-8">
                         <img src="{{ asset('images/images2.jpg') }}" 

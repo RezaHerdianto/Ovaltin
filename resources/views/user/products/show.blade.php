@@ -70,6 +70,23 @@
                             @endif
                         </div>
                         
+                        <!-- Status Alert -->
+                        @if($product->status === 'out_of_stock')
+                            <div class="mb-6">
+                                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-red-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <div>
+                                            <h3 class="text-sm font-medium text-red-800">Produk Habis Stok</h3>
+                                            <p class="text-sm text-red-700 mt-1">Produk ini sedang tidak tersedia. Silakan hubungi kami untuk informasi lebih lanjut.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        
                         <!-- Price -->
                         <div class="mb-6">
                             <p class="text-4xl font-bold text-pink-600 mb-2">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
@@ -95,15 +112,23 @@
                         </div>
                         <div class="bg-pink-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Stok Tersedia</h4>
-                            <p class="text-gray-700">{{ $product->stock_quantity }} unit</p>
+                            <p class="text-gray-700">
+                                @if($product->status === 'out_of_stock')
+                                    <span class="text-red-600 font-semibold">0 unit</span>
+                                @else
+                                    {{ $product->stock_quantity }} unit
+                                @endif
+                            </p>
                         </div>
                         <div class="bg-pink-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Status</h4>
                             <p class="text-gray-700">
-                                @if($product->stock_quantity > 0)
+                                @if($product->status === 'active')
                                     <span class="text-green-600 font-semibold">Tersedia</span>
+                                @elseif($product->status === 'out_of_stock')
+                                    <span class="text-red-600 font-semibold">Habis Stok</span>
                                 @else
-                                    <span class="text-red-600 font-semibold">Habis</span>
+                                    <span class="text-gray-600 font-semibold">Tidak Tersedia</span>
                                 @endif
                             </p>
                         </div>

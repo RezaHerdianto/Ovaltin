@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Ambil semua produk strawberry untuk ditampilkan di dashboard user
-        $products = StrawberryProduct::orderBy('created_at', 'desc')->get();
+        $products = StrawberryProduct::whereIn('status', ['active', 'out_of_stock'])->orderBy('created_at', 'desc')->get();
         
         // Ambil semua testimoni untuk ditampilkan di dashboard dengan auto-scroll
         $testimonials = Testimonial::latest()->get();

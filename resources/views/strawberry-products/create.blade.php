@@ -98,6 +98,21 @@
                         @enderror
                     </div>
 
+                    <!-- Status -->
+                    <div>
+                        <label for="status" class="block text-sm font-medium text-gray-700">Status Produk</label>
+                        <select name="status" id="status" required
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('status') border-red-300 @enderror">
+                            <option value="">Pilih Status</option>
+                            <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Aktif</option>
+                            <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
+                            <option value="out_of_stock" {{ old('status') == 'out_of_stock' ? 'selected' : '' }}>Habis Stok</option>
+                        </select>
+                        @error('status')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!-- Harvest Date -->
                     <div>
                         <label for="harvest_date" class="block text-sm font-medium text-gray-700">Tanggal Panen</label>

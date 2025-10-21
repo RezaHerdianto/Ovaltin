@@ -17,7 +17,8 @@ class StrawberryProduct extends Model
         'harvest_date',
         'quality_grade',
         'is_organic',
-        'nutritional_info'
+        'nutritional_info',
+        'status'
     ];
 
     protected $casts = [
@@ -51,5 +52,25 @@ class StrawberryProduct extends Model
         } else {
             return 'text-green-600 bg-green-100';
         }
+    }
+
+    public function getStatusLabelAttribute()
+    {
+        return match($this->status) {
+            'active' => 'Aktif',
+            'inactive' => 'Tidak Aktif',
+            'out_of_stock' => 'Habis Stok',
+            default => 'Tidak Diketahui'
+        };
+    }
+
+    public function getStatusColorAttribute()
+    {
+        return match($this->status) {
+            'active' => 'text-green-600 bg-green-100',
+            'inactive' => 'text-gray-600 bg-gray-100',
+            'out_of_stock' => 'text-red-600 bg-red-100',
+            default => 'text-gray-600 bg-gray-100'
+        };
     }
 }

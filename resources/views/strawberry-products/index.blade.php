@@ -37,7 +37,8 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stok</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kualitas</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Asal</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Asal</th>
                                 <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                             </tr>
                         </thead>
@@ -75,6 +76,11 @@
                                             {{ $product->stock_quantity }}
                                         </span>
                                     </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $product->status_color }}">
+                                            {{ $product->status_label }}
+                                        </span>
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->origin }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <div class="flex items-center justify-end space-x-2">
@@ -89,6 +95,41 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                 </svg>
                                             </a>
+                                            
+                                            <!-- Status Dropdown -->
+                                            <div class="relative inline-block text-left">
+                                                <div>
+                                                    <button type="button" class="inline-flex items-center px-2 py-1 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="toggleDropdown({{ $product->id }})">
+                                                        Status
+                                                        <svg class="-mr-1 ml-1 h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div id="dropdown-{{ $product->id }}" class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                                                    <div class="py-1">
+                                                        <form action="{{ route('strawberry-products.update-status', $product) }}" method="POST" class="block">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <input type="hidden" name="status" value="active">
+                                                            <button type="submit" class="block w-full text-left px-4 py-2 text-xs text-green-700 hover:bg-green-50">Aktif</button>
+                                                        </form>
+                                                        <form action="{{ route('strawberry-products.update-status', $product) }}" method="POST" class="block">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <input type="hidden" name="status" value="inactive">
+                                                            <button type="submit" class="block w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-gray-50">Tidak Aktif</button>
+                                                        </form>
+                                                        <form action="{{ route('strawberry-products.update-status', $product) }}" method="POST" class="block">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <input type="hidden" name="status" value="out_of_stock">
+                                                            <button type="submit" class="block w-full text-left px-4 py-2 text-xs text-red-700 hover:bg-red-50">Habis Stok</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                             <form action="{{ route('strawberry-products.destroy', $product) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
                                                 @csrf
                                                 @method('DELETE')
@@ -130,4 +171,32 @@
         </div>
     </div>
 </div>
+
+<script>
+function toggleDropdown(productId) {
+    const dropdown = document.getElementById('dropdown-' + productId);
+    const isHidden = dropdown.classList.contains('hidden');
+    
+    // Close all other dropdowns
+    document.querySelectorAll('[id^="dropdown-"]').forEach(el => {
+        el.classList.add('hidden');
+    });
+    
+    // Toggle current dropdown
+    if (isHidden) {
+        dropdown.classList.remove('hidden');
+    } else {
+        dropdown.classList.add('hidden');
+    }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.relative')) {
+        document.querySelectorAll('[id^="dropdown-"]').forEach(el => {
+            el.classList.add('hidden');
+        });
+    }
+});
+</script>
 @endsection

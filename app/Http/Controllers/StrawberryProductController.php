@@ -39,7 +39,7 @@ class StrawberryProductController extends Controller
             'origin' => 'required|string|max:255',
             'harvest_date' => 'required|date',
             'is_organic' => 'boolean',
-            'nutritional_info' => 'nullable|string',
+            'status' => 'required|in:active,inactive,out_of_stock',
         ]);
 
         // Handle image upload
@@ -85,7 +85,7 @@ class StrawberryProductController extends Controller
             'origin' => 'required|string|max:255',
             'harvest_date' => 'required|date',
             'is_organic' => 'boolean',
-            'nutritional_info' => 'nullable|string',
+            'status' => 'required|in:active,inactive,out_of_stock',
         ]);
 
         // Handle image upload
@@ -113,5 +113,22 @@ class StrawberryProductController extends Controller
 
         return redirect()->route('strawberry-products.index')
             ->with('success', 'Produk stroberi berhasil dihapus!');
+    }
+
+    /**
+     * Update the status of the specified resource.
+     */
+    public function updateStatus(Request $request, StrawberryProduct $strawberryProduct)
+    {
+        $request->validate([
+            'status' => 'required|in:active,inactive,out_of_stock',
+        ]);
+
+        $strawberryProduct->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('strawberry-products.index')
+            ->with('success', 'Status produk berhasil diperbarui!');
     }
 }

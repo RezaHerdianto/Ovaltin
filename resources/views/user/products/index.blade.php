@@ -61,9 +61,28 @@
                                         <p class="text-xs text-gray-500">Per unit</p>
                                     </div>
                                     <div class="bg-gradient-to-r from-pink-100 to-rose-100 px-3 py-1 rounded-full">
-                                        <p class="text-sm font-semibold text-pink-700">Stok: {{ $product->stock_quantity }}</p>
+                                        <p class="text-sm font-semibold text-pink-700">
+                                            Stok: 
+                                            @if($product->status === 'out_of_stock')
+                                                <span class="text-red-600">0</span>
+                                            @else
+                                                {{ $product->stock_quantity }}
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
+                                
+                                <!-- Status Badge -->
+                                @if($product->status === 'out_of_stock')
+                                    <div class="mb-4">
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            Habis Stok
+                                        </span>
+                                    </div>
+                                @endif
                                 
                                 <!-- Organic Badge -->
                                 @if($product->is_organic)

@@ -17,7 +17,7 @@
 <body class="font-sans antialiased bg-gray-50">
     <div class="min-h-screen">
         <!-- Navigation - Pink Theme -->
-        <nav class="bg-gradient-to-r from-pink-500 via-pink-600 to-rose-600 shadow-lg">
+        <nav class="bg-gradient-to-r from-pink-500 via-pink-600 to-rose-600 shadow-lg sticky top-0 z-50">
             <div class="mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
                 <div class="flex justify-between h-16">
                     <div class="flex">
