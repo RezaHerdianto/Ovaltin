@@ -5,6 +5,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StrawberryProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserProductController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\AdminTestimonialController;
 
 // Public routes
 Route::get('/', function () {
@@ -25,6 +28,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('strawberry-products', StrawberryProductController::class);
+    
+    // User product routes
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
+        Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
+    });
+    
+    // Testimonial routes
+    Route::resource('testimonials', TestimonialController::class)->only(['index', 'create', 'store', 'show']);
 });
 
 // Admin routes
@@ -33,4 +45,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::patch('/users/{user}/role', [AdminController::class, 'updateUserRole'])->name('users.update-role');
     Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.delete');
+    
+    // Admin testimonial routes
+    Route::get('/testimonials', [AdminTestimonialController::class, 'index'])->name('testimonials.index');
+    Route::delete('/testimonials/{testimonial}', [AdminTestimonialController::class, 'destroy'])->name('testimonials.destroy');
 });

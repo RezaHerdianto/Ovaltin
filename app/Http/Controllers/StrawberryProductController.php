@@ -35,13 +35,18 @@ class StrawberryProductController extends Controller
             'price' => 'required|numeric|min:0',
             'stock_quantity' => 'required|integer|min:0',
             'category' => 'required|string|max:255',
-            'image_url' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240', // 10MB max
             'origin' => 'required|string|max:255',
             'harvest_date' => 'required|date',
-            'quality_grade' => 'required|in:Premium,Grade A,Grade B,Grade C',
             'is_organic' => 'boolean',
             'nutritional_info' => 'nullable|string',
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+            $validated['image'] = $imagePath;
+        }
 
         StrawberryProduct::create($validated);
 
@@ -76,13 +81,22 @@ class StrawberryProductController extends Controller
             'price' => 'required|numeric|min:0',
             'stock_quantity' => 'required|integer|min:0',
             'category' => 'required|string|max:255',
-            'image_url' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240', // 10MB max
             'origin' => 'required|string|max:255',
             'harvest_date' => 'required|date',
-            'quality_grade' => 'required|in:Premium,Grade A,Grade B,Grade C',
             'is_organic' => 'boolean',
             'nutritional_info' => 'nullable|string',
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($strawberryProduct->image) {
+                \Storage::disk('public')->delete($strawberryProduct->image);
+            }
+            $imagePath = $request->file('image')->store('products', 'public');
+            $validated['image'] = $imagePath;
+        }
 
         $strawberryProduct->update($validated);
 

@@ -12,7 +12,7 @@ class StrawberryProduct extends Model
         'price',
         'stock_quantity',
         'category',
-        'image_url',
+        'image',
         'origin',
         'harvest_date',
         'quality_grade',

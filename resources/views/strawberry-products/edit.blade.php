@@ -27,7 +27,7 @@
 
         <!-- Form -->
         <div class="bg-white shadow rounded-lg">
-            <form action="{{ route('strawberry-products.update', $strawberryProduct) }}" method="POST" class="space-y-6 p-6">
+            <form action="{{ route('strawberry-products.update', $strawberryProduct) }}" method="POST" enctype="multipart/form-data" class="space-y-6 p-6">
                 @csrf
                 @method('PUT')
                 
@@ -89,22 +89,6 @@
                         @enderror
                     </div>
 
-                    <!-- Quality Grade -->
-                    <div>
-                        <label for="quality_grade" class="block text-sm font-medium text-gray-700">Grade Kualitas</label>
-                        <select name="quality_grade" id="quality_grade" required
-                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('quality_grade') border-red-300 @enderror">
-                            <option value="">Pilih Grade</option>
-                            <option value="Premium" {{ old('quality_grade', $strawberryProduct->quality_grade) == 'Premium' ? 'selected' : '' }}>Premium</option>
-                            <option value="Grade A" {{ old('quality_grade', $strawberryProduct->quality_grade) == 'Grade A' ? 'selected' : '' }}>Grade A</option>
-                            <option value="Grade B" {{ old('quality_grade', $strawberryProduct->quality_grade) == 'Grade B' ? 'selected' : '' }}>Grade B</option>
-                            <option value="Grade C" {{ old('quality_grade', $strawberryProduct->quality_grade) == 'Grade C' ? 'selected' : '' }}>Grade C</option>
-                        </select>
-                        @error('quality_grade')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
                     <!-- Origin -->
                     <div>
                         <label for="origin" class="block text-sm font-medium text-gray-700">Asal Produk</label>
@@ -125,12 +109,39 @@
                         @enderror
                     </div>
 
-                    <!-- Image URL -->
+                    <!-- Image Upload -->
                     <div class="sm:col-span-2">
-                        <label for="image_url" class="block text-sm font-medium text-gray-700">URL Gambar (Opsional)</label>
-                        <input type="url" name="image_url" id="image_url" value="{{ old('image_url', $strawberryProduct->image_url) }}"
-                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('image_url') border-red-300 @enderror">
-                        @error('image_url')
+                        <label for="image" class="block text-sm font-medium text-gray-700">Gambar Produk</label>
+                        
+                        <!-- Current Image -->
+                        @if($strawberryProduct->image)
+                            <div class="mt-2 mb-4">
+                                <p class="text-sm text-gray-600 mb-2">Gambar saat ini:</p>
+                                <img src="{{ asset('storage/' . $strawberryProduct->image) }}" alt="Current Image" class="h-32 w-32 object-cover rounded-lg shadow-md">
+                            </div>
+                        @endif
+                        
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-pink-400 transition-colors">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-pink-600 hover:text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
+                                        <span>Upload gambar baru</span>
+                                        <input id="image" name="image" type="file" accept="image/*" class="sr-only" onchange="previewImage(this)">
+                                    </label>
+                                    <p class="pl-1">atau drag & drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG, WEBP hingga 10MB</p>
+                            </div>
+                        </div>
+                        <!-- Image Preview -->
+                        <div id="imagePreview" class="mt-4 hidden">
+                            <img id="previewImg" src="" alt="Preview" class="mx-auto h-32 w-32 object-cover rounded-lg shadow-md">
+                            <p class="mt-2 text-center text-sm text-gray-600">Preview gambar baru</p>
+                        </div>
+                        @error('image')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
@@ -177,3 +188,47 @@
     </div>
 </div>
 @endsection
+
+<script>
+function previewImage(input) {
+    const file = input.files[0];
+    const preview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            previewImg.src = e.target.result;
+            preview.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    } else {
+        preview.classList.add('hidden');
+    }
+}
+
+// Drag and drop functionality
+const dropZone = document.querySelector('.border-dashed');
+const fileInput = document.getElementById('image');
+
+dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropZone.classList.add('border-pink-400', 'bg-pink-50');
+});
+
+dropZone.addEventListener('dragleave', function(e) {
+    e.preventDefault();
+    dropZone.classList.remove('border-pink-400', 'bg-pink-50');
+});
+
+dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropZone.classList.remove('border-pink-400', 'bg-pink-50');
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+        fileInput.files = files;
+        previewImage(fileInput);
+    }
+});
+</script>
