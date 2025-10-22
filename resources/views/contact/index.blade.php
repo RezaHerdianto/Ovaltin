@@ -35,7 +35,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Alamat Kebun</h3>
-                                <p class="text-gray-600">Jl. Raya Pangalengan<br>Desa Pangalengan<br>Kecamatan Pangalengan<br>Kabupaten Bandung<br>Jawa Barat, Indonesia</p>
+                                <p class="text-gray-600">{!! nl2br(e($contactInfo->address ?? 'Jl. Raya Pangalengan<br>Desa Pangalengan<br>Kecamatan Pangalengan<br>Kabupaten Bandung<br>Jawa Barat, Indonesia')) !!}</p>
                             </div>
                         </div>
 
@@ -48,8 +48,16 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Telepon</h3>
-                                <p class="text-gray-600">+62 812-3456-7890</p>
-                                <p class="text-gray-600">+62 812-3456-7891</p>
+                                @if($contactInfo && $contactInfo->phone_primary)
+                                    <p class="text-gray-600">{{ $contactInfo->phone_primary }}</p>
+                                @else
+                                    <p class="text-gray-600">+62 812-3456-7890</p>
+                                @endif
+                                @if($contactInfo && $contactInfo->phone_secondary)
+                                    <p class="text-gray-600">{{ $contactInfo->phone_secondary }}</p>
+                                @else
+                                    <p class="text-gray-600">+62 812-3456-7891</p>
+                                @endif
                             </div>
                         </div>
 
@@ -62,8 +70,16 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Email</h3>
-                                <p class="text-gray-600">info@ovaltin.com</p>
-                                <p class="text-gray-600">order@ovaltin.com</p>
+                                @if($contactInfo && $contactInfo->email_primary)
+                                    <p class="text-gray-600">{{ $contactInfo->email_primary }}</p>
+                                @else
+                                    <p class="text-gray-600">info@ovaltin.com</p>
+                                @endif
+                                @if($contactInfo && $contactInfo->email_secondary)
+                                    <p class="text-gray-600">{{ $contactInfo->email_secondary }}</p>
+                                @else
+                                    <p class="text-gray-600">order@ovaltin.com</p>
+                                @endif
                             </div>
                         </div>
 
@@ -76,7 +92,11 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900">WhatsApp</h3>
-                                <p class="text-gray-600">+62 812-3456-7890</p>
+                                @if($contactInfo && $contactInfo->whatsapp)
+                                    <p class="text-gray-600">{{ $contactInfo->whatsapp }}</p>
+                                @else
+                                    <p class="text-gray-600">+62 812-3456-7890</p>
+                                @endif
                                 <p class="text-sm text-green-600">Chat langsung untuk pemesanan cepat</p>
                             </div>
                         </div>
@@ -95,15 +115,15 @@
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Senin - Jumat</span>
-                            <span class="font-semibold text-gray-900">08:00 - 17:00</span>
+                            <span class="font-semibold text-gray-900">{{ $contactInfo ? $contactInfo->formatted_business_hours['monday_friday'] : '08:00 - 17:00' }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Sabtu</span>
-                            <span class="font-semibold text-gray-900">08:00 - 15:00</span>
+                            <span class="font-semibold text-gray-900">{{ $contactInfo ? $contactInfo->formatted_business_hours['saturday'] : '08:00 - 15:00' }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Minggu</span>
-                            <span class="font-semibold text-gray-900">09:00 - 14:00</span>
+                            <span class="font-semibold text-gray-900">{{ $contactInfo ? $contactInfo->formatted_business_hours['sunday'] : '09:00 - 14:00' }}</span>
                         </div>
                     </div>
                     
@@ -210,7 +230,7 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Lokasi Kebun Strawberry</h2>
                 <div class="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
                     <iframe 
-                        src="https://maps.google.com/maps?q=-7.114057,107.422775&hl=id&z=17&output=embed" 
+                        src="{{ $contactInfo && $contactInfo->map_embed_url ? $contactInfo->map_embed_url : 'https://maps.google.com/maps?q=-7.114057,107.422775&hl=id&z=17&output=embed' }}" 
                         width="100%" 
                         height="100%" 
                         style="border:0; border-radius: 0.5rem;" 

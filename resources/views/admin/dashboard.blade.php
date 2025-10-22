@@ -111,79 +111,36 @@
         </div>
     </div>
 
-    <!-- Recent Users and Low Stock Products -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Recent Users -->
-        <div class="bg-white shadow rounded-lg">
-            <div class="px-4 py-5 sm:p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">User Terbaru</h3>
-                    <a href="{{ route('admin.users') }}" class="text-sm text-red-600 hover:text-red-500">Lihat semua</a>
-                </div>
-                <div class="space-y-3">
-                    @forelse($recentUsers as $user)
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-8 w-8">
-                                    <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-                                        <span class="text-sm font-medium text-gray-600">{{ substr($user->name, 0, 1) }}</span>
-                                    </div>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm font-medium text-gray-900">{{ $user->name }}</p>
-                                    <p class="text-sm text-gray-500">{{ $user->email }}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $user->isAdmin() ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">
-                                    {{ $user->role }}
-                                </span>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-sm text-gray-500">Belum ada user terdaftar.</p>
-                    @endforelse
-                </div>
+    <!-- Recent Users -->
+    <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">User Terbaru</h3>
+                <a href="{{ route('admin.users') }}" class="text-sm text-red-600 hover:text-red-500">Lihat semua</a>
             </div>
-        </div>
-
-        <!-- Low Stock Products -->
-        <div class="bg-white shadow rounded-lg">
-            <div class="px-4 py-5 sm:p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">Produk Stok Rendah</h3>
-                    <a href="{{ route('strawberry-products.index') }}" class="text-sm text-red-600 hover:text-red-500">Lihat semua</a>
-                </div>
-                <div class="space-y-3">
-                    @forelse($lowStockProducts as $product)
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-8 w-8">
-                                    @if($product->image_url)
-                                        <img class="h-8 w-8 rounded object-cover" src="{{ $product->image_url }}" alt="{{ $product->name }}">
-                                    @else
-                                        <div class="h-8 w-8 rounded bg-red-100 flex items-center justify-center">
-                                            <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                            </svg>
-                                        </div>
-                                    @endif
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm font-medium text-gray-900">{{ $product->name }}</p>
-                                    <p class="text-sm text-gray-500">{{ $product->category }}</p>
+            <div class="space-y-3">
+                @forelse($recentUsers as $user)
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-8 w-8">
+                                <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
+                                    <span class="text-sm font-medium text-gray-600">{{ substr($user->name, 0, 1) }}</span>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $product->stock_status_color }}">
-                                    {{ $product->stock_quantity }}
-                                </span>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">{{ $user->name }}</p>
+                                <p class="text-sm text-gray-500">{{ $user->email }}</p>
                             </div>
                         </div>
-                    @empty
-                        <p class="text-sm text-gray-500">Semua produk memiliki stok yang cukup.</p>
-                    @endforelse
-                </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $user->isAdmin() ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">
+                                {{ $user->role }}
+                            </span>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-sm text-gray-500">Belum ada user terdaftar.</p>
+                @endforelse
             </div>
         </div>
     </div>
@@ -265,6 +222,25 @@
                         </h3>
                         <p class="mt-2 text-sm text-gray-500">
                             Kelola dan moderasi testimoni pelanggan.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="{{ route('admin.contact.index') }}" class="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-red-500 rounded-lg border border-gray-200 hover:border-gray-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-700 ring-4 ring-white">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <span class="absolute inset-0" aria-hidden="true"></span>
+                            Kelola Kontak
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Kelola informasi kontak perusahaan.
                         </p>
                     </div>
                 </a>

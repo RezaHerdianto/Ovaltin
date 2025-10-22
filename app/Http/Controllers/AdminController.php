@@ -21,15 +21,13 @@ class AdminController extends Controller
         $totalStock = StrawberryProduct::sum('stock_quantity');
         
         $recentUsers = User::latest()->take(5)->get();
-        $lowStockProducts = StrawberryProduct::where('stock_quantity', '<', 10)->get();
         
         return view('admin.dashboard', compact(
             'totalUsers',
             'totalAdmins', 
             'totalProducts',
             'totalStock',
-            'recentUsers',
-            'lowStockProducts'
+            'recentUsers'
         ));
     }
 

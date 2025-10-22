@@ -116,12 +116,6 @@
                     </svg>
                     Lihat Produk Kami
                 </a>
-                <a href="{{ route('testimonials.index') }}" class="inline-flex items-center px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-white text-gray-900 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-xl text-sm sm:text-base md:text-lg border-2 border-white">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                            </svg>
-                    Testimoni Pelanggan
-            </a>
                     </div>
                 </div>
             </div>
@@ -148,6 +142,20 @@
 
                 <!-- Horizontal Scroll Container -->
                 <div class="relative">
+                    <!-- Left Arrow -->
+                    <button id="scrollLeft" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-pink-50 text-pink-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-pink-200 hover:border-pink-400 hidden md:block">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Right Arrow -->
+                    <button id="scrollRight" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-pink-50 text-pink-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-pink-200 hover:border-pink-400 hidden md:block">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    
                     <div id="productsContainer" class="overflow-x-auto custom-scrollbar">
                         <div id="productsScroll" class="flex space-x-6 pb-4 transition-transform duration-300 ease-in-out" style="width: max-content;">
                             @foreach($products as $product)
@@ -216,13 +224,13 @@
         </div>
 
     <!-- Tentang Kami - Pink Theme -->
-    <div id="tentang" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
+    <div id="tentang-kami" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
         <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
             <h2 class="text-2xl font-bold text-gray-900 flex items-center">
                 <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                Tentang Ovaltin
+                Tentang Kami
             </h2>
                         </div>
         <div class="p-6 sm:p-8">
@@ -496,6 +504,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start auto-scroll
     startHeroAutoScroll();
+    
+    // Product carousel navigation
+    const scrollLeftBtn = document.getElementById('scrollLeft');
+    const scrollRightBtn = document.getElementById('scrollRight');
+    const productsContainer = document.getElementById('productsContainer');
+    
+    if (scrollLeftBtn && scrollRightBtn && productsContainer) {
+        scrollLeftBtn.addEventListener('click', function() {
+            productsContainer.scrollBy({
+                left: -400,
+                behavior: 'smooth'
+            });
+        });
+        
+        scrollRightBtn.addEventListener('click', function() {
+            productsContainer.scrollBy({
+                left: 400,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Show/hide arrows based on scroll position
+        function updateArrows() {
+            const scrollLeft = productsContainer.scrollLeft;
+            const maxScroll = productsContainer.scrollWidth - productsContainer.clientWidth;
+            
+            scrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
+            scrollLeftBtn.style.pointerEvents = scrollLeft > 0 ? 'auto' : 'none';
+            
+            scrollRightBtn.style.opacity = scrollLeft < maxScroll - 10 ? '1' : '0.5';
+            scrollRightBtn.style.pointerEvents = scrollLeft < maxScroll - 10 ? 'auto' : 'none';
+        }
+        
+        productsContainer.addEventListener('scroll', updateArrows);
+        updateArrows();
+    }
 });
 </script>
 
