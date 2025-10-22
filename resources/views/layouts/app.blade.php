@@ -27,8 +27,8 @@
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <div class="flex items-center">
-                                <img src="{{ asset('images/foto logo.webp') }}" alt="Ovaltin Logo" class="w-8 h-8 object-cover rounded-full">
-                                <span class="ml-2 text-xl font-bold text-white">Ovaltin</span>
+                                <img src="{{ asset('images/foto logo.webp') }}" alt="Ovaltin Logo" class="w-12 h-12 object-cover rounded-full">
+                                <span class="ml-3 text-2xl font-bold text-white">Ovaltin</span>
                             </div>
                         </div>
 

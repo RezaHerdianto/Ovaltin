@@ -103,10 +103,10 @@
     <!-- Welcome Content -->
     <div class="relative z-10 h-full flex flex-col justify-center mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div class="w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 leading-tight">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 leading-tight" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 4px 4px 8px rgba(0, 0, 0, 0.3);">
                 Selamat Datang di Ovaltin! 🍓
             </h1>
-            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-6 sm:mb-8 leading-relaxed">
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-6 sm:mb-8 leading-relaxed" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5), 2px 2px 6px rgba(0, 0, 0, 0.3);">
                 Nikmati strawberry segar berkualitas premium langsung dari kebun kami
             </p>
             <div class="flex flex-wrap gap-3 sm:gap-4">
