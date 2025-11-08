@@ -14,7 +14,13 @@
                 Kelola sistem dan pengguna dashboard stroberi
             </p>
         </div>
-        <div class="mt-4 flex md:mt-0 md:ml-4">
+        <div class="mt-4 flex md:mt-0 md:ml-4 space-x-3 items-center">
+            <a href="{{ route('admin.reports.summary') }}" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-red-600 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m0 0H8m4 0h4M4 6h16M4 10h16"></path>
+                </svg>
+                Unduh Laporan
+            </a>
             <a href="{{ route('admin.users') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                 <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
@@ -106,6 +112,69 @@
                             <dd class="text-lg font-medium text-gray-900">{{ number_format($totalStock) }}</dd>
                         </dl>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Visualization -->
+    <div class="grid grid-cols-1 gap-5 xl:grid-cols-4">
+        <div class="bg-white shadow rounded-lg xl:col-span-2">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Pertumbuhan User 12 Bulan Terakhir</h3>
+                    <form action="{{ route('admin.dashboard') }}" method="GET" class="flex items-center space-x-2">
+                        <label for="year-users" class="text-xs text-gray-500">Tahun</label>
+                        <select id="year-users" name="year" class="text-xs border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500" onchange="this.form.submit()">
+                            @foreach($yearOptions as $year)
+                                <option value="{{ $year }}" {{ $year == $selectedYear ? 'selected' : '' }}>{{ $year }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
+                <div class="mt-6 h-64">
+                    <canvas id="userTrendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg xl:col-span-2">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Distribusi Status Produk</h3>
+                </div>
+                <div class="mt-6 h-64">
+                    <canvas id="productStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg xl:col-span-2">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Pertumbuhan Testimoni 12 Bulan Terakhir</h3>
+                    <form action="{{ route('admin.dashboard') }}" method="GET" class="flex items-center space-x-2">
+                        <label for="year-testimonials" class="text-xs text-gray-500">Tahun</label>
+                        <select id="year-testimonials" name="year" class="text-xs border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500" onchange="this.form.submit()">
+                            @foreach($yearOptions as $year)
+                                <option value="{{ $year }}" {{ $year == $selectedYear ? 'selected' : '' }}>{{ $year }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
+                <div class="mt-6 h-64">
+                    <canvas id="testimonialTrendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg xl:col-span-2">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Testimoni per Rating</h3>
+                </div>
+                <div class="mt-6 h-64">
+                    <canvas id="testimonialChart"></canvas>
                 </div>
             </div>
         </div>
@@ -248,4 +317,146 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const userTrendCtx = document.getElementById('userTrendChart');
+    const productStatusCtx = document.getElementById('productStatusChart');
+    const testimonialCtx = document.getElementById('testimonialChart');
+    const testimonialTrendCtx = document.getElementById('testimonialTrendChart');
+
+    const userTrendChart = new Chart(userTrendCtx, {
+        type: 'line',
+        data: {
+            labels: @json($userTrendLabels),
+            datasets: [{
+                label: 'Registrasi User',
+                data: @json($userTrendData),
+                borderColor: '#dc2626',
+                backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                tension: 0.4,
+                borderWidth: 3,
+                pointBackgroundColor: '#ef4444',
+                pointBorderColor: '#fff',
+                pointRadius: 5,
+                fill: true,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: Math.max((@json($userTrendMax)) + 1, 3),
+                    grace: '10%',
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+
+    const productStatusChart = new Chart(productStatusCtx, {
+        type: 'doughnut',
+        data: {
+            labels: @json($productStatusLabels),
+            datasets: [{
+                data: @json($productStatusData),
+                backgroundColor: ['#22c55e', '#6b7280', '#ef4444'],
+                borderWidth: 2,
+                borderColor: '#ffffff',
+                hoverOffset: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    const testimonialChart = new Chart(testimonialCtx, {
+        type: 'bar',
+        data: {
+            labels: @json($ratingLabels),
+            datasets: [{
+                label: 'Jumlah Testimoni',
+                data: @json($ratingData),
+                backgroundColor: '#f97316',
+                borderColor: '#ea580c',
+                borderWidth: 2,
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: Math.max((@json($ratingMax)) + 1, 3),
+                    grace: '15%',
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+    const testimonialTrendChart = new Chart(testimonialTrendCtx, {
+        type: 'bar',
+        data: {
+            labels: @json($testimonialTrendLabels),
+            datasets: [{
+                label: 'Testimoni Masuk',
+                data: @json($testimonialTrendData),
+                backgroundColor: '#10b981',
+                borderColor: '#0f766e',
+                borderWidth: 2,
+                borderRadius: 6,
+                barPercentage: 0.6,
+                categoryPercentage: 0.7,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: Math.max((@json($testimonialTrendMax)) + 1, 3),
+                    grace: '10%',
+                    ticks: {
+                        precision: 0
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        autoSkip: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+</script>
 @endsection

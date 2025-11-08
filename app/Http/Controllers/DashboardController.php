@@ -11,6 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (auth()->check() && auth()->user()->isAdmin()) {
+            return redirect()->route('admin.users');
+        }
+
         // Ambil semua produk strawberry untuk ditampilkan di dashboard user
         $products = StrawberryProduct::whereIn('status', ['active', 'out_of_stock'])->orderBy('created_at', 'desc')->get();
         

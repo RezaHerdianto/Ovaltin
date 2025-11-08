@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StrawberryProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AdminTestimonialController;
@@ -50,6 +51,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::patch('/users/{user}/role', [AdminController::class, 'updateUserRole'])->name('users.update-role');
     Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.delete');
+    Route::get('/reports/summary', [AdminReportController::class, 'downloadSummary'])->name('reports.summary');
     
     // Admin testimonial routes
     Route::get('/testimonials', [AdminTestimonialController::class, 'index'])->name('testimonials.index');
