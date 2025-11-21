@@ -85,7 +85,6 @@ class AdminReportController extends Controller
 
         $userTrendCounts = $userTrend->pluck('count')->map(fn ($value) => (int) $value)->values()->all();
         $userAxisMax = max($userTrendCounts) ?: 0;
-        $userAxisMax = $userAxisMax > 0 ? $userAxisMax + 1 : 1;
 
         $productStatusChart = $this->generateChartImage([
             'type' => 'doughnut',
@@ -120,10 +119,8 @@ class AdminReportController extends Controller
                 'scales' => [
                     'y' => [
                         'beginAtZero' => true,
-                        'max' => ($ratingMax > 0 ? $ratingMax + 1 : 1),
                         'ticks' => [
                             'stepSize' => 1,
-                            'precision' => 0,
                         ],
                     ],
                 ],
@@ -148,10 +145,8 @@ class AdminReportController extends Controller
                 'scales' => [
                     'y' => [
                         'beginAtZero' => true,
-                        'max' => $userAxisMax,
                         'ticks' => [
                             'stepSize' => 1,
-                            'precision' => 0,
                         ],
                     ],
                     'x' => [
@@ -166,7 +161,6 @@ class AdminReportController extends Controller
 
         $testimonialTrendCounts = $testimonialTrend->pluck('count')->map(fn ($value) => (int) $value)->values()->all();
         $testimonialAxisMax = max($testimonialTrendCounts) ?: 0;
-        $testimonialAxisMax = $testimonialAxisMax > 0 ? $testimonialAxisMax + 1 : 1;
 
         $testimonialTrendChart = $this->generateChartImage([
             'type' => 'bar',
@@ -183,10 +177,8 @@ class AdminReportController extends Controller
                 'scales' => [
                     'y' => [
                         'beginAtZero' => true,
-                        'max' => $testimonialAxisMax,
                         'ticks' => [
                             'stepSize' => 1,
-                            'precision' => 0,
                         ],
                     ],
                 ],

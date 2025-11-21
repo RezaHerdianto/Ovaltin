@@ -91,13 +91,8 @@ class AdminController extends Controller
             ])->count(),
         ]);
 
-        $testimonialTrendFiltered = $testimonialTrendRaw->filter(fn ($item) => $item['count'] > 0);
-        if ($testimonialTrendFiltered->isEmpty() && $testimonialTrendRaw->isNotEmpty()) {
-            $testimonialTrendFiltered = collect([$testimonialTrendRaw->last()]);
-        }
-
-        $testimonialTrendLabels = $testimonialTrendFiltered->pluck('label')->values()->all();
-        $testimonialTrendData = $testimonialTrendFiltered->pluck('count')->values()->all();
+        $testimonialTrendLabels = $testimonialTrendRaw->pluck('label')->values()->all();
+        $testimonialTrendData = $testimonialTrendRaw->pluck('count')->values()->all();
         $testimonialTrendMax = max($testimonialTrendData) ?: 1;
 
         return view('admin.dashboard', compact(
