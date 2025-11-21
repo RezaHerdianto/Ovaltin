@@ -123,6 +123,390 @@
 
 <div class="space-y-4 sm:space-y-6 mt-6 sm:mt-8">
 
+    <!-- Tentang Kami - Pink Theme -->
+    <div id="tentang-kami" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+            <h2 class="text-2xl font-bold text-gray-900 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                Tentang Kami
+            </h2>
+                        </div>
+        <div class="p-6 sm:p-8">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Strawberry Segar dari Kebun Kami</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Kami adalah produsen strawberry premium yang berlokasi di dataran tinggi dengan iklim sempurna untuk menghasilkan strawberry berkualitas terbaik. Setiap buah dipetik dengan hati-hati saat matang sempurna untuk memastikan rasa dan kesegaran yang optimal.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Dengan metode pertanian organik dan perawatan yang teliti, kami menghadirkan strawberry yang tidak hanya lezat, tetapi juga sehat dan bergizi tinggi.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-pink-50 p-4 rounded-xl border-2 border-pink-200">
+                            <p class="text-2xl font-bold text-pink-600 mb-1">Segar</p>
+                            <p class="text-sm text-gray-600">Dari Kebun</p>
+                    </div>
+                        <div class="bg-rose-50 p-4 rounded-xl border-2 border-rose-200">
+                            <p class="text-2xl font-bold text-rose-600 mb-1">100%</p>
+                            <p class="text-sm text-gray-600">Organik Murni</p>
+                    </div>
+                        </div>
+                    </div>
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] flex items-start justify-center pt-8">
+                        <img src="{{ asset('images/images2.jpg') }}" 
+                             alt="Kebun Strawberry Kami" 
+                             class="w-full h-full object-cover rounded-2xl object-bottom">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Video + Text Section - Pink Theme -->
+    <div id="video-section" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+            <h2 class="text-2xl font-bold text-gray-900 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Perkenalan Dapur Ovaltin
+            </h2>
+        </div>
+        
+        <div class="p-6 sm:p-8">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                
+                <!-- Video Container (Left) -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] shadow-xl">
+                        <!-- Embed Video - Replace dengan URL video Anda -->
+                        <iframe 
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Proses Pertanian Strawberry"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <!-- Play Icon Overlay (Optional) -->
+                    <div class="absolute inset-0 rounded-2xl bg-black/0 hover:bg-black/10 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Text Content (Right) -->
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                        Kualitas Premium dari Awal Hingga Akhir
+                    </h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Kami menggunakan teknologi terkini dan metode organik untuk memastikan setiap strawberry yang Anda terima adalah yang terbaik. Lihat bagaimana kami memproduksi strawberry premium Anda.
+                    </p>
+                    
+                    <!-- Key Features -->
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-500 text-white">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-semibold text-gray-900">Pertanian Organik 100%</p>
+                                <p class="text-gray-600 text-sm">Tanpa pestisida dan bahan kimia berbahaya</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-rose-500 text-white">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-semibold text-gray-900">Lokasi Strategis</p>
+                                <p class="text-gray-600 text-sm">Dataran tinggi dengan iklim sempurna untuk strawberry</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-600 text-white">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-semibold text-gray-900">Kontrol Kualitas Ketat</p>
+                                <p class="text-gray-600 text-sm">Setiap buah diperiksa dan dipetik saat matang sempurna</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg hover:from-pink-600 hover:to-rose-600 transition transform hover:scale-105 shadow-lg font-semibold">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        Pesan Sekarang
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Konten Edukasi - Zip-Zap Layout -->
+    <div id="edukasi-section" class="bg-gradient-to-b from-white to-pink-50 shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+            <h2 class="text-2xl font-bold text-gray-900 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z"></path>
+                </svg>
+                Panduan Edukasi Strawberry
+            </h2>
+        </div>
+        
+        <div class="p-6 sm:p-8">
+            <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                Pelajari cara merawat, menanam, dan memaksimalkan hasil panen strawberry Anda dengan panduan lengkap dari para ahli kami.
+            </p>
+
+            <!-- Edukasi Item 1 - Video Kiri, Text Kanan -->
+            <div class="mb-12 lg:mb-16">
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
+                    <!-- Video/Image Container -->
+                    <div class="relative group">
+                        <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                            <iframe 
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Cara Menanam Strawberry"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
+                    </div>
+                    
+                    <!-- Text Content -->
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+                            Cara Menanam Strawberry dari Bibit
+                        </h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Pelajari langkah-langkah mudah untuk menanam strawberry berkualitas tinggi. Dari pemilihan bibit hingga persiapan lahan, semua dijelaskan secara detail.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Pilih bibit yang sehat dan berkualitas
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Siapkan media tanam dengan pH optimal
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Jarak tanam yang tepat untuk hasil maksimal
+                            </li>
+                        </ul>
+                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                            Baca Selengkapnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
+
+            <!-- Edukasi Item 2 - Text Kiri, Video/Image Kanan -->
+            <div class="mb-12 lg:mb-16">
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
+                    <!-- Text Content (Order 2 on Mobile, 1 on Desktop) -->
+                    <div class="order-2 md:order-1">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+                            Perawatan dan Pemupukan Strawberry
+                        </h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Strawberry memerlukan perawatan khusus untuk menghasilkan buah yang besar dan manis. Ikuti panduan pemupukan dan irigasi yang tepat.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Irigasi rutin 2-3 kali seminggu
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Gunakan pupuk organik berkualitas tinggi
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Pantau pH tanah secara berkala
+                            </li>
+                        </ul>
+                        <button class="px-6 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition font-semibold">
+                            Baca Selengkapnya
+                        </button>
+                    </div>
+                    
+                    <!-- Image Container (Order 1 on Mobile, 2 on Desktop) -->
+                    <div class="order-1 md:order-2 relative group">
+                        <div class="bg-gradient-to-br from-rose-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                            <img 
+                                src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=600&h=400&fit=crop" 
+                                alt="Perawatan Strawberry"
+                                class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                            >
+                        </div>
+                        <div class="absolute -top-2 -left-2 w-20 h-20 bg-rose-500 rounded-full opacity-20 blur-2xl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
+
+            <!-- Edukasi Item 3 - Video Kiri, Text Kanan -->
+            <div class="mb-12 lg:mb-16">
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
+                    <!-- Video Container -->
+                    <div class="relative group">
+                        <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                            <iframe 
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Panen Strawberry yang Tepat"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
+                    </div>
+                    
+                    <!-- Text Content -->
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+                            Teknik Panen dan Penyimpanan Strawberry
+                        </h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Waktu panen yang tepat menentukan kualitas dan rasa strawberry. Pelajari cara memanen dan menyimpan untuk hasil terbaik.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Panen saat strawberry 75-80% merah
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Gunakan gunting untuk menghindari memar
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Simpan di suhu 0-5°C untuk kesegaran
+                            </li>
+                        </ul>
+                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                            Baca Selengkapnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
+
+            <!-- Edukasi Item 4 - Text Kiri, Image Kanan -->
+            <div>
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
+                    <!-- Text Content (Order 2 on Mobile, 1 on Desktop) -->
+                    <div class="order-2 md:order-1">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+                            Pengendalian Hama dan Penyakit
+                        </h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Strawberry rentan terhadap berbagai hama dan penyakit. Ketahui cara mencegah dan mengatasi masalah ini secara alami.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Gunakan pestisida organik ramah lingkungan
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Jaga kebersihan lahan secara rutin
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+                                </svg>
+                                Monitor tanaman setiap hari untuk deteksi dini
+                            </li>
+                        </ul>
+                        <button class="px-6 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition font-semibold">
+                            Baca Selengkapnya
+                        </button>
+                    </div>
+                    
+                    <!-- Image Container (Order 1 on Mobile, 2 on Desktop) -->
+                    <div class="order-1 md:order-2 relative group">
+                        <div class="bg-gradient-to-br from-rose-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                            <img 
+                                src="https://images.unsplash.com/photo-1566200691152-f32b96e8b288?w=600&h=400&fit=crop" 
+                                alt="Pengendalian Hama"
+                                class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                            >
+                        </div>
+                        <div class="absolute -top-2 -left-2 w-20 h-20 bg-rose-500 rounded-full opacity-20 blur-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Produk Strawberry Kami - Pink Theme -->
     <div id="produk" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
         <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
@@ -222,49 +606,6 @@
             @endif
             </div>
         </div>
-
-    <!-- Tentang Kami - Pink Theme -->
-    <div id="tentang-kami" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
-            <h2 class="text-2xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                Tentang Kami
-            </h2>
-                        </div>
-        <div class="p-6 sm:p-8">
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Strawberry Segar dari Kebun Kami</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Kami adalah produsen strawberry premium yang berlokasi di dataran tinggi dengan iklim sempurna untuk menghasilkan strawberry berkualitas terbaik. Setiap buah dipetik dengan hati-hati saat matang sempurna untuk memastikan rasa dan kesegaran yang optimal.
-                    </p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Dengan metode pertanian organik dan perawatan yang teliti, kami menghadirkan strawberry yang tidak hanya lezat, tetapi juga sehat dan bergizi tinggi.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-pink-50 p-4 rounded-xl border-2 border-pink-200">
-                            <p class="text-2xl font-bold text-pink-600 mb-1">Segar</p>
-                            <p class="text-sm text-gray-600">Dari Kebun</p>
-                    </div>
-                        <div class="bg-rose-50 p-4 rounded-xl border-2 border-rose-200">
-                            <p class="text-2xl font-bold text-rose-600 mb-1">100%</p>
-                            <p class="text-sm text-gray-600">Organik Murni</p>
-                    </div>
-                        </div>
-                    </div>
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] flex items-start justify-center pt-8">
-                        <img src="{{ asset('images/images2.jpg') }}" 
-                             alt="Kebun Strawberry Kami" 
-                             class="w-full h-full object-cover rounded-2xl object-bottom">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Testimoni Pelanggan - Pink Theme -->
     <div id="testimoni" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
