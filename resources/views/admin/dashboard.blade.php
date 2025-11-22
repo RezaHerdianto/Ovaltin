@@ -295,6 +295,30 @@
                     </div>
                 </a>
 
+                <a href="{{ route('admin.faqs.index') }}" class="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-red-500 rounded-lg border border-gray-200 hover:border-gray-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-pink-50 text-pink-700 ring-4 ring-white">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-lg font-medium">
+                            <span class="absolute inset-0" aria-hidden="true"></span>
+                            Kelola FAQ
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Kelola pertanyaan yang sering diajukan (FAQ)
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12l1.414 1.414A1 1 0 0021 16h-1zm-2-2l1.414 1.414A1 1 0 0018 13h-1zm-2-2l1.414 1.414A1 1 0 0015 10h-1zm-2-2l1.414 1.414A1 1 0 0012 7h-1zm-2-2l1.414 1.414A1 1 0 009 4H8zm-2-2l1.414 1.414A1 1 0 006 1H5zM3 3v18h18V3H3zm16 16H5V5h14v14z"/>
+                        </svg>
+                    </span>
+                </a>
+                
                 <a href="{{ route('admin.contact.index') }}" class="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-red-500 rounded-lg border border-gray-200 hover:border-gray-300">
                     <div>
                         <span class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-700 ring-4 ring-white">

@@ -9,6 +9,8 @@ use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AdminTestimonialController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\Admin\AdminFAQController;
 
 // Public routes
 Route::get('/', function () {
@@ -39,6 +41,9 @@ Route::middleware('auth')->group(function () {
     
     // Testimonial routes
     Route::resource('testimonials', TestimonialController::class)->only(['index', 'create', 'store', 'show']);
+    
+    // FAQ routes
+    Route::get('/faq', [FAQController::class, 'index'])->name('faqs.index');
 });
 
 // Contact routes
@@ -74,4 +79,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/product-introduction/{id}', [App\Http\Controllers\AdminProductIntroductionController::class, 'update'])->name('product-introduction.update');
     Route::delete('/product-introduction/{id}', [App\Http\Controllers\AdminProductIntroductionController::class, 'destroy'])->name('product-introduction.destroy');
     Route::post('/product-introduction/{id}/set-active', [App\Http\Controllers\AdminProductIntroductionController::class, 'setActive'])->name('product-introduction.set-active');
+    
+    // Admin FAQ routes
+    Route::resource('faqs', AdminFAQController::class);
 });

@@ -4,6 +4,39 @@
 
 @section('content')
 <style>
+/* Full screen dashboard */
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Ensure navbar is full width - break out of container */
+nav {
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative;
+}
+/* Ensure parent containers are full width */
+.min-h-screen {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden;
+}
+/* Remove any default margins from html */
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    overflow-x: hidden;
+}
 /* Custom Scrollbar Styling - Larger Size */
 .custom-scrollbar {
     scrollbar-width: auto;
@@ -121,7 +154,9 @@
             </div>
         </div>
 
-<div class="space-y-4 sm:space-y-6 mt-6 sm:mt-8">
+<!-- Full width content wrapper -->
+<div style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw;">
+    <div class="space-y-4 sm:space-y-6 mt-6 sm:mt-8 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
 
     <!-- Tentang Kami - Pink Theme -->
     <div id="tentang-kami" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
@@ -680,6 +715,7 @@
                                                 </div>
                                             @endif
         </div>
+    </div>
     </div>
 </div>
 @endsection

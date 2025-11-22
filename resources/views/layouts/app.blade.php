@@ -16,12 +16,35 @@
     
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        /* Ensure navbar is full width - break out of container */
+        nav.bg-gradient-to-r {
+            margin-left: calc(-50vw + 50%) !important;
+            margin-right: calc(-50vw + 50%) !important;
+            width: 100vw !important;
+            max-width: 100vw !important;
+            position: relative;
+        }
+        /* Remove default margins */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .min-h-screen {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body class="font-sans antialiased bg-gray-50">
     <div class="min-h-screen">
         <!-- Navigation - Pink Theme -->
-        <nav class="bg-gradient-to-r from-pink-500 via-pink-600 to-rose-600 shadow-lg sticky top-0 z-50">
-            <div class="mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        <nav class="bg-gradient-to-r from-pink-500 via-pink-600 to-rose-600 shadow-lg sticky top-0 z-50" style="left: 0; right: 0; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);">
+            <div class="mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 max-w-full">
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <!-- Logo -->
@@ -110,6 +133,9 @@
                                
                                <a href="{{ route('testimonials.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('testimonials.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                    Testimoni
+                               </a>
+                               <a href="{{ route('faqs.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('faqs.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
+                                   FAQ
                                </a>
                                <a href="{{ route('contact.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('contact.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                    Kontak Kami
