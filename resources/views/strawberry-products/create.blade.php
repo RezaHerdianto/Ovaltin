@@ -77,13 +77,45 @@
                         <select name="category" id="category" required
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('category') border-red-300 @enderror">
                             <option value="">Pilih Kategori</option>
-                            <option value="Fresh Strawberry" {{ old('category') == 'Fresh Strawberry' ? 'selected' : '' }}>Fresh Strawberry</option>
-                            <option value="Frozen Strawberry" {{ old('category') == 'Frozen Strawberry' ? 'selected' : '' }}>Frozen Strawberry</option>
-                            <option value="Strawberry Jam" {{ old('category') == 'Strawberry Jam' ? 'selected' : '' }}>Strawberry Jam</option>
-                            <option value="Strawberry Juice" {{ old('category') == 'Strawberry Juice' ? 'selected' : '' }}>Strawberry Juice</option>
-                            <option value="Strawberry Dessert" {{ old('category') == 'Strawberry Dessert' ? 'selected' : '' }}>Strawberry Dessert</option>
+                            <option value="Buah" {{ old('category') == 'Buah' ? 'selected' : '' }}>Buah</option>
+                            <option value="Selai" {{ old('category') == 'Selai' ? 'selected' : '' }}>Selai</option>
+                            <option value="Dodol" {{ old('category') == 'Dodol' ? 'selected' : '' }}>Dodol</option>
+                            <option value="Snack" {{ old('category') == 'Snack' ? 'selected' : '' }}>Snack</option>
                         </select>
                         @error('category')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Link Tokopedia -->
+                    <div>
+                        <label for="tokopedia_url" class="block text-sm font-medium text-gray-700">Link Tokopedia (opsional)</label>
+                        <input type="url" name="tokopedia_url" id="tokopedia_url" value="{{ old('tokopedia_url') }}"
+                            placeholder="https://www.tokopedia.com/toko/produk"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('tokopedia_url') border-red-300 @enderror">
+                        @error('tokopedia_url')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Link Shopee -->
+                    <div>
+                        <label for="shopee_url" class="block text-sm font-medium text-gray-700">Link Shopee (opsional)</label>
+                        <input type="url" name="shopee_url" id="shopee_url" value="{{ old('shopee_url') }}"
+                            placeholder="https://shopee.co.id/produk"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('shopee_url') border-red-300 @enderror">
+                        @error('shopee_url')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Link Lazada -->
+                    <div>
+                        <label for="lazada_url" class="block text-sm font-medium text-gray-700">Link Lazada (opsional)</label>
+                        <input type="url" name="lazada_url" id="lazada_url" value="{{ old('lazada_url') }}"
+                            placeholder="https://www.lazada.co.id/produk"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm @error('lazada_url') border-red-300 @enderror">
+                        @error('lazada_url')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
@@ -126,13 +158,13 @@
                     <!-- Image Upload -->
                     <div class="sm:col-span-2">
                         <label for="image" class="block text-sm font-medium text-gray-700">Gambar Produk</label>
-                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-pink-400 transition-colors">
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-sky-400 transition-colors">
                             <div class="space-y-1 text-center">
                                 <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 <div class="flex text-sm text-gray-600">
-                                    <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-pink-600 hover:text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
+                                    <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-sky-600 hover:text-sky-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-sky-500">
                                         <span>Upload gambar</span>
                                         <input id="image" name="image" type="file" accept="image/*" class="sr-only" onchange="previewImage(this)">
                                     </label>
@@ -218,17 +250,17 @@ const fileInput = document.getElementById('image');
 
 dropZone.addEventListener('dragover', function(e) {
     e.preventDefault();
-    dropZone.classList.add('border-pink-400', 'bg-pink-50');
+    dropZone.classList.add('border-sky-400', 'bg-sky-50');
 });
 
 dropZone.addEventListener('dragleave', function(e) {
     e.preventDefault();
-    dropZone.classList.remove('border-pink-400', 'bg-pink-50');
+    dropZone.classList.remove('border-sky-400', 'bg-sky-50');
 });
 
 dropZone.addEventListener('drop', function(e) {
     e.preventDefault();
-    dropZone.classList.remove('border-pink-400', 'bg-pink-50');
+    dropZone.classList.remove('border-sky-400', 'bg-sky-50');
     
     const files = e.dataTransfer.files;
     if (files.length > 0) {

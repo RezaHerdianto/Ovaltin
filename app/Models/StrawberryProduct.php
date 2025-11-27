@@ -18,7 +18,10 @@ class StrawberryProduct extends Model
         'quality_grade',
         'is_organic',
         'nutritional_info',
-        'status'
+        'status',
+        'tokopedia_url',
+        'shopee_url',
+        'lazada_url'
     ];
 
     protected $casts = [

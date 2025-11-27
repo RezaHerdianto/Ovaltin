@@ -38,10 +38,10 @@
                     <!-- Product Image -->
                     <div>
                         @if($strawberryProduct->image)
-                            <img class="w-full h-64 object-cover rounded-lg" src="{{ asset('storage/' . $strawberryProduct->image) }}" alt="{{ $strawberryProduct->name }}">
+                            <img class="w-full h-64 object-cover rounded-lg" src="{{ Storage::url($strawberryProduct->image) }}" alt="{{ $strawberryProduct->name }}">
                         @else
-                            <div class="w-full h-64 bg-pink-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-24 h-24 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
+                            <div class="w-full h-64 bg-sky-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-24 h-24 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                 </svg>
                             </div>
@@ -104,6 +104,32 @@
                             <h3 class="text-lg font-medium text-gray-900 mb-2">Deskripsi</h3>
                             <p class="text-sm text-gray-700">{{ $strawberryProduct->description }}</p>
                         </div>
+
+                        @if($strawberryProduct->tokopedia_url || $strawberryProduct->shopee_url || $strawberryProduct->lazada_url)
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Link Marketplace</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    @if($strawberryProduct->tokopedia_url)
+                                        <a href="{{ $strawberryProduct->tokopedia_url }}" target="_blank" rel="noopener"
+                                            class="inline-flex items-center px-3 py-2 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-100 hover:bg-emerald-100 text-sm font-medium">
+                                            Tokopedia
+                                        </a>
+                                    @endif
+                                    @if($strawberryProduct->shopee_url)
+                                        <a href="{{ $strawberryProduct->shopee_url }}" target="_blank" rel="noopener"
+                                            class="inline-flex items-center px-3 py-2 rounded-md bg-orange-50 text-orange-800 border border-orange-100 hover:bg-orange-100 text-sm font-medium">
+                                            Shopee
+                                        </a>
+                                    @endif
+                                    @if($strawberryProduct->lazada_url)
+                                        <a href="{{ $strawberryProduct->lazada_url }}" target="_blank" rel="noopener"
+                                            class="inline-flex items-center px-3 py-2 rounded-md bg-indigo-50 text-indigo-800 border border-indigo-100 hover:bg-indigo-100 text-sm font-medium">
+                                            Lazada
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
 
                         <!-- Nutritional Info -->
                         @if($strawberryProduct->nutritional_info)

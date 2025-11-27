@@ -37,7 +37,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
-                                                <div class="h-10 w-10 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full flex items-center justify-center text-white font-bold">
+                                                <div class="h-10 w-10 bg-gradient-to-r from-sky-400 to-indigo-400 rounded-full flex items-center justify-center text-white font-bold">
                                                     {{ strtoupper(substr($testimonial->name, 0, 1)) }}
                                                 </div>
                                             </div>

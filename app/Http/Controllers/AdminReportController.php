@@ -12,22 +12,75 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class AdminReportController extends Controller
 {
+    /**
+     * Display the report configuration panel.
+     */
+    public function index(): View
+    {
+        $now = now();
+
+        return view('admin.reports.index', [
+            'defaultStart' => $now->copy()->startOfMonth()->toDateString(),
+            'defaultEnd' => $now->copy()->endOfMonth()->toDateString(),
+            'yearOptions' => range($now->year, $now->year - 4),
+            'reportTypes' => $this->reportTypeOptions(),
+        ]);
+    }
+
     /**
      * Generate and download a PDF summary report for admin usage.
      */
     public function downloadSummary(Request $request): Response
     {
+        $validated = $request->validate([
+            'start_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
+            'year' => ['nullable', 'integer', 'between:2000,2100'],
+            'type' => ['nullable', 'in:' . implode(',', array_keys($this->reportTypeOptions()))],
+        ]);
+
         $generatedAt = now();
-        $reportYear = (int) $request->query('year', $generatedAt->year);
+        $defaultStart = $generatedAt->copy()->startOfMonth();
+        $defaultEnd = $generatedAt->copy()->endOfMonth();
+
+        $reportStart = $request->filled('start_date')
+            ? Carbon::parse($request->input('start_date'))->startOfDay()
+            : $defaultStart->copy();
+
+        if (!$request->filled('start_date') && $request->filled('end_date')) {
+            $reportStart = Carbon::parse($request->input('end_date'))->copy()->startOfDay();
+        }
+
+        $reportEnd = $request->filled('end_date')
+            ? Carbon::parse($request->input('end_date'))->endOfDay()
+            : ($request->filled('start_date')
+                ? Carbon::parse($request->input('start_date'))->endOfDay()
+                : $defaultEnd->copy());
+
+        if ($reportEnd->lessThan($reportStart)) {
+            [$reportStart, $reportEnd] = [$reportEnd->copy(), $reportStart->copy()];
+        }
+
+        $reportYear = isset($validated['year']) ? (int) $validated['year'] : $reportStart->copy()->year;
+        $reportType = $validated['type'] ?? 'summary';
+        $reportTypeLabel = $this->reportTypeOptions()[$reportType] ?? $this->reportTypeOptions()['summary'];
+
+        $sectionVisibility = [
+            'users' => in_array($reportType, ['summary', 'users']),
+            'products' => in_array($reportType, ['summary', 'products']),
+            'testimonials' => in_array($reportType, ['summary', 'testimonials']),
+            'contact' => in_array($reportType, ['summary', 'contact']),
+        ];
 
         $userStats = [
             'total' => User::count(),
             'admins' => User::where('role', 'admin')->count(),
             'members' => User::where('role', 'user')->count(),
-            'new_this_month' => User::whereBetween('created_at', [$generatedAt->copy()->startOfMonth(), $generatedAt->copy()->endOfMonth()])->count(),
+            'new_this_month' => User::whereBetween('created_at', [$reportStart, $reportEnd])->count(),
         ];
 
         $productStats = [
@@ -187,6 +240,8 @@ class AdminReportController extends Controller
 
         $pdf = Pdf::setOption(['isRemoteEnabled' => true])->loadView('admin.reports.summary', [
             'generatedAt' => $generatedAt,
+            'reportStart' => $reportStart,
+            'reportEnd' => $reportEnd,
             'userStats' => $userStats,
             'productStats' => $productStats,
             'recentUsers' => $recentUsers,
@@ -194,6 +249,9 @@ class AdminReportController extends Controller
             'testimonialsStats' => $testimonialsStats,
             'activeContact' => $activeContact,
             'reportYear' => $reportYear,
+            'reportType' => $reportType,
+            'reportTypeLabel' => $reportTypeLabel,
+            'sectionVisibility' => $sectionVisibility,
             'userTrend' => $userTrend,
             'testimonialTrend' => $testimonialTrend,
             'userTrendChart' => $userTrendChart,
@@ -207,6 +265,17 @@ class AdminReportController extends Controller
         $fileName = 'laporan-ovaltin-' . $generatedAt->timestamp . '-' . uniqid() . '.pdf';
 
         return $pdf->stream($fileName);
+    }
+
+    protected function reportTypeOptions(): array
+    {
+        return [
+            'summary' => 'Ringkasan Lengkap',
+            'users' => 'Fokus Pengguna',
+            'products' => 'Fokus Produk',
+            'testimonials' => 'Fokus Testimoni',
+            'contact' => 'Kontak Perusahaan',
+        ];
     }
 
     protected function generateChartImage(array $config): ?string

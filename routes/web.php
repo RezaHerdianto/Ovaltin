@@ -50,12 +50,18 @@ Route::middleware('auth')->group(function () {
 Route::get('/kontak', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('/kontak', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 
+// Education pages
+Route::get('/edukasi/perawatan-strawberry', function () {
+    return view('education.strawberry-care');
+})->name('education.strawberry-care');
+
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::patch('/users/{user}/role', [AdminController::class, 'updateUserRole'])->name('users.update-role');
     Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.delete');
+    Route::get('/reports', [AdminReportController::class, 'index'])->name('reports.index');
     Route::get('/reports/summary', [AdminReportController::class, 'downloadSummary'])->name('reports.summary');
     
     // Admin testimonial routes

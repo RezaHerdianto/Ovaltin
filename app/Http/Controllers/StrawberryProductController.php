@@ -40,6 +40,9 @@ class StrawberryProductController extends Controller
             'harvest_date' => 'required|date',
             'is_organic' => 'boolean',
             'status' => 'required|in:active,inactive,out_of_stock',
+            'tokopedia_url' => 'nullable|url|max:255',
+            'shopee_url' => 'nullable|url|max:255',
+            'lazada_url' => 'nullable|url|max:255',
         ]);
 
         // Handle image upload
@@ -86,6 +89,9 @@ class StrawberryProductController extends Controller
             'harvest_date' => 'required|date',
             'is_organic' => 'boolean',
             'status' => 'required|in:active,inactive,out_of_stock',
+            'tokopedia_url' => 'nullable|url|max:255',
+            'shopee_url' => 'nullable|url|max:255',
+            'lazada_url' => 'nullable|url|max:255',
         ]);
 
         // Handle image upload

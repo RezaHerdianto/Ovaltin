@@ -40,7 +40,7 @@ html {
 /* Custom Scrollbar Styling - Larger Size */
 .custom-scrollbar {
     scrollbar-width: auto;
-    scrollbar-color: #ec4899 #fce7f3;
+    scrollbar-color: #0ea5e9 #e0f2fe;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -49,34 +49,34 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: #fce7f3;
+    background: #e0f2fe;
     border-radius: 10px;
-    border: 2px solid #fdf2f8;
+    border: 2px solid #dbeafe;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ec4899, #f472b6);
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
     border-radius: 10px;
-    border: 2px solid #fce7f3;
-    box-shadow: 0 2px 4px rgba(236, 72, 153, 0.2);
+    border: 2px solid #e0f2fe;
+    box-shadow: 0 2px 4px rgba(14, 165, 233, 0.2);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #db2777, #ec4899);
-    box-shadow: 0 4px 8px rgba(236, 72, 153, 0.3);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
 }
 
 .custom-scrollbar::-webkit-scrollbar-button {
     display: block;
     height: 24px;
     width: 20px;
-    background: linear-gradient(135deg, #f472b6, #ec4899);
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
     border-radius: 8px;
-    border: 1px solid #fce7f3;
+    border: 1px solid #e0f2fe;
 }
 
 .custom-scrollbar::-webkit-scrollbar-button:hover {
-    background: linear-gradient(135deg, #ec4899, #db2777);
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
 }
 
 .custom-scrollbar::-webkit-scrollbar-button:start:decrement {
@@ -160,9 +160,9 @@ html {
 
     <!-- Tentang Kami - Pink Theme -->
     <div id="tentang-kami" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+        <div class="bg-gradient-to-r from-sky-50 to-indigo-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-sky-100">
             <h2 class="text-2xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 mr-2 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                 Tentang Kami
@@ -179,18 +179,18 @@ html {
                         Dengan metode pertanian organik dan perawatan yang teliti, kami menghadirkan strawberry yang tidak hanya lezat, tetapi juga sehat dan bergizi tinggi.
                     </p>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-pink-50 p-4 rounded-xl border-2 border-pink-200">
-                            <p class="text-2xl font-bold text-pink-600 mb-1">Segar</p>
+                        <div class="bg-sky-50 p-4 rounded-xl border-2 border-sky-200">
+                            <p class="text-2xl font-bold text-sky-600 mb-1">Segar</p>
                             <p class="text-sm text-gray-600">Dari Kebun</p>
                     </div>
-                        <div class="bg-rose-50 p-4 rounded-xl border-2 border-rose-200">
-                            <p class="text-2xl font-bold text-rose-600 mb-1">100%</p>
+                        <div class="bg-indigo-50 p-4 rounded-xl border-2 border-indigo-200">
+                            <p class="text-2xl font-bold text-indigo-600 mb-1">100%</p>
                             <p class="text-sm text-gray-600">Organik Murni</p>
                     </div>
                         </div>
                     </div>
                 <div class="relative">
-                    <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] flex items-start justify-center pt-8">
+                    <div class="bg-gradient-to-br from-sky-100 to-indigo-100 rounded-2xl overflow-hidden h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] flex items-start justify-center pt-8">
                         <img src="{{ asset('images/images2.jpg') }}" 
                              alt="Kebun Strawberry Kami" 
                              class="w-full h-full object-cover rounded-2xl object-bottom">
@@ -202,9 +202,9 @@ html {
 
 <!-- Video + Text Section - Pink Theme -->
     <div id="video-section" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+        <div class="bg-gradient-to-r from-sky-50 to-indigo-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-sky-100">
             <h2 class="text-2xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 mr-2 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -217,7 +217,7 @@ html {
                 
                 <!-- Video Container (Left) -->
                 <div class="relative">
-                    <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] shadow-xl">
+                    <div class="bg-gradient-to-br from-sky-100 to-indigo-100 rounded-2xl overflow-hidden h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] shadow-xl">
                         <!-- Embed Video - Replace dengan URL video Anda -->
                         <iframe 
                             class="w-full h-full"
@@ -253,7 +253,7 @@ html {
                     <div class="space-y-4 mb-6">
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-500 text-white">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-sky-500 text-white">
                                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
@@ -267,7 +267,7 @@ html {
                         
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-rose-500 text-white">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-500 text-white">
                                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
@@ -281,7 +281,7 @@ html {
                         
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-600 text-white">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-sky-600 text-white">
                                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
@@ -295,7 +295,7 @@ html {
                     </div>
                     
                     <!-- CTA Button -->
-                    <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg hover:from-pink-600 hover:to-rose-600 transition transform hover:scale-105 shadow-lg font-semibold">
+                    <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-lg hover:from-sky-600 hover:to-indigo-600 transition transform hover:scale-105 shadow-lg font-semibold">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
@@ -308,10 +308,10 @@ html {
     </div>
     
     <!-- Konten Edukasi - Zip-Zap Layout -->
-    <div id="edukasi-section" class="bg-gradient-to-b from-white to-pink-50 shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+    <div id="edukasi-section" class="bg-gradient-to-b from-white to-sky-50 shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-sky-50 to-indigo-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-sky-100">
             <h2 class="text-2xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 mr-2 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z"></path>
                 </svg>
                 Panduan Edukasi Strawberry
@@ -328,7 +328,7 @@ html {
                 <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
                     <!-- Video/Image Container -->
                     <div class="relative group">
-                        <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                        <div class="bg-gradient-to-br from-sky-100 to-indigo-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
                             <iframe 
                                 class="w-full h-full"
                                 src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -339,7 +339,7 @@ html {
                                 loading="lazy">
                             </iframe>
                         </div>
-                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-sky-500 rounded-full opacity-20 blur-2xl"></div>
                     </div>
                     
                     <!-- Text Content -->
@@ -352,25 +352,25 @@ html {
                         </p>
                         <ul class="space-y-2 mb-6">
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-sky-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Pilih bibit yang sehat dan berkualitas
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-sky-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Siapkan media tanam dengan pH optimal
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-sky-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Jarak tanam yang tepat untuk hasil maksimal
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                        <button class="px-6 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition font-semibold">
                             Baca Selengkapnya
                         </button>
                     </div>
@@ -378,7 +378,7 @@ html {
             </div>
 
             <!-- Divider -->
-            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
+            <div class="my-12 lg:my-16 border-t-2 border-sky-100"></div>
 
             <!-- Edukasi Item 2 - Text Kiri, Video/Image Kanan -->
             <div class="mb-12 lg:mb-16">
@@ -393,52 +393,52 @@ html {
                         </p>
                         <ul class="space-y-2 mb-6">
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Irigasi rutin 2-3 kali seminggu
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Gunakan pupuk organik berkualitas tinggi
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Pantau pH tanah secara berkala
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition font-semibold">
+                        <a href="{{ route('education.strawberry-care') }}" class="inline-flex px-6 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition font-semibold">
                             Baca Selengkapnya
-                        </button>
+                        </a>
                     </div>
                     
                     <!-- Image Container (Order 1 on Mobile, 2 on Desktop) -->
                     <div class="order-1 md:order-2 relative group">
-                        <div class="bg-gradient-to-br from-rose-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                        <div class="bg-gradient-to-br from-indigo-100 to-sky-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
                             <img 
                                 src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=600&h=400&fit=crop" 
                                 alt="Perawatan Strawberry"
                                 class="w-full h-full object-cover hover:scale-105 transition duration-500"
                             >
                         </div>
-                        <div class="absolute -top-2 -left-2 w-20 h-20 bg-rose-500 rounded-full opacity-20 blur-2xl"></div>
+                        <div class="absolute -top-2 -left-2 w-20 h-20 bg-indigo-500 rounded-full opacity-20 blur-2xl"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Divider -->
-            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
+            <div class="my-12 lg:my-16 border-t-2 border-sky-100"></div>
 
             <!-- Edukasi Item 3 - Video Kiri, Text Kanan -->
             <div class="mb-12 lg:mb-16">
                 <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
                     <!-- Video Container -->
                     <div class="relative group">
-                        <div class="bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                        <div class="bg-gradient-to-br from-sky-100 to-indigo-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
                             <iframe 
                                 class="w-full h-full"
                                 src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -449,7 +449,7 @@ html {
                                 loading="lazy">
                             </iframe>
                         </div>
-                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-sky-500 rounded-full opacity-20 blur-2xl"></div>
                     </div>
                     
                     <!-- Text Content -->
@@ -462,25 +462,25 @@ html {
                         </p>
                         <ul class="space-y-2 mb-6">
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-sky-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Panen saat strawberry 75-80% merah
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-sky-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Gunakan gunting untuk menghindari memar
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-sky-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Simpan di suhu 0-5°C untuk kesegaran
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                        <button class="px-6 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition font-semibold">
                             Baca Selengkapnya
                         </button>
                     </div>
@@ -488,7 +488,7 @@ html {
             </div>
 
             <!-- Divider -->
-            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
+            <div class="my-12 lg:my-16 border-t-2 border-sky-100"></div>
 
             <!-- Edukasi Item 4 - Text Kiri, Image Kanan -->
             <div>
@@ -503,39 +503,39 @@ html {
                         </p>
                         <ul class="space-y-2 mb-6">
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Gunakan pestisida organik ramah lingkungan
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Jaga kebersihan lahan secara rutin
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-rose-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-indigo-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
                                 </svg>
                                 Monitor tanaman setiap hari untuk deteksi dini
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition font-semibold">
+                        <button class="px-6 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition font-semibold">
                             Baca Selengkapnya
                         </button>
                     </div>
                     
                     <!-- Image Container (Order 1 on Mobile, 2 on Desktop) -->
                     <div class="order-1 md:order-2 relative group">
-                        <div class="bg-gradient-to-br from-rose-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
+                        <div class="bg-gradient-to-br from-indigo-100 to-sky-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
                             <img 
                                 src="https://images.unsplash.com/photo-1566200691152-f32b96e8b288?w=600&h=400&fit=crop" 
                                 alt="Pengendalian Hama"
                                 class="w-full h-full object-cover hover:scale-105 transition duration-500"
                             >
                         </div>
-                        <div class="absolute -top-2 -left-2 w-20 h-20 bg-rose-500 rounded-full opacity-20 blur-2xl"></div>
+                        <div class="absolute -top-2 -left-2 w-20 h-20 bg-indigo-500 rounded-full opacity-20 blur-2xl"></div>
                     </div>
                 </div>
             </div>
@@ -544,9 +544,9 @@ html {
 
     <!-- Produk Strawberry Kami - Pink Theme -->
     <div id="produk" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+        <div class="bg-gradient-to-r from-sky-50 to-indigo-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-sky-100">
             <h2 class="text-2xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 mr-2 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                 </svg>
                 Produk Strawberry Kami
@@ -562,14 +562,14 @@ html {
                 <!-- Horizontal Scroll Container -->
                 <div class="relative">
                     <!-- Left Arrow -->
-                    <button id="scrollLeft" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-pink-50 text-pink-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-pink-200 hover:border-pink-400 hidden md:block">
+                    <button id="scrollLeft" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-sky-50 text-sky-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-sky-200 hover:border-sky-400 hidden md:block">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
                     
                     <!-- Right Arrow -->
-                    <button id="scrollRight" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-pink-50 text-pink-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-pink-200 hover:border-pink-400 hidden md:block">
+                    <button id="scrollRight" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-sky-50 text-sky-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-sky-200 hover:border-sky-400 hidden md:block">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
@@ -579,16 +579,16 @@ html {
                         <div id="productsScroll" class="flex space-x-6 pb-4 transition-transform duration-300 ease-in-out" style="width: max-content;">
                             @foreach($products as $product)
                                 <div class="flex-shrink-0 w-80 sm:w-72 lg:w-80">
-                                    <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-pink-100 h-full">
+                                    <div class="bg-gradient-to-br from-sky-50 to-indigo-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-sky-100 h-full">
                                         @if($product->image)
-                                            <div class="h-48 overflow-hidden bg-pink-100">
+                                            <div class="h-48 overflow-hidden bg-sky-100">
                                                 <img src="{{ asset('storage/' . $product->image) }}" 
                                                      alt="{{ $product->name }}" 
                                                      class="w-full h-full object-cover">
                                             </div>
                                         @else
-                                            <div class="h-48 bg-gradient-to-br from-pink-200 to-rose-200 flex items-center justify-center">
-                                                <svg class="w-20 h-20 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <div class="h-48 bg-gradient-to-br from-sky-200 to-indigo-200 flex items-center justify-center">
+                                                <svg class="w-20 h-20 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
                         </div>
@@ -598,11 +598,11 @@ html {
                                             <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{ $product->description }}</p>
                                             <div class="flex items-center justify-between">
                                                 <div>
-                                                    <p class="text-2xl font-bold text-pink-600">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                                                    <p class="text-2xl font-bold text-sky-600">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                                                     <p class="text-xs text-gray-500">Per {{ $product->unit }}</p>
                                                 </div>
-                                                <div class="bg-gradient-to-r from-pink-100 to-rose-100 px-3 py-1 rounded-full">
-                                                    <p class="text-sm font-semibold text-pink-700">
+                                                <div class="bg-gradient-to-r from-sky-100 to-indigo-100 px-3 py-1 rounded-full">
+                                                    <p class="text-sm font-semibold text-sky-700">
                                                         Stok: 
                                                         @if($product->status === 'out_of_stock')
                                                             <span class="text-red-600">0</span>
@@ -627,13 +627,13 @@ html {
                     <!-- Scroll Indicators -->
                     <div class="flex justify-center mt-4 space-x-2">
                         @for($i = 0; $i < ceil($products->count() / 6); $i++)
-                            <div class="w-2 h-2 bg-pink-300 rounded-full"></div>
+                            <div class="w-2 h-2 bg-sky-300 rounded-full"></div>
                         @endfor
                     </div>
                 </div>
             @else
                 <div class="text-center py-12">
-                    <svg class="w-24 h-24 text-pink-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-24 h-24 text-sky-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
                     </svg>
                     <p class="text-gray-500 text-lg">Belum ada produk tersedia</p>
@@ -644,9 +644,9 @@ html {
 
     <!-- Testimoni Pelanggan - Pink Theme -->
     <div id="testimoni" class="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-pink-100">
+        <div class="bg-gradient-to-r from-sky-50 to-indigo-50 px-4 sm:px-6 py-4 sm:py-5 border-b border-sky-100">
             <h2 class="text-2xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 mr-2 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                 </svg>
                 Apa Kata Pelanggan Kami
@@ -659,9 +659,9 @@ html {
                     <div id="testimonials-container" class="flex transition-transform duration-1000 ease-in-out" style="width: {{ $testimonials->count() * 33.333 }}%;">
                         @foreach($testimonials as $index => $testimonial)
                             <div class="w-1/3 px-3 flex-shrink-0">
-                                <div class="bg-gradient-to-br {{ $index % 3 == 0 ? 'from-pink-50 to-rose-50 border-pink-100' : ($index % 3 == 1 ? 'from-rose-50 to-pink-50 border-rose-100' : 'from-pink-50 to-rose-50 border-pink-100') }} rounded-2xl p-6 hover:shadow-lg transition border-2 h-full">
+                                <div class="bg-gradient-to-br {{ $index % 3 == 0 ? 'from-sky-50 to-indigo-50 border-sky-100' : ($index % 3 == 1 ? 'from-indigo-50 to-sky-50 border-indigo-100' : 'from-sky-50 to-indigo-50 border-sky-100') }} rounded-2xl p-6 hover:shadow-lg transition border-2 h-full">
                                     <div class="flex items-center mb-4">
-                                        <div class="w-12 h-12 bg-gradient-to-br {{ $index % 3 == 0 ? 'from-pink-400 to-pink-500' : ($index % 3 == 1 ? 'from-rose-400 to-rose-500' : 'from-pink-500 to-rose-600') }} rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                        <div class="w-12 h-12 bg-gradient-to-br {{ $index % 3 == 0 ? 'from-sky-400 to-sky-500' : ($index % 3 == 1 ? 'from-indigo-400 to-indigo-500' : 'from-sky-500 to-indigo-600') }} rounded-full flex items-center justify-center text-white font-bold text-lg">
                                             {{ strtoupper(substr($testimonial->name, 0, 1)) }}
                             </div>
                                         <div class="ml-3">
@@ -684,12 +684,12 @@ html {
 
                 <!-- Navigation controls -->
                 <div class="mt-6 flex items-center justify-center space-x-4">
-                    <button id="prev-btn" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition transform hover:scale-110 shadow-lg">
+                    <button id="prev-btn" class="bg-sky-500 hover:bg-sky-600 text-white p-3 rounded-full transition transform hover:scale-110 shadow-lg">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </button>
-                    <button id="next-btn" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition transform hover:scale-110 shadow-lg">
+                    <button id="next-btn" class="bg-sky-500 hover:bg-sky-600 text-white p-3 rounded-full transition transform hover:scale-110 shadow-lg">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -697,14 +697,14 @@ html {
             </div>
                                             @else
                 <div class="text-center py-8">
-                    <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-8 border-2 border-pink-100">
-                        <svg class="w-16 h-16 text-pink-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-gradient-to-br from-sky-50 to-indigo-50 rounded-2xl p-8 border-2 border-sky-100">
+                        <svg class="w-16 h-16 text-sky-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                         </svg>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">Belum Ada Testimoni</h3>
                         <p class="text-gray-600 mb-4">Jadilah yang pertama memberikan testimoni untuk produk strawberry kami!</p>
                         @if(!Auth::user()->isAdmin())
-                            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg hover:from-pink-600 hover:to-rose-600 transition">
+                            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-lg hover:from-sky-600 hover:to-indigo-600 transition">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                                     </svg>

@@ -21,7 +21,7 @@
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                         <input type="text" name="name" id="name" value="{{ old('name', Auth::user()->name) }}" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('name') border-red-300 @enderror">
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('name') border-red-300 @enderror">
                         @error('name')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -31,7 +31,7 @@
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                         <input type="email" name="email" id="email" value="{{ old('email', Auth::user()->email) }}" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('email') border-red-300 @enderror">
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('email') border-red-300 @enderror">
                         @error('email')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -65,7 +65,7 @@
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Testimoni</label>
                         <textarea name="message" id="message" rows="6" required
                             placeholder="Bagikan pengalaman Anda dengan produk strawberry kami..."
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition resize-none @error('message') border-red-300 @enderror">{{ old('message') }}</textarea>
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition resize-none @error('message') border-red-300 @enderror">{{ old('message') }}</textarea>
                         <p class="mt-2 text-sm text-gray-500">Minimal 10 karakter, maksimal 1000 karakter</p>
                         @error('message')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -77,7 +77,7 @@
                         <a href="{{ route('testimonials.index') }}" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
                             Batal
                         </a>
-                        <button type="submit" class="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-lg hover:from-pink-600 hover:to-rose-600 transition shadow-lg hover:shadow-xl">
+                        <button type="submit" class="px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition shadow-lg hover:shadow-xl">
                             <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                             </svg>
