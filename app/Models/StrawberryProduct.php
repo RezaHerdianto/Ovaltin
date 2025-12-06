@@ -60,9 +60,9 @@ class StrawberryProduct extends Model
     public function getStatusLabelAttribute()
     {
         return match($this->status) {
-            'active' => 'Aktif',
-            'inactive' => 'Tidak Aktif',
-            'out_of_stock' => 'Habis Stok',
+            'active' => 'Tersedia',
+            'inactive' => 'Tidak Tersedia',
+            'out_of_stock' => 'Tidak Tersedia',
             default => 'Tidak Diketahui'
         };
     }

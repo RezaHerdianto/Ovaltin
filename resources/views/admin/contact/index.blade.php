@@ -15,13 +15,13 @@
             </p>
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4 space-x-3">
-            <a href="{{ route('admin.contact.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+            <a href="{{ route('admin.contact.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                 <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
                 Tambah Kontak
             </a>
-            <a href="{{ route('contact.index') }}" target="_blank" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+            <a href="{{ route('contact.index') }}" target="_blank" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                 <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                 </svg>
@@ -40,7 +40,7 @@
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                             Aktif
                         </span>
-                        <a href="{{ route('admin.contact.edit', $contactInfo->id) }}" class="text-sky-600 hover:text-sky-500 text-sm font-medium">
+                        <a href="{{ route('admin.contact.edit', $contactInfo->id) }}" class="text-pink-600 hover:text-pink-500 text-sm font-medium">
                             Edit
                         </a>
                     </div>
@@ -130,7 +130,7 @@
                     <h3 class="mt-2 text-sm font-medium text-gray-900">Belum ada informasi kontak</h3>
                     <p class="mt-1 text-sm text-gray-500">Mulai dengan membuat informasi kontak pertama.</p>
                     <div class="mt-6">
-                        <a href="{{ route('admin.contact.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                        <a href="{{ route('admin.contact.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                             <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>
@@ -178,7 +178,7 @@
                                 {{ $contact->created_at->format('d M Y') }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                <a href="{{ route('admin.contact.edit', $contact->id) }}" class="text-sky-600 hover:text-sky-500">Edit</a>
+                                <a href="{{ route('admin.contact.edit', $contact->id) }}" class="text-pink-600 hover:text-pink-500">Edit</a>
                                 @if(!$contact->is_active)
                                     <form action="{{ route('admin.contact.set-active', $contact->id) }}" method="POST" class="inline">
                                         @csrf
@@ -187,7 +187,7 @@
                                     <form action="{{ route('admin.contact.destroy', $contact->id) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus informasi kontak ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-500">Hapus</button>
+                                        <button type="submit" class="text-pink-600 hover:text-pink-500">Hapus</button>
                                     </form>
                                 @endif
                             </td>

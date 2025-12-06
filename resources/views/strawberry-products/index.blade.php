@@ -15,7 +15,7 @@
             </p>
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4">
-            <a href="{{ route('strawberry-products.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            <a href="{{ route('strawberry-products.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                 <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
@@ -36,7 +36,6 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-28">Harga</th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-20">Stok</th>
-                                <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-28">Kualitas</th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-36">Status</th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-32">Asal</th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-32">Aksi</th>
@@ -82,10 +81,9 @@
                                                 @csrf
                                                 @method('PATCH')
                                                 <select name="status" onchange="this.form.submit()"
-                                                    class="text-xs border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 min-w-[110px] h-8">
-                                                    <option value="active" {{ $product->status === 'active' ? 'selected' : '' }}>Aktif</option>
-                                                    <option value="inactive" {{ $product->status === 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
-                                                    <option value="out_of_stock" {{ $product->status === 'out_of_stock' ? 'selected' : '' }}>Habis Stok</option>
+                                                    class="text-xs border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 min-w-[110px] h-8">
+                                                    <option value="active" {{ $product->status === 'active' ? 'selected' : '' }}>Tersedia</option>
+                                                    <option value="inactive" {{ $product->status === 'inactive' || $product->status === 'out_of_stock' ? 'selected' : '' }}>Tidak Tersedia</option>
                                                 </select>
                                             </form>
                                         </div>
@@ -133,7 +131,7 @@
                     <h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada produk</h3>
                     <p class="mt-1 text-sm text-gray-500">Mulai dengan menambahkan produk stroberi pertama Anda.</p>
                     <div class="mt-6">
-                        <a href="{{ route('strawberry-products.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <a href="{{ route('strawberry-products.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                             <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>

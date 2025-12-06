@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@php
+    use Illuminate\Support\Facades\Storage;
+@endphp
+
 @section('title', $product->name . ' - Detail Produk')
 
 @section('content')
@@ -8,7 +12,7 @@
     <nav class="flex" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
             <li class="inline-flex items-center">
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-sky-600">
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-pink-600">
                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
                     </svg>
@@ -20,7 +24,7 @@
                     <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
                     </svg>
-                    <a href="{{ route('user.products.index') }}" class="ml-1 text-sm font-medium text-gray-700 hover:text-sky-600 md:ml-2">Katalog Produk</a>
+                    <a href="{{ route('user.products.index') }}" class="ml-1 text-sm font-medium text-gray-700 hover:text-pink-600 md:ml-2">Katalog Produk</a>
                 </div>
             </li>
             <li aria-current="page">
@@ -41,10 +45,10 @@
                 <!-- Product Image -->
                 <div>
                     @if($product->image)
-                        <img class="w-full h-96 object-cover rounded-xl shadow-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                        <img class="w-full h-96 object-cover rounded-xl shadow-lg" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" style="display: block !important; visibility: visible !important; opacity: 1 !important; max-width: 100%;" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     @else
-                        <div class="w-full h-96 bg-gradient-to-br from-sky-200 to-indigo-200 rounded-xl flex items-center justify-center">
-                            <svg class="w-32 h-32 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="w-full h-96 bg-gradient-to-br from-pink-200 to-pink-200 rounded-xl flex items-center justify-center">
+                            <svg class="w-32 h-32 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
                         </div>
@@ -57,7 +61,7 @@
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $product->name }}</h1>
                         <div class="flex items-center space-x-4 mb-4">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-sky-100 text-sky-800">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
                                 {{ $product->category }}
                             </span>
                             @if($product->is_organic)
@@ -89,7 +93,7 @@
                         
                         <!-- Price -->
                         <div class="mb-6">
-                            <p class="text-4xl font-bold text-sky-600 mb-2">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                            <p class="text-4xl font-bold text-pink-600 mb-2">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                             <p class="text-gray-600">Per unit</p>
                         </div>
 
@@ -111,7 +115,7 @@
                                     @endif
                                     @if($product->lazada_url)
                                         <a href="{{ $product->lazada_url }}" target="_blank" rel="noopener"
-                                            class="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-50 text-indigo-800 border border-indigo-100 hover:bg-indigo-100 transition">
+                                            class="inline-flex items-center px-4 py-2 rounded-lg bg-pink-50 text-pink-800 border border-pink-100 hover:bg-pink-100 transition">
                                             Lazada
                                         </a>
                                     @endif
@@ -128,15 +132,15 @@
 
                     <!-- Product Details -->
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-sky-50 p-4 rounded-lg">
+                        <div class="bg-pink-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Asal Produk</h4>
                             <p class="text-gray-700">{{ $product->origin }}</p>
                         </div>
-                        <div class="bg-sky-50 p-4 rounded-lg">
+                        <div class="bg-pink-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Tanggal Panen</h4>
                             <p class="text-gray-700">{{ $product->harvest_date->format('d M Y') }}</p>
                         </div>
-                        <div class="bg-sky-50 p-4 rounded-lg">
+                        <div class="bg-pink-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Stok Tersedia</h4>
                             <p class="text-gray-700">
                                 @if($product->status === 'out_of_stock')
@@ -146,13 +150,11 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="bg-sky-50 p-4 rounded-lg">
+                        <div class="bg-pink-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Status</h4>
                             <p class="text-gray-700">
                                 @if($product->status === 'active')
                                     <span class="text-green-600 font-semibold">Tersedia</span>
-                                @elseif($product->status === 'out_of_stock')
-                                    <span class="text-red-600 font-semibold">Habis Stok</span>
                                 @else
                                     <span class="text-gray-600 font-semibold">Tidak Tersedia</span>
                                 @endif
@@ -182,24 +184,24 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Produk Terkait</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     @foreach($relatedProducts as $relatedProduct)
-                        <div class="bg-gradient-to-br from-sky-50 to-indigo-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-sky-100">
+                        <div class="bg-gradient-to-br from-pink-50 to-pink-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-pink-100">
                             @if($relatedProduct->image)
-                                <div class="h-32 overflow-hidden bg-sky-100">
+                                <div class="h-32 overflow-hidden bg-pink-100">
                                     <img src="{{ asset('storage/' . $relatedProduct->image) }}" 
                                          alt="{{ $relatedProduct->name }}" 
                                          class="w-full h-full object-cover">
                                 </div>
                             @else
-                                <div class="h-32 bg-gradient-to-br from-sky-200 to-indigo-200 flex items-center justify-center">
-                                    <svg class="w-12 h-12 text-sky-400" fill="currentColor" viewBox="0 0 20 20">
+                                <div class="h-32 bg-gradient-to-br from-pink-200 to-pink-200 flex items-center justify-center">
+                                    <svg class="w-12 h-12 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                     </svg>
                                 </div>
                             @endif
                             <div class="p-4">
                                 <h3 class="font-bold text-gray-900 mb-2 text-sm">{{ $relatedProduct->name }}</h3>
-                                <p class="text-lg font-bold text-sky-600 mb-2">Rp {{ number_format($relatedProduct->price, 0, ',', '.') }}</p>
-                                <a href="{{ route('user.products.show', $relatedProduct) }}" class="w-full inline-flex items-center justify-center px-3 py-2 border border-transparent rounded-lg text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 transition-all duration-200">
+                                <p class="text-lg font-bold text-pink-600 mb-2">Rp {{ number_format($relatedProduct->price, 0, ',', '.') }}</p>
+                                <a href="{{ route('user.products.show', $relatedProduct) }}" class="w-full inline-flex items-center justify-center px-3 py-2 border border-transparent rounded-lg text-xs font-medium text-white bg-gradient-to-r from-pink-500 to-pink-500 hover:from-pink-600 hover:to-pink-600 transition-all duration-200">
                                     Lihat Detail
                                 </a>
                             </div>

@@ -28,7 +28,7 @@
                         id="start_date"
                         name="start_date"
                         value="{{ old('start_date', request('start_date', $defaultStart)) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500"
                         required
                     >
                     <p class="mt-1 text-xs text-gray-500">Tanggal awal periode laporan.</p>
@@ -40,7 +40,7 @@
                         id="end_date"
                         name="end_date"
                         value="{{ old('end_date', request('end_date', $defaultEnd)) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500"
                     >
                     <p class="mt-1 text-xs text-gray-500">Opsional, kosongkan jika sama dengan tanggal mulai.</p>
                 </div>
@@ -52,7 +52,7 @@
                     <select
                         id="year"
                         name="year"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500"
                     >
                         @foreach($yearOptions as $year)
                             <option value="{{ $year }}" {{ (string) $year === request('year', (string) now()->year) ? 'selected' : '' }}>
@@ -67,7 +67,7 @@
                     <select
                         id="type"
                         name="type"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500"
                     >
                         @foreach($reportTypes as $key => $label)
                             <option value="{{ $key }}" {{ request('type', 'summary') === $key ? 'selected' : '' }}>

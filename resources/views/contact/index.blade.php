@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-sky-50 to-indigo-50 py-12 rounded-3xl mx-4 my-4 shadow-2xl">
+<div class="min-h-screen bg-gradient-to-br from-pink-50 to-pink-50 py-12 rounded-3xl mx-4 my-4 shadow-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center mb-12">
@@ -17,7 +17,7 @@
             <div class="space-y-8">
                 <div class="bg-white rounded-3xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                        <svg class="w-6 h-6 text-sky-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
@@ -28,7 +28,7 @@
                         <!-- Address -->
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 </svg>
@@ -42,7 +42,7 @@
                         <!-- Phone -->
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                 </svg>
                             </div>
@@ -64,7 +64,7 @@
                         <!-- Email -->
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                 </svg>
                             </div>
@@ -106,7 +106,7 @@
                 <!-- Business Hours -->
                 <div class="bg-white rounded-3xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                        <svg class="w-6 h-6 text-sky-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         Jam Operasional
@@ -127,8 +127,8 @@
                         </div>
                     </div>
                     
-                    <div class="mt-6 p-4 bg-sky-50 rounded-2xl">
-                        <p class="text-sm text-sky-800">
+                    <div class="mt-6 p-4 bg-pink-50 rounded-2xl">
+                        <p class="text-sm text-pink-800">
                             <strong>Catatan:</strong> Untuk pemesanan di luar jam operasional, 
                             silakan kirim pesan WhatsApp atau email. Kami akan merespons secepatnya!
                         </p>
@@ -139,7 +139,7 @@
             <!-- Contact Form -->
             <div class="bg-white rounded-3xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                    <svg class="w-6 h-6 text-sky-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                     </svg>
                     Kirim Pesan
@@ -152,7 +152,7 @@
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                         <input type="text" name="name" id="name" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('name') border-red-500 @enderror"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('name') border-red-500 @enderror"
                             value="{{ old('name') }}"
                             placeholder="Masukkan nama lengkap Anda">
                         @error('name')
@@ -164,7 +164,7 @@
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                         <input type="email" name="email" id="email" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('email') border-red-500 @enderror"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('email') border-red-500 @enderror"
                             value="{{ old('email') }}"
                             placeholder="contoh@email.com">
                         @error('email')
@@ -176,7 +176,7 @@
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">No. Telepon (Opsional)</label>
                         <input type="tel" name="phone" id="phone"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('phone') border-red-500 @enderror"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('phone') border-red-500 @enderror"
                             value="{{ old('phone') }}"
                             placeholder="+62 812-3456-7890">
                         @error('phone')
@@ -188,7 +188,7 @@
                     <div>
                         <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subjek</label>
                         <select name="subject" id="subject" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('subject') border-red-500 @enderror">
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('subject') border-red-500 @enderror">
                             <option value="">Pilih subjek</option>
                             <option value="Pemesanan Produk" {{ old('subject') == 'Pemesanan Produk' ? 'selected' : '' }}>Pemesanan Produk</option>
                             <option value="Informasi Harga" {{ old('subject') == 'Informasi Harga' ? 'selected' : '' }}>Informasi Harga</option>
@@ -205,7 +205,7 @@
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
                         <textarea name="message" id="message" rows="5" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition @error('message') border-red-500 @enderror"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('message') border-red-500 @enderror"
                             placeholder="Tuliskan pesan Anda di sini...">{{ old('message') }}</textarea>
                         @error('message')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -214,7 +214,7 @@
 
                     <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-sky-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-2xl hover:from-sky-700 hover:to-indigo-700 focus:ring-4 focus:ring-sky-300 transition duration-200 flex items-center justify-center">
+                        class="w-full bg-gradient-to-r from-pink-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-2xl hover:from-pink-700 hover:to-pink-700 focus:ring-4 focus:ring-pink-300 transition duration-200 flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                         </svg>
