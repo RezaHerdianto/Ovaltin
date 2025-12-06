@@ -141,11 +141,8 @@ html {
     <div class="relative z-10 h-full flex flex-col justify-center mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div class="w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 leading-tight" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 4px 4px 8px rgba(0, 0, 0, 0.3);">
-                Selamat Datang di Ovaltin! 🍓
+                Selamat Datang di Ovaltin!
             </h1>
-            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-6 sm:mb-8 leading-relaxed" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5), 2px 2px 6px rgba(0, 0, 0, 0.3);">
-                Nikmati strawberry segar berkualitas premium langsung dari kebun kami
-            </p>
             <div class="flex flex-wrap gap-3 sm:gap-4">
                 <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-white text-gray-900 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-xl text-sm sm:text-base md:text-lg">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,11 +219,11 @@ html {
                 <!-- Video Container (Left) -->
                 <div class="relative">
                     <div class="bg-gradient-to-br from-pink-100 to-pink-100 rounded-2xl overflow-hidden h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] shadow-xl">
-                        <!-- Embed Video - Replace dengan URL video Anda -->
+                        <!-- Embed Video - Perkenalan Dapur Ovaltin -->
                         <iframe 
                             class="w-full h-full"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                            title="Proses Pertanian Strawberry"
+                            src="https://www.youtube.com/embed/DCGSIpAsXus" 
+                            title="Perkenalan Dapur Ovaltin"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen
@@ -246,57 +243,12 @@ html {
                 <!-- Text Content (Right) -->
                 <div>
                     <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                        Kualitas Premium dari Awal Hingga Akhir
+                        Selamat Datang di Website Ovaltin
                     </h3>
                     
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Kami menggunakan teknologi terkini dan metode organik untuk memastikan setiap strawberry yang Anda terima adalah yang terbaik. Lihat bagaimana kami memproduksi strawberry premium Anda.
+                        Selamat datang di Dapur Ovaltin! Kami adalah UMKM yang berbasis di Desa Lebak Muncang, didirikan dan dikelola dengan penuh dedikasi oleh Ibu Nurela. Dengan semangat kewirausahaan yang kuat, kami menghadirkan berbagai produk olahan stroberi berkualitas tinggi seperti Dodol Stroberi, Agar-agar Stroberi, dan Selai Stroberi. Semua produk kami diolah dengan teliti menggunakan stroberi segar pilihan, tanpa tambahan bahan pengawet, untuk memberikan pengalaman rasa yang autentik dan menyehatkan bagi seluruh keluarga Anda.
                     </p>
-                    
-                    <!-- Key Features -->
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-500 text-white">
-                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="ml-3">
-                                <p class="font-semibold text-gray-900">Pertanian Organik 100%</p>
-                                <p class="text-gray-600 text-sm">Tanpa pestisida dan bahan kimia berbahaya</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-500 text-white">
-                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="ml-3">
-                                <p class="font-semibold text-gray-900">Lokasi Strategis</p>
-                                <p class="text-gray-600 text-sm">Dataran tinggi dengan iklim sempurna untuk strawberry</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-8 w-8 rounded-lg bg-pink-600 text-white">
-                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="ml-3">
-                                <p class="font-semibold text-gray-900">Kontrol Kualitas Ketat</p>
-                                <p class="text-gray-600 text-sm">Setiap buah diperiksa dan dipetik saat matang sempurna</p>
-                            </div>
-                        </div>
-                    </div>
                     
                     <!-- CTA Button -->
                     <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-pink-500 text-white rounded-lg hover:from-pink-600 hover:to-pink-600 transition transform hover:scale-105 shadow-lg font-semibold">
