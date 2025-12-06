@@ -55,6 +55,18 @@ Route::get('/edukasi/perawatan-strawberry', function () {
     return view('education.strawberry-care');
 })->name('education.strawberry-care');
 
+Route::get('/edukasi/pengendalian-hama', function () {
+    return view('education.pest-control');
+})->name('education.pest-control');
+
+Route::get('/edukasi/cara-menanam', function () {
+    return view('education.planting-guide');
+})->name('education.planting-guide');
+
+Route::get('/edukasi/panen-penyimpanan', function () {
+    return view('education.harvest-storage');
+})->name('education.harvest-storage');
+
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

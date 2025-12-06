@@ -175,12 +175,12 @@ html {
         <div class="p-6 sm:p-8">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Strawberry Segar dari Kebun Kami</h3>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Tentang Dapur Ovaltin</h3>
                     <p class="text-gray-600 mb-4 leading-relaxed">
-                        Kami adalah produsen strawberry premium yang berlokasi di dataran tinggi dengan iklim sempurna untuk menghasilkan strawberry berkualitas terbaik. Setiap buah dipetik dengan hati-hati saat matang sempurna untuk memastikan rasa dan kesegaran yang optimal.
+                        Kami adalah Dapur Ovaltin, sebuah Usaha Mikro, Kecil, dan Menengah (UMKM) yang berlokasi di Desa Lebak Muncang dan didirikan serta dikelola oleh Ibu Nurela. Kami berdedikasi untuk menyajikan produk olahan stroberi berkualitas premium, meliputi Dodol Stroberi, Agar-agar Stroberi, dan Selai Stroberi.
                     </p>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Dengan metode pertanian organik dan perawatan yang teliti, kami menghadirkan strawberry yang tidak hanya lezat, tetapi juga sehat dan bergizi tinggi.
+                        Setiap produk Kami dibuat secara cermat dari stroberi segar pilihan, memastikan cita rasa autentik dan keunggulan tanpa menggunakan bahan pengawet.
                     </p>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-pink-50 p-4 rounded-xl border-2 border-pink-200">
@@ -374,9 +374,9 @@ html {
                                 Jarak tanam yang tepat untuk hasil maksimal
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                        <a href="{{ route('education.planting-guide') }}" class="inline-flex items-center px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold cursor-pointer">
                             Baca Selengkapnya
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -484,9 +484,9 @@ html {
                                 Simpan di suhu 0-5°C untuk kesegaran
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                        <a href="{{ route('education.harvest-storage') }}" class="inline-flex items-center px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold cursor-pointer">
                             Baca Selengkapnya
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -525,18 +525,19 @@ html {
                                 Monitor tanaman setiap hari untuk deteksi dini
                             </li>
                         </ul>
-                        <button class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
+                        <a href="{{ route('education.pest-control') }}" class="inline-flex px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold">
                             Baca Selengkapnya
-                        </button>
+                        </a>
                     </div>
                     
                     <!-- Image Container (Order 1 on Mobile, 2 on Desktop) -->
                     <div class="order-1 md:order-2 relative group">
                         <div class="bg-gradient-to-br from-pink-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
                             <img 
-                                src="https://images.unsplash.com/photo-1566200691152-f32b96e8b288?w=600&h=400&fit=crop" 
+                                src="{{ asset('images/pengendalian-hama.webp') }}" 
                                 alt="Pengendalian Hama"
                                 class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                                onerror="this.onerror=null; this.src='{{ asset('images/strawberry-farm.webp') }}';"
                             >
                         </div>
                         <div class="absolute -top-2 -left-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
