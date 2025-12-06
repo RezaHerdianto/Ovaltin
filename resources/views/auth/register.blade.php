@@ -156,7 +156,7 @@
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:from-sky-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition duration-200">
+                        class="w-full bg-pink-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition duration-200">
                         Daftar
                     </button>
                 </div>

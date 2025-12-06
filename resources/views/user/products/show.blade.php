@@ -199,7 +199,7 @@
                             <div class="p-4">
                                 <h3 class="font-bold text-gray-900 mb-2 text-sm">{{ $relatedProduct->name }}</h3>
                                 <p class="text-lg font-bold text-sky-600 mb-2">Rp {{ number_format($relatedProduct->price, 0, ',', '.') }}</p>
-                                <a href="{{ route('user.products.show', $relatedProduct) }}" class="w-full inline-flex items-center justify-center px-3 py-2 border border-transparent rounded-lg text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 transition-all duration-200">
+                                <a href="{{ route('user.products.show', $relatedProduct) }}" class="w-full inline-flex items-center justify-center px-3 py-2 border border-transparent rounded-lg text-xs font-medium text-white bg-pink-500 hover:bg-pink-600 transition-all duration-200">
                                     Lihat Detail
                                 </a>
                             </div>

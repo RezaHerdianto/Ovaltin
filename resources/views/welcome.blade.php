@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-red-600">
     <!-- Navigation -->
     <nav class="bg-white shadow-sm fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@
                         @else
                             <a href="{{ route('login') }}" class="px-4 py-2 text-gray-700 hover:text-red-600 transition">Login</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">Daftar</a>
+                                <a href="{{ route('register') }}" class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition">Daftar</a>
                             @endif
                         @endauth
                     @endif
@@ -68,7 +68,7 @@
                     </p>
                     <div class="flex space-x-4">
                         @guest
-                            <a href="{{ route('register') }}" class="px-8 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-105">
+                            <a href="{{ route('register') }}" class="px-8 py-3 bg-pink-500 text-white rounded-lg font-semibold hover:bg-pink-600 transition transform hover:scale-105">
                                 Mulai Sekarang
                             </a>
                             <a href="{{ route('login') }}" class="px-8 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105">
@@ -76,11 +76,11 @@
                             </a>
                         @else
                             @if(auth()->user()->isAdmin())
-                                <a href="{{ route('admin.dashboard') }}" class="px-8 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-105">
+                                <a href="{{ route('admin.dashboard') }}" class="px-8 py-3 bg-pink-500 text-white rounded-lg font-semibold hover:bg-pink-600 transition transform hover:scale-105">
                                     Ke Dashboard Admin
                                 </a>
                             @else
-                                <a href="{{ route('dashboard') }}" class="px-8 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-105">
+                                <a href="{{ route('dashboard') }}" class="px-8 py-3 bg-pink-500 text-white rounded-lg font-semibold hover:bg-pink-600 transition transform hover:scale-105">
                                     Ke Dashboard
                                 </a>
                             @endif

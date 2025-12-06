@@ -295,7 +295,7 @@ html {
                     </div>
                     
                     <!-- CTA Button -->
-                    <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-lg hover:from-sky-600 hover:to-indigo-600 transition transform hover:scale-105 shadow-lg font-semibold">
+                    <a href="{{ route('user.products.index') }}" class="inline-flex items-center px-6 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition transform hover:scale-105 shadow-lg font-semibold">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
@@ -704,7 +704,7 @@ html {
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">Belum Ada Testimoni</h3>
                         <p class="text-gray-600 mb-4">Jadilah yang pertama memberikan testimoni untuk produk strawberry kami!</p>
                         @if(!Auth::user()->isAdmin())
-                            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-lg hover:from-sky-600 hover:to-indigo-600 transition">
+                            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                                     </svg>

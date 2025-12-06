@@ -78,7 +78,7 @@
         <div class="text-center">
             <h3 class="text-xl font-bold text-gray-900 mb-2">Masih Ada Pertanyaan?</h3>
             <p class="text-gray-600 mb-4">Jika pertanyaan Anda belum terjawab, jangan ragu untuk menghubungi kami</p>
-            <a href="{{ route('contact.index') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <a href="{{ route('contact.index') }}" class="inline-flex items-center px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>

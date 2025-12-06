@@ -40,10 +40,10 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+<body class="font-sans antialiased bg-white">
     <div class="min-h-screen">
-        <!-- Navigation - Blue Theme -->
-        <nav class="bg-gradient-to-r from-blue-800 via-indigo-800 to-slate-900 shadow-lg sticky top-0 z-50" style="left: 0; right: 0; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);">
+        <!-- Navigation - Pink Theme -->
+        <nav class="bg-pink-500 shadow-lg sticky top-0 z-50" style="left: 0; right: 0; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);">
             <div class="mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 max-w-full">
                 <div class="flex justify-between h-16">
                     <div class="flex">
@@ -59,7 +59,7 @@
                         @auth
                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                @if(!Auth::user()->isAdmin())
-                                   <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('dashboard') ? 'border-white text-white' : 'border-transparent text-blue-100 hover:text-white hover:border-blue-300' }}">
+                                   <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('dashboard') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                        Dashboard
                                    </a>
                                @endif
@@ -67,7 +67,7 @@
                                @unless(Auth::user()->isAdmin())
                                    <!-- Dropdown Produk -->
                                    <div class="relative inline-flex items-center px-1 pt-1" x-data="{ open: false }" @click.away="open = false">
-                                       <button @click="open = !open" class="inline-flex items-center text-sm font-medium {{ request()->routeIs('user.products.*') || request()->routeIs('dashboard') && request()->segment(1) == 'dashboard' ? 'text-white' : 'text-blue-100 hover:text-white' }}">
+                                       <button @click="open = !open" class="inline-flex items-center text-sm font-medium {{ request()->routeIs('user.products.*') || request()->routeIs('dashboard') && request()->segment(1) == 'dashboard' ? 'text-white' : 'text-pink-100 hover:text-white' }}">
                                            Produk
                                            <svg class="ml-1 h-4 w-4 transition-transform duration-200" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -85,20 +85,20 @@
                                            <div class="p-3 space-y-2">
                                                <!-- Daftar Produk Card -->
                                                <a href="{{ route('user.products.index') }}" class="block group">
-                                                   <div class="bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50 hover:from-blue-100 hover:via-slate-100 hover:to-indigo-100 rounded-xl p-4 transition-all duration-200 border-2 border-transparent hover:border-blue-200">
+                                                   <div class="bg-gradient-to-br from-red-50 via-pink-50 to-red-50 hover:from-red-100 hover:via-pink-100 hover:to-red-100 rounded-xl p-4 transition-all duration-200 border-2 border-transparent hover:border-red-200">
                                                        <div class="flex items-center space-x-3">
                                                            <div class="flex-shrink-0">
-                                                               <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-sm">
+                                                               <div class="w-10 h-10 bg-gradient-to-br from-red-600 to-pink-600 rounded-lg flex items-center justify-center shadow-sm">
                                                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                                                                    </svg>
                                                                </div>
                                                            </div>
                                                            <div class="flex-1">
-                                                               <h3 class="text-sm font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Daftar Produk</h3>
+                                                               <h3 class="text-sm font-bold text-gray-900 group-hover:text-red-700 transition-colors">Daftar Produk</h3>
                                                                <p class="text-xs text-gray-600 mt-0.5">Lihat semua produk kami</p>
                                                            </div>
-                                                           <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-700 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                           <svg class="w-5 h-5 text-gray-400 group-hover:text-red-700 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                                            </svg>
                                                        </div>
@@ -107,20 +107,20 @@
 
                                                <!-- Pengenalan Produk Card -->
                                                <a href="{{ route('dashboard') }}#tentang-kami" class="block group">
-                                                   <div class="bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-xl p-4 transition-all duration-200 border-2 border-transparent hover:border-blue-200">
+                                                   <div class="bg-gradient-to-br from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100 rounded-xl p-4 transition-all duration-200 border-2 border-transparent hover:border-red-200">
                                                        <div class="flex items-center space-x-3">
                                                            <div class="flex-shrink-0">
-                                                               <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-sm">
+                                                               <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center shadow-sm">
                                                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                                    </svg>
                                                                </div>
                                                            </div>
                                                            <div class="flex-1">
-                                                               <h3 class="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Pengenalan Produk</h3>
+                                                               <h3 class="text-sm font-bold text-gray-900 group-hover:text-red-600 transition-colors">Pengenalan Produk</h3>
                                                                <p class="text-xs text-gray-600 mt-0.5">Tentang produk kami</p>
                                                            </div>
-                                                           <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                           <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                                            </svg>
                                                        </div>
@@ -131,20 +131,23 @@
                                    </div>
                                @endunless
                                
-                               <a href="{{ route('testimonials.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('testimonials.*') ? 'border-white text-white' : 'border-transparent text-blue-100 hover:text-white hover:border-blue-300' }}">
+                               <a href="{{ route('testimonials.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('testimonials.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                    Testimoni
                                </a>
-                               <a href="{{ route('faqs.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('faqs.*') ? 'border-white text-white' : 'border-transparent text-blue-100 hover:text-white hover:border-blue-300' }}">
+                               <a href="{{ route('faqs.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('faqs.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                    FAQ
                                </a>
-                               <a href="{{ route('contact.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('contact.*') ? 'border-white text-white' : 'border-transparent text-blue-100 hover:text-white hover:border-blue-300' }}">
+                               <a href="{{ route('contact.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('contact.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                    Kontak Kami
                                </a>
                                @if(Auth::user()->isAdmin())
-                                   <a href="{{ route('strawberry-products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('strawberry-products.*') ? 'border-white text-white' : 'border-transparent text-blue-100 hover:text-white hover:border-blue-300' }}">
+                                   <a href="{{ route('strawberry-products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('strawberry-products.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                        Produk Stroberi
                                    </a>
-                                   <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('admin.*') ? 'border-white text-white' : 'border-transparent text-blue-100 hover:text-white hover:border-blue-300' }}">
+                                   <a href="{{ route('admin.orders.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('admin.orders.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
+                                       Pemesanan
+                                   </a>
+                                   <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('admin.*') && !request()->routeIs('admin.orders.*') ? 'border-white text-white' : 'border-transparent text-pink-100 hover:text-white hover:border-pink-300' }}">
                                        Admin Panel
                                    </a>
                                @endif
@@ -156,18 +159,18 @@
                     <div class="flex items-center">
                         @auth
                             <div class="flex items-center space-x-4">
-                                <span class="text-sm text-blue-100">
+                                <span class="text-sm text-pink-100">
                                     Selamat datang, <span class="font-medium text-white">{{ Auth::user()->name }}</span>
                                     @if(Auth::user()->isAdmin())
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-white text-blue-700 ml-1 shadow-sm">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-white text-pink-600 ml-1 shadow-sm">
                                             Admin
                                         </span>
                                     @endif
                                 </span>
                                 <form action="{{ route('logout') }}" method="POST" class="inline">
                                     @csrf
-                                    <button type="submit" class="inline-flex items-center px-3 py-2 border border-white text-sm leading-4 font-medium rounded-md text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition duration-150 ease-in-out">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-white text-sm leading-4 font-medium rounded-md text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition duration-150 ease-in-out">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                                         </svg>
                                         Logout
@@ -176,7 +179,12 @@
                             </div>
                         @else
                             <div class="flex items-center space-x-4">
-                                <a href="{{ route('login') }}" class="text-sm text-blue-100 hover:text-white font-medium transition">Login</a>
+                                <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 border border-white text-sm font-medium rounded-md text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm transition">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                                    </svg>
+                                    Login
+                                </a>
                                 <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 border border-white text-sm font-medium rounded-md text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm transition">Register</a>
                             </div>
                         @endauth
@@ -186,8 +194,9 @@
         </nav>
 
         <!-- Page Content -->
-        <main class="py-6">
+        <main class="py-6 bg-white">
             <div class="mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+                <div class="bg-white rounded-2xl shadow-xl p-6">
                 @if(session('success'))
                     <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline">{{ session('success') }}</span>
@@ -201,11 +210,12 @@
                 @endif
 
                 @yield('content')
+                </div>
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="bg-gradient-to-r from-blue-900 via-slate-900 to-slate-950 text-white">
+        <footer class="bg-pink-500 text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <!-- Main Footer Content -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -215,7 +225,7 @@
                             <img src="{{ asset('images/foto logo.webp') }}" alt="Ovaltin Logo" class="w-10 h-10 object-cover rounded-full mr-3">
                             <span class="text-3xl font-bold">Ovaltin</span>
                         </div>
-                        <div class="space-y-1 text-blue-100">
+                        <div class="space-y-1 text-pink-100">
                             <div>Jl. Raya Pangalengan</div>
                             <div>Desa Pangalengan</div>
                             <div>Kecamatan Pangalengan</div>
@@ -227,13 +237,13 @@
                     <div>
                         <h3 class="text-lg font-semibold mb-4 text-white">Kontak Kami</h3>
                         <div class="space-y-3">
-                            <div class="flex items-center text-blue-100">
+                            <div class="flex items-center text-pink-100">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                 </svg>
                                 <span>+62 812-3456-7890</span>
                             </div>
-                            <div class="flex items-center text-blue-100">
+                            <div class="flex items-center text-pink-100">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                 </svg>
@@ -246,9 +256,13 @@
                     <div>
                         <h3 class="text-lg font-semibold mb-4 text-white">Layanan</h3>
                         <ul class="space-y-3">
-                            <li><a href="{{ route('user.products.index') }}" class="text-blue-100 hover:text-white transition duration-200">Produk</a></li>
-                            <li><a href="{{ route('testimonials.index') }}" class="text-blue-100 hover:text-white transition duration-200">Testimoni</a></li>
-                            <li><a href="#" class="text-blue-100 hover:text-white transition duration-200">Pemesanan</a></li>
+                            <li><a href="{{ route('user.products.index') }}" class="text-pink-100 hover:text-white transition duration-200">Produk</a></li>
+                            <li><a href="{{ route('testimonials.index') }}" class="text-pink-100 hover:text-white transition duration-200">Testimoni</a></li>
+                            @auth
+                                @if(Auth::user()->isAdmin())
+                                    <li><a href="{{ route('admin.orders.index') }}" class="text-pink-100 hover:text-white transition duration-200">Pemesanan</a></li>
+                                @endif
+                            @endauth
                         </ul>
                     </div>
 
@@ -257,7 +271,7 @@
                         <h3 class="text-lg font-semibold mb-4 text-white">Ikuti Kami di Media Sosial</h3>
                         <div class="flex space-x-4">
                             <!-- Instagram -->
-                            <a href="https://www.instagram.com/dapur.ovaltin/" target="_blank" class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full hover:scale-110 transition duration-200">
+                            <a href="https://www.instagram.com/dapur.ovaltin/" target="_blank" class="flex items-center justify-center w-12 h-12 bg-pink-500 rounded-full hover:scale-110 transition duration-200">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                                 </svg>
@@ -278,7 +292,7 @@
                             </a>
                             
                             <!-- YouTube -->
-                            <a href="https://www.youtube.com/@dapurovaltinLM" target="_blank" class="flex items-center justify-center w-12 h-12 bg-red-600 rounded-full hover:scale-110 transition duration-200">
+                            <a href="https://www.youtube.com/@dapurovaltinLM" target="_blank" class="flex items-center justify-center w-12 h-12 bg-pink-500 rounded-full hover:scale-110 transition duration-200">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                                 </svg>
@@ -288,9 +302,9 @@
                 </div>
 
                 <!-- Copyright -->
-                <div class="pt-8 border-t border-blue-700 text-center">
-                    <p class="text-blue-200 text-sm mb-2">(c) {{ date('Y') }} Ovaltin. Hak Cipta Dilindungi.</p>
-                    <p class="text-blue-300 text-xs">Dibuat dengan cinta untuk para pecinta strawberry Indonesia</p>
+                <div class="pt-8 border-t border-pink-400 text-center">
+                    <p class="text-pink-200 text-sm mb-2">(c) {{ date('Y') }} Ovaltin. Hak Cipta Dilindungi.</p>
+                    <p class="text-pink-300 text-xs">Dibuat dengan cinta untuk para pecinta strawberry Indonesia</p>
                 </div>
             </div>
         </footer>

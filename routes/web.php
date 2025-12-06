@@ -11,6 +11,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AdminTestimonialController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\Admin\AdminFAQController;
+use App\Http\Controllers\OrderController;
 
 // Public routes
 Route::get('/', function () {
@@ -88,4 +89,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Admin FAQ routes
     Route::resource('faqs', AdminFAQController::class);
+    
+    // Admin Order routes (Pemesanan hanya untuk admin)
+    Route::get('/orders', [App\Http\Controllers\AdminOrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/create', [App\Http\Controllers\OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/{order}', [App\Http\Controllers\AdminOrderController::class, 'show'])->name('orders.show');
+    Route::patch('/orders/{order}/status', [App\Http\Controllers\AdminOrderController::class, 'updateStatus'])->name('orders.update-status');
+    Route::post('/orders/{order}/upload-payment-proof', [App\Http\Controllers\AdminOrderController::class, 'uploadPaymentProof'])->name('orders.upload-payment-proof');
+    Route::delete('/orders/{order}/delete-payment-proof', [App\Http\Controllers\AdminOrderController::class, 'deletePaymentProof'])->name('orders.delete-payment-proof');
+    Route::patch('/orders/{order}/update-notes', [App\Http\Controllers\AdminOrderController::class, 'updateNotes'])->name('orders.update-notes');
+    Route::delete('/orders/{order}', [App\Http\Controllers\AdminOrderController::class, 'destroy'])->name('orders.destroy');
 });

@@ -214,7 +214,7 @@
 
                     <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-sky-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-2xl hover:from-sky-700 hover:to-indigo-700 focus:ring-4 focus:ring-sky-300 transition duration-200 flex items-center justify-center">
+                        class="w-full bg-pink-500 text-white font-semibold py-3 px-6 rounded-2xl hover:bg-pink-600 focus:ring-4 focus:ring-pink-300 transition duration-200 flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                         </svg>
