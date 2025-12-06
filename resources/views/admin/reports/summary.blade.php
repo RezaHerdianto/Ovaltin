@@ -207,16 +207,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Produk Aktif</td>
+                    <td>Produk Tersedia</td>
                     <td>{{ number_format($productStats['active']) }}</td>
                 </tr>
                 <tr>
-                    <td>Produk Tidak Aktif</td>
-                    <td>{{ number_format($productStats['inactive']) }}</td>
-                </tr>
-                <tr>
-                    <td>Produk Habis Stok</td>
-                    <td>{{ number_format($productStats['out_of_stock']) }}</td>
+                    <td>Produk Tidak Tersedia</td>
+                    <td>{{ number_format($productStats['inactive'] + $productStats['out_of_stock']) }}</td>
                 </tr>
             </tbody>
         </table>

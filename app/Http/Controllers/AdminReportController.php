@@ -139,17 +139,17 @@ class AdminReportController extends Controller
         $userTrendCounts = $userTrend->pluck('count')->map(fn ($value) => (int) $value)->values()->all();
         $userAxisMax = max($userTrendCounts) ?: 0;
 
+        // Calculate new status: Tersedia (active) and Tidak Tersedia (inactive + out_of_stock)
+        $tersediaCount = (int) ($productStats['active'] ?? 0);
+        $tidakTersediaCount = (int) (($productStats['inactive'] ?? 0) + ($productStats['out_of_stock'] ?? 0));
+
         $productStatusChart = $this->generateChartImage([
             'type' => 'doughnut',
             'data' => [
-                'labels' => ['Aktif', 'Tidak Aktif', 'Habis Stok'],
+                'labels' => ['Tersedia', 'Tidak Tersedia'],
                 'datasets' => [[
-                    'data' => [
-                        (int) ($productStats['active'] ?? 0),
-                        (int) ($productStats['inactive'] ?? 0),
-                        (int) ($productStats['out_of_stock'] ?? 0),
-                    ],
-                    'backgroundColor' => ['#22c55e', '#6b7280', '#ef4444'],
+                    'data' => [$tersediaCount, $tidakTersediaCount],
+                    'backgroundColor' => ['#22c55e', '#6b7280'],
                 ]],
             ],
             'options' => [

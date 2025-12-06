@@ -65,6 +65,11 @@
             width: 100%;
             overflow-x: hidden;
         }
+        
+        /* Adjust logout button position to align with text */
+        .logout-button-container form {
+            margin-top: 2px;
+        }
     </style>
 </head>
 <body class="font-sans antialiased bg-gradient-to-br from-slate-50 via-pink-50 to-slate-100">
@@ -182,17 +187,17 @@
                     <div class="flex items-center">
                         @auth
                             <div class="flex items-center space-x-3">
-                                <span class="text-sm text-white">
-                                    Selamat datang, <span class="font-medium">{{ Auth::user()->name }}</span>
+                                <span class="text-sm text-white flex items-center">
+                                    Selamat datang, <span class="font-medium ml-1">{{ Auth::user()->name }}</span>
                                     @if(Auth::user()->isAdmin())
                                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-white text-pink-400 ml-1 shadow-sm">
                                             Admin
                                         </span>
                                     @endif
                                 </span>
-                                <form action="{{ route('logout') }}" method="POST" class="inline">
+                                <form action="{{ route('logout') }}" method="POST" class="inline flex items-center logout-button-container">
                                     @csrf
-                                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-pink-200 text-sm font-medium rounded-md text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-300 transition duration-150 ease-in-out">
+                                    <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-pink-200 text-sm font-medium rounded-md text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-300 transition duration-150 ease-in-out" style="margin-top: 2px;">
                                         <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                         </svg>

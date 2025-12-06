@@ -52,25 +52,12 @@ class AdminController extends Controller
             $date->copy()->endOfMonth(),
         ])->count())->values()->all();
 
-        $productStatusMap = [
-            'active' => 'Aktif',
-            'inactive' => 'Tidak Aktif',
-            'out_of_stock' => 'Habis Stok',
-        ];
+        // Group products by new status: Tersedia (active) and Tidak Tersedia (inactive + out_of_stock)
+        $activeCount = StrawberryProduct::where('status', 'active')->count();
+        $unavailableCount = StrawberryProduct::whereIn('status', ['inactive', 'out_of_stock'])->count();
 
-        $productStatusRaw = StrawberryProduct::select('status', DB::raw('count(*) as total'))
-            ->groupBy('status')
-            ->pluck('total', 'status');
-
-        $productStatusLabels = collect($productStatusMap)->keys()
-            ->map(fn ($status) => $productStatusMap[$status])
-            ->values()
-            ->all();
-
-        $productStatusData = collect($productStatusMap)->keys()
-            ->map(fn ($status) => $productStatusRaw->get($status, 0))
-            ->values()
-            ->all();
+        $productStatusLabels = ['Tersedia', 'Tidak Tersedia'];
+        $productStatusData = [$activeCount, $unavailableCount];
 
         $userTrendMax = max($userTrendData) ?: 1;
 

@@ -388,7 +388,7 @@
             labels: @json($productStatusLabels),
             datasets: [{
                 data: @json($productStatusData),
-                backgroundColor: ['#22c55e', '#6b7280', '#ef4444'],
+                backgroundColor: ['#22c55e', '#6b7280'],
                 borderWidth: 2,
                 borderColor: '#ffffff',
                 hoverOffset: 8
