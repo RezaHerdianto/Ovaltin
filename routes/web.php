@@ -44,6 +44,13 @@ Route::middleware('auth')->group(function () {
     
     // FAQ routes
     Route::get('/faq', [FAQController::class, 'index'])->name('faqs.index');
+    
+    // Sales Data routes
+    Route::get('/sales-data', [App\Http\Controllers\SalesDataController::class, 'index'])->name('sales-data.index');
+    Route::post('/sales-data', [App\Http\Controllers\SalesDataController::class, 'store'])->name('sales-data.store');
+    Route::post('/sales-data/upload-excel', [App\Http\Controllers\SalesDataController::class, 'uploadExcel'])->name('sales-data.upload-excel');
+    Route::get('/sales-data/prediction', [App\Http\Controllers\SalesDataController::class, 'getPrediction'])->name('sales-data.prediction');
+    Route::delete('/sales-data/{id}', [App\Http\Controllers\SalesDataController::class, 'destroy'])->name('sales-data.destroy');
 });
 
 // Contact routes
