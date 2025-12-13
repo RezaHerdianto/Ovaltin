@@ -44,13 +44,8 @@ Route::middleware('auth')->group(function () {
     
     // FAQ routes
     Route::get('/faq', [FAQController::class, 'index'])->name('faqs.index');
-    
-    // Sales Data routes
-    Route::get('/sales-data', [App\Http\Controllers\SalesDataController::class, 'index'])->name('sales-data.index');
-    Route::post('/sales-data', [App\Http\Controllers\SalesDataController::class, 'store'])->name('sales-data.store');
-    Route::post('/sales-data/upload-excel', [App\Http\Controllers\SalesDataController::class, 'uploadExcel'])->name('sales-data.upload-excel');
-    Route::get('/sales-data/prediction', [App\Http\Controllers\SalesDataController::class, 'getPrediction'])->name('sales-data.prediction');
-    Route::delete('/sales-data/{id}', [App\Http\Controllers\SalesDataController::class, 'destroy'])->name('sales-data.destroy');
+
+    // Sales Data routes dihapus dari group auth (dipindah ke admin)
 });
 
 // Contact routes
@@ -107,4 +102,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Admin FAQ routes
     Route::resource('faqs', AdminFAQController::class);
+});
+
+// Sales Data routes - hanya untuk admin
+Route::middleware(['auth','admin'])->group(function () {
+    Route::get('/sales-data', [App\Http\Controllers\SalesDataController::class, 'index'])->name('sales-data.index');
+    Route::post('/sales-data', [App\Http\Controllers\SalesDataController::class, 'store'])->name('sales-data.store');
+    Route::post('/sales-data/upload-excel', [App\Http\Controllers\SalesDataController::class, 'uploadExcel'])->name('sales-data.upload-excel');
+    Route::get('/sales-data/prediction', [App\Http\Controllers\SalesDataController::class, 'getPrediction'])->name('sales-data.prediction');
+    Route::delete('/sales-data/{id}', [App\Http\Controllers\SalesDataController::class, 'destroy'])->name('sales-data.destroy');
 });

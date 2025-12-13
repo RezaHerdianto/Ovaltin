@@ -200,7 +200,7 @@
                             <input type="checkbox" name="is_organic" id="is_organic" value="1" {{ old('is_organic') ? 'checked' : '' }}
                                 class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
                             <label for="is_organic" class="ml-2 block text-sm text-gray-900">
-                                Produk Organik
+                                Olahan
                             </label>
                         </div>
                         @error('is_organic')

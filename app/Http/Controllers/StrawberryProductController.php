@@ -45,6 +45,9 @@ class StrawberryProductController extends Controller
             'lazada_url' => 'nullable|url|max:255',
         ]);
 
+        // Pastikan checkbox yang tidak dicentang tersimpan sebagai false
+        $validated['is_organic'] = $request->boolean('is_organic');
+
         // Handle image upload
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products', 'public');
@@ -93,6 +96,9 @@ class StrawberryProductController extends Controller
             'shopee_url' => 'nullable|url|max:255',
             'lazada_url' => 'nullable|url|max:255',
         ]);
+
+        // Pastikan checkbox yang tidak dicentang tersimpan sebagai false
+        $validated['is_organic'] = $request->boolean('is_organic');
 
         // Handle image upload
         if ($request->hasFile('image')) {

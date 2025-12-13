@@ -171,9 +171,11 @@
                                <a href="{{ route('contact.index') }}" class="inline-flex items-center px-2 py-1 text-sm font-medium text-white hover:text-white/90 transition">
                                    Kontak Kami
                                </a>
-                               <a href="{{ route('sales-data.index') }}" class="inline-flex items-center px-2 py-1 text-sm font-medium text-white hover:text-white/90 transition {{ request()->routeIs('sales-data.*') ? 'border-b-2 border-white' : '' }}">
-                                   Data Penjualan
-                               </a>
+                               @if(Auth::user()->isAdmin())
+                                   <a href="{{ route('sales-data.index') }}" class="inline-flex items-center px-2 py-1 text-sm font-medium text-white hover:text-white/90 transition {{ request()->routeIs('sales-data.*') ? 'border-b-2 border-white' : '' }}">
+                                       Data Penjualan
+                                   </a>
+                               @endif
                                @if(Auth::user()->isAdmin())
                                    <a href="{{ route('strawberry-products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{ request()->routeIs('strawberry-products.*') ? 'border-white text-white' : 'border-transparent text-white/90 hover:text-white hover:border-white' }}">
                                        Produk Stroberi

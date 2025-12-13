@@ -122,13 +122,13 @@
                     </div>
 
                     <!-- Origin -->
-                    <div>
-                        <label for="origin" class="block text-sm font-medium text-gray-700">Asal Produk</label>
-                        <input type="text" name="origin" id="origin" value="{{ old('origin', $strawberryProduct->origin) }}" required
-                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm @error('origin') border-red-300 @enderror">
-                        @error('origin')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                    <label for="origin" class="block text-sm font-medium text-gray-700">Asal Produk</label>
+                    <input type="text" name="origin" id="origin" value="{{ old('origin', $strawberryProduct->origin) }}" required
+                        placeholder="Contoh: Ciwidey, Bandung"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm @error('origin') border-red-300 @enderror">
+                    @error('origin')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                     </div>
 
                     <!-- Status -->
@@ -210,7 +210,7 @@
                             <input type="checkbox" name="is_organic" id="is_organic" value="1" {{ old('is_organic', $strawberryProduct->is_organic) ? 'checked' : '' }}
                                 class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
                             <label for="is_organic" class="ml-2 block text-sm text-gray-900">
-                                Produk Organik
+                                Olahan
                             </label>
                         </div>
                         @error('is_organic')
