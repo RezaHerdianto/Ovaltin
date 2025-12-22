@@ -46,7 +46,7 @@
                     <label for="address" class="block text-sm font-medium text-gray-700">Alamat</label>
                     <textarea name="address" id="address" rows="4" required
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm @error('address') border-red-500 @enderror"
-                        placeholder="Jl. Raya Pangalengan&#10;Desa Pangalengan&#10;Kecamatan Pangalengan&#10;Kabupaten Bandung&#10;Jawa Barat, Indonesia">{{ old('address') }}</textarea>
+                        placeholder="Desa Lebakmuncang, Kabupaten Bandung, Jawa Barat, Indonesia">{{ old('address') }}</textarea>
                     @error('address')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror

@@ -15,7 +15,7 @@ class ContactInfoSeeder extends Seeder
     {
         ContactInfo::create([
             'company_name' => 'Ovaltin',
-            'address' => "Jl. Raya Pangalengan\nDesa Pangalengan\nKecamatan Pangalengan\nKabupaten Bandung\nJawa Barat, Indonesia",
+            'address' => "Desa Lebakmuncang, Kabupaten Bandung, Jawa Barat, Indonesia",
             'phone_primary' => '+62 812-3456-7890',
             'phone_secondary' => '+62 812-3456-7891',
             'email_primary' => 'info@ovaltin.com',

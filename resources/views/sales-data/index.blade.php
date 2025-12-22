@@ -357,7 +357,11 @@
                     label: '{{ ($data['model_type'] ?? 'linear') == 'decision_tree' ? 'Decision Tree' : 'Regresi Linear' }}',
                     data: [
                         ...@json($data['historical']['predicted']),
-                        ...Array(@json(count($data['forecast']['labels']))).fill(null)
+                        @if(isset($data['linear_regression_extended']))
+                        ...@json($data['linear_regression_extended'])
+                        @else
+                        ...@json($data['forecast']['values'])
+                        @endif
                     ],
                     borderColor: '#10b981',
                     backgroundColor: 'transparent',
@@ -366,6 +370,21 @@
                     pointRadius: 0,
                     tension: 0.4,
                 },
+                @if(($data['model_type'] ?? 'linear') == 'linear')
+                {
+                    label: 'Prediksi Penjualan Selanjutnya',
+                    data: [
+                        ...Array(@json(count($data['historical']['labels']))).fill(null),
+                        ...@json($data['linear_regression_extended'] ?? $data['forecast']['values'])
+                    ],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    tension: 0.4,
+                }
+                @else
                 {
                     label: 'Prediksi Penjualan Selanjutnya',
                     data: [
@@ -381,6 +400,7 @@
                     pointBorderWidth: 2,
                     tension: 0.4,
                 }
+                @endif
             ]
         },
         options: {

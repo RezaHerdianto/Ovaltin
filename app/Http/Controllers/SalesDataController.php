@@ -53,6 +53,30 @@ class SalesDataController extends Controller
                     // Untuk Decision Tree, gunakan linear_regression sebagai predicted (karena struktur sama)
                     $predictedValues = $forecastResult['linear_regression']['values'] ?? $forecastResult['historical']['values'];
                     
+                    // Hitung regresi linear yang dilanjutkan untuk periode forecast
+                    // Jika model type adalah linear, gunakan forecast values yang sudah menggunakan regresi linear
+                    $linearRegressionExtended = [];
+                    if ($modelType == 'linear' && isset($forecastResult['forecast']['values'])) {
+                        // Forecast values sudah menggunakan regresi linear yang dilanjutkan
+                        $linearRegressionExtended = $forecastResult['forecast']['values'];
+                    } else {
+                        // Untuk decision tree atau fallback, hitung dari regresi linear yang ada
+                        $historicalCount = count($predictedValues);
+                        if ($historicalCount > 0) {
+                            // Hitung slope dari dua titik terakhir regresi linear
+                            $lastValue = end($predictedValues);
+                            $secondLastValue = $predictedValues[$historicalCount - 2] ?? $lastValue;
+                            $slope = $lastValue - $secondLastValue;
+                            
+                            // Lanjutkan regresi linear
+                            foreach ($forecastResult['forecast']['values'] as $index => $value) {
+                                $linearRegressionExtended[] = max(0, round($lastValue + $slope * ($index + 1), 2));
+                            }
+                        } else {
+                            $linearRegressionExtended = $forecastResult['forecast']['values'];
+                        }
+                    }
+                    
                     $chartData[$product] = [
                         'historical' => [
                             'labels' => $forecastResult['historical']['dates'],
@@ -63,6 +87,7 @@ class SalesDataController extends Controller
                             'labels' => $forecastResult['forecast']['dates'],
                             'values' => $forecastResult['forecast']['values'],
                         ],
+                        'linear_regression_extended' => $linearRegressionExtended,
                         'metrics' => [
                             'r2' => $forecastResult['metrics']['R2 Score'],
                             'rmse' => $forecastResult['metrics']['RMSE'],

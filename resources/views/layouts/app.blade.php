@@ -252,11 +252,7 @@
                             <span class="text-3xl font-bold">Ovaltin</span>
                         </div>
                         <div class="space-y-1 text-white/90">
-                            <div>Jl. Raya Pangalengan</div>
-                            <div>Desa Pangalengan</div>
-                            <div>Kecamatan Pangalengan</div>
-                            <div>Kabupaten Bandung</div>
-                            <div>Jawa Barat, Indonesia</div>
+                            <div>Desa Lebakmuncang, Kabupaten Bandung, Jawa Barat, Indonesia</div>
                         </div>
                     </div>
                     <!-- Kontak -->

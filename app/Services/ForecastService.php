@@ -139,31 +139,18 @@ class ForecastService
             return null;
         }
 
-        // Hitung rata-rata per hari
-        $total = $salesData->sum('jumlah_terjual');
-        $days = $salesData->count();
-        $avgPerDay = $total / $days;
-
-        // Generate forecast dates
-        $lastDate = $salesData->max('tanggal_penjualan');
-        $forecastDates = [];
-        $forecastValues = [];
-
-        for ($i = 1; $i <= $forecastDays; $i++) {
-            $date = Carbon::parse($lastDate)->addDays($i);
-            $forecastDates[] = $date->format('Y-m-d');
-            $forecastValues[] = max(0, round($avgPerDay, 2));
-        }
-
         // Historical data
         $historicalDates = $salesData->pluck('tanggal_penjualan')->map(function ($date) {
             return Carbon::parse($date)->format('Y-m-d');
         })->toArray();
         $historicalValues = $salesData->pluck('jumlah_terjual')->toArray();
 
-        // Linear regression prediction (sederhana)
+        // Linear regression calculation
         $linearPredictions = [];
+        $slope = 0;
+        $intercept = 0;
         $n = count($historicalValues);
+        
         if ($n > 1) {
             $sumX = array_sum(range(1, $n));
             $sumY = array_sum($historicalValues);
@@ -178,11 +165,28 @@ class ForecastService
             $slope = ($n * $sumXY - $sumX * $sumY) / ($n * $sumX2 - $sumX * $sumX);
             $intercept = ($sumY - $slope * $sumX) / $n;
             
+            // Hitung prediksi untuk data historis
             foreach (range(1, $n) as $i) {
                 $linearPredictions[] = max(0, round($intercept + $slope * $i, 2));
             }
         } else {
             $linearPredictions = $historicalValues;
+            $avgPerDay = $n > 0 ? $historicalValues[0] : 0;
+            $slope = 0;
+            $intercept = $avgPerDay;
+        }
+
+        // Generate forecast dates dan values menggunakan regresi linear yang dilanjutkan
+        $lastDate = $salesData->max('tanggal_penjualan');
+        $forecastDates = [];
+        $forecastValues = [];
+
+        for ($i = 1; $i <= $forecastDays; $i++) {
+            $date = Carbon::parse($lastDate)->addDays($i);
+            $forecastDates[] = $date->format('Y-m-d');
+            // Lanjutkan regresi linear: nilai pada titik n+i
+            $forecastValue = $intercept + $slope * ($n + $i);
+            $forecastValues[] = max(0, round($forecastValue, 2));
         }
 
         // Calculate metrics

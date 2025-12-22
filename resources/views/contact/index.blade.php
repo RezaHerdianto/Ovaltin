@@ -35,7 +35,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Alamat Kebun</h3>
-                                <p class="text-gray-600">{!! nl2br(e($contactInfo->address ?? 'Jl. Raya Pangalengan<br>Desa Pangalengan<br>Kecamatan Pangalengan<br>Kabupaten Bandung<br>Jawa Barat, Indonesia')) !!}</p>
+                                <p class="text-gray-600">{!! nl2br(e($contactInfo->address ?? 'Desa Lebakmuncang, Kabupaten Bandung, Jawa Barat, Indonesia')) !!}</p>
                             </div>
                         </div>
 
