@@ -279,63 +279,6 @@ html {
                 Pelajari cara merawat, menanam, dan memaksimalkan hasil panen strawberry Anda dengan panduan lengkap dari para ahli kami.
             </p>
 
-            <!-- Edukasi Item 1 - Video Kiri, Text Kanan -->
-            <div class="mb-12 lg:mb-16">
-                <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
-                    <!-- Video/Image Container -->
-                    <div class="relative group">
-                        <div class="bg-gradient-to-br from-pink-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
-                            <iframe 
-                                class="w-full h-full"
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                title="Cara Menanam Strawberry"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
-                    </div>
-                    
-                    <!-- Text Content -->
-                    <div>
-                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-                            Cara Menanam Strawberry dari Bibit
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
-                            Pelajari langkah-langkah mudah untuk menanam strawberry berkualitas tinggi. Dari pemilihan bibit hingga persiapan lahan, semua dijelaskan secara detail.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                </svg>
-                                Pilih bibit yang sehat dan berkualitas
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                </svg>
-                                Siapkan media tanam dengan pH optimal
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                </svg>
-                                Jarak tanam yang tepat untuk hasil maksimal
-                            </li>
-                        </ul>
-                        <a href="{{ route('education.planting-guide') }}" class="inline-flex items-center px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold cursor-pointer">
-                            Baca Selengkapnya
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
-
             <!-- Edukasi Item 2 - Text Kiri, Video/Image Kanan -->
             <div class="mb-12 lg:mb-16">
                 <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
@@ -382,63 +325,6 @@ html {
                             >
                         </div>
                         <div class="absolute -top-2 -left-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="my-12 lg:my-16 border-t-2 border-pink-100"></div>
-
-            <!-- Edukasi Item 3 - Video Kiri, Text Kanan -->
-            <div class="mb-12 lg:mb-16">
-                <div class="grid md:grid-cols-2 gap-6 lg:gap-10 items-center">
-                    <!-- Video Container -->
-                    <div class="relative group">
-                        <div class="bg-gradient-to-br from-pink-100 to-pink-100 rounded-2xl overflow-hidden h-[250px] sm:h-[300px] md:h-[350px] shadow-xl">
-                            <iframe 
-                                class="w-full h-full"
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                title="Panen Strawberry yang Tepat"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500 rounded-full opacity-20 blur-2xl"></div>
-                    </div>
-                    
-                    <!-- Text Content -->
-                    <div>
-                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-                            Teknik Panen dan Penyimpanan Strawberry
-                        </h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
-                            Waktu panen yang tepat menentukan kualitas dan rasa strawberry. Pelajari cara memanen dan menyimpan untuk hasil terbaik.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                </svg>
-                                Panen saat strawberry 75-80% merah
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                </svg>
-                                Gunakan gunting untuk menghindari memar
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                </svg>
-                                Simpan di suhu 0-5°C untuk kesegaran
-                            </li>
-                        </ul>
-                        <a href="{{ route('education.harvest-storage') }}" class="inline-flex items-center px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition font-semibold cursor-pointer">
-                            Baca Selengkapnya
-                        </a>
                     </div>
                 </div>
             </div>
@@ -878,4 +764,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-
