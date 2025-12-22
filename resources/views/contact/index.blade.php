@@ -51,12 +51,12 @@
                                 @if($contactInfo && $contactInfo->phone_primary)
                                     <p class="text-gray-600">{{ $contactInfo->phone_primary }}</p>
                                 @else
-                                    <p class="text-gray-600">+62 812-3456-7890</p>
+                                    <p class="text-gray-600">+62 856-0345-4924</p>
                                 @endif
                                 @if($contactInfo && $contactInfo->phone_secondary)
                                     <p class="text-gray-600">{{ $contactInfo->phone_secondary }}</p>
                                 @else
-                                    <p class="text-gray-600">+62 812-3456-7891</p>
+                                    <p class="text-gray-600">+62 856-0345-4924</p>
                                 @endif
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 @if($contactInfo && $contactInfo->whatsapp)
                                     <p class="text-gray-600">{{ $contactInfo->whatsapp }}</p>
                                 @else
-                                    <p class="text-gray-600">+62 812-3456-7890</p>
+                                    <p class="text-gray-600">+62 856-0345-4924</p>
                                 @endif
                                 <p class="text-sm text-green-600">Chat langsung untuk pemesanan cepat</p>
                             </div>
@@ -178,7 +178,7 @@
                         <input type="tel" name="phone" id="phone"
                             class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('phone') border-red-500 @enderror"
                             value="{{ old('phone') }}"
-                            placeholder="+62 812-3456-7890">
+                            placeholder="+62 856-0345-4924">
                         @error('phone')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror

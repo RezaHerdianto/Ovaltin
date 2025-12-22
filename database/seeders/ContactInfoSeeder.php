@@ -16,11 +16,11 @@ class ContactInfoSeeder extends Seeder
         ContactInfo::create([
             'company_name' => 'Ovaltin',
             'address' => "Desa Lebakmuncang, Kabupaten Bandung, Jawa Barat, Indonesia",
-            'phone_primary' => '+62 812-3456-7890',
-            'phone_secondary' => '+62 812-3456-7891',
+            'phone_primary' => '+62 856-0345-4924',
+            'phone_secondary' => '+62 856-0345-4924',
             'email_primary' => 'info@ovaltin.com',
             'email_secondary' => 'order@ovaltin.com',
-            'whatsapp' => '+62 812-3456-7890',
+            'whatsapp' => '+62 856-0345-4924',
             'business_hours' => json_encode([
                 'monday_friday' => '08:00 - 17:00',
                 'saturday' => '08:00 - 15:00',

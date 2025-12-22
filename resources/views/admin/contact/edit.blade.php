@@ -58,7 +58,7 @@
                         <label for="phone_primary" class="block text-sm font-medium text-gray-700">Telepon Utama</label>
                         <input type="text" name="phone_primary" id="phone_primary" value="{{ old('phone_primary', $contactInfo->phone_primary) }}"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm @error('phone_primary') border-red-500 @enderror"
-                            placeholder="+62 812-3456-7890">
+                            placeholder="+62 856-0345-4924">
                         @error('phone_primary')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -69,7 +69,7 @@
                         <label for="phone_secondary" class="block text-sm font-medium text-gray-700">Telepon Sekunder</label>
                         <input type="text" name="phone_secondary" id="phone_secondary" value="{{ old('phone_secondary', $contactInfo->phone_secondary) }}"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm @error('phone_secondary') border-red-500 @enderror"
-                            placeholder="+62 812-3456-7891">
+                            placeholder="+62 856-0345-4924">
                         @error('phone_secondary')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -102,7 +102,7 @@
                         <label for="whatsapp" class="block text-sm font-medium text-gray-700">WhatsApp</label>
                         <input type="text" name="whatsapp" id="whatsapp" value="{{ old('whatsapp', $contactInfo->whatsapp) }}"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm @error('whatsapp') border-red-500 @enderror"
-                            placeholder="+62 812-3456-7890">
+                            placeholder="+62 856-0345-4924">
                         @error('whatsapp')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
