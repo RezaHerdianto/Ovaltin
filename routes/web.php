@@ -109,6 +109,13 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::get('/sales-data', [App\Http\Controllers\SalesDataController::class, 'index'])->name('sales-data.index');
     Route::post('/sales-data', [App\Http\Controllers\SalesDataController::class, 'store'])->name('sales-data.store');
     Route::post('/sales-data/upload-excel', [App\Http\Controllers\SalesDataController::class, 'uploadExcel'])->name('sales-data.upload-excel');
-    Route::get('/sales-data/prediction', [App\Http\Controllers\SalesDataController::class, 'getPrediction'])->name('sales-data.prediction');
+    Route::get('/sales-data/generate-report', [App\Http\Controllers\SalesDataController::class, 'generateReport'])->name('sales-data.generate-report');
+    Route::get('/sales-data/download-report', [App\Http\Controllers\SalesDataController::class, 'downloadReport'])->name('sales-data.download-report');
+    Route::get('/sales-data/{id}/edit', [App\Http\Controllers\SalesDataController::class, 'edit'])->name('sales-data.edit');
+    Route::put('/sales-data/{id}', [App\Http\Controllers\SalesDataController::class, 'update'])->name('sales-data.update');
     Route::delete('/sales-data/{id}', [App\Http\Controllers\SalesDataController::class, 'destroy'])->name('sales-data.destroy');
+    
+    // Forecast routes
+    Route::get('/forecast', [App\Http\Controllers\ForecastController::class, 'index'])->name('forecast.index');
+    Route::get('/forecast/prediction', [App\Http\Controllers\ForecastController::class, 'getPrediction'])->name('forecast.prediction');
 });

@@ -11,11 +11,16 @@
                 Data Penjualan
             </h2>
             <p class="mt-1 text-sm text-gray-500">
-                Data historis dan prediksi penjualan produk
+                Kelola data penjualan, visualisasi, dan laporan performa
             </p>
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4 space-x-3">
-            <!-- Upload Excel Button -->
+            <a href="{{ route('forecast.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700">
+                <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                Lihat Forecast
+            </a>
             <button onclick="document.getElementById('excel-upload').click()" 
                     class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
                 <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,30 +31,6 @@
             <form id="upload-form" action="{{ route('sales-data.upload-excel') }}" method="POST" enctype="multipart/form-data" class="hidden">
                 @csrf
                 <input type="file" id="excel-upload" name="excel_file" accept=".xlsx,.xls" onchange="this.form.submit()">
-            </form>
-            
-            <!-- Model Type Selector -->
-            <form action="{{ route('sales-data.index') }}" method="GET" class="flex items-center space-x-2">
-                <input type="hidden" name="forecast_days" value="{{ $forecastDays }}">
-                <label for="model_type" class="text-sm text-gray-700">Model:</label>
-                <select id="model_type" name="model_type" onchange="this.form.submit()" 
-                        class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    <option value="linear" {{ $modelType == 'linear' ? 'selected' : '' }}>Regresi Linear</option>
-                    <option value="decision_tree" {{ $modelType == 'decision_tree' ? 'selected' : '' }}>Decision Tree</option>
-                </select>
-            </form>
-            
-            <!-- Days Selector -->
-            <form action="{{ route('sales-data.index') }}" method="GET" class="flex items-center space-x-2">
-                <input type="hidden" name="model_type" value="{{ $modelType }}">
-                <label for="forecast_days" class="text-sm text-gray-700">Hari Forecast:</label>
-                <select id="forecast_days" name="forecast_days" onchange="this.form.submit()" 
-                        class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    <option value="7" {{ $forecastDays == 7 ? 'selected' : '' }}>7 Hari</option>
-                    <option value="14" {{ $forecastDays == 14 ? 'selected' : '' }}>14 Hari</option>
-                    <option value="30" {{ $forecastDays == 30 ? 'selected' : '' }}>30 Hari</option>
-                    <option value="60" {{ $forecastDays == 60 ? 'selected' : '' }}>60 Hari</option>
-                </select>
             </form>
         </div>
     </div>
@@ -66,11 +47,94 @@
         </div>
     @endif
 
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-4">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Total Penjualan</dt>
+                            <dd class="text-lg font-semibold text-gray-900">{{ number_format($summary['total_sales']) }}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Total Transaksi</dt>
+                            <dd class="text-lg font-semibold text-gray-900">{{ number_format($summary['total_transactions']) }}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Rata-rata/Transaksi</dt>
+                            <dd class="text-lg font-semibold text-gray-900">{{ number_format($summary['avg_per_transaction'], 0) }}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Jumlah Produk</dt>
+                            <dd class="text-lg font-semibold text-gray-900">{{ count($products) }}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Form Input Data Penjualan -->
     <div class="bg-white shadow rounded-lg">
         <div class="px-4 py-5 sm:p-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Input Data Penjualan</h3>
-            <form action="{{ route('sales-data.store') }}" method="POST" class="space-y-4" onsubmit="return confirm('Apakah Anda yakin ingin menyimpan data penjualan ini?');">
+            <form action="{{ route('sales-data.store') }}" method="POST" class="space-y-4">
                 @csrf
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-4">
                     <div>
@@ -108,95 +172,160 @@
         </div>
     </div>
 
-    <!-- Summary Cards -->
-    @if(!empty($summary))
-    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
-        @foreach($summary as $product => $stats)
-        <div class="bg-white overflow-hidden shadow rounded-lg">
-            <div class="p-5">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <div class="w-8 h-8 bg-gradient-to-br from-red-400 to-red-600 rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-sm">{{ strtoupper(substr($product, 0, 1)) }}</span>
+    <!-- Visualisasi Data Per Bulan -->
+    <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">
+                    @if($monthlyData['type'] == 'daily')
+                        Visualisasi Data Harian - {{ $monthlyData['month_name'] }}
+                    @else
+                        Visualisasi Data Per Bulan
+                    @endif
+                </h3>
+                <form action="{{ route('sales-data.index') }}" method="GET" class="flex items-center space-x-2" id="filter-form">
+                    <label for="year" class="text-sm text-gray-700">Tahun:</label>
+                    <select id="year" name="year" 
+                            class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        @for($y = now()->year; $y >= now()->year - 5; $y--)
+                            <option value="{{ $y }}" {{ $y == $selectedYear ? 'selected' : '' }}>{{ $y }}</option>
+                        @endfor
+                    </select>
+                    <label for="month" class="text-sm text-gray-700 ml-2">Bulan:</label>
+                    <select id="month" name="month" 
+                            class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Semua Bulan</option>
+                        @for($m = 1; $m <= 12; $m++)
+                            <option value="{{ $m }}" {{ $m == $selectedMonth ? 'selected' : '' }}>
+                                {{ \Carbon\Carbon::create($selectedYear, $m, 1)->translatedFormat('F') }}
+                            </option>
+                        @endfor
+                    </select>
+                    <script>
+                        document.getElementById('year').addEventListener('change', function() {
+                            document.getElementById('filter-form').submit();
+                        });
+                        document.getElementById('month').addEventListener('change', function() {
+                            document.getElementById('filter-form').submit();
+                        });
+                    </script>
+                </form>
                         </div>
-                    </div>
-                    <div class="ml-5 w-0 flex-1">
-                        <dl>
-                            <dt class="text-sm font-medium text-gray-500 truncate">{{ ucfirst($product) }}</dt>
-                            <dd class="text-lg font-semibold text-gray-900">{{ number_format($stats['avg_forecast'], 0) }}</dd>
-                            <dd class="text-xs text-gray-500">Rata-rata /hari</dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="mt-3 pt-3 border-t border-gray-200">
-                    <div class="flex justify-between text-xs">
-                        <span class="text-gray-500">Total {{ $forecastDays }} hari:</span>
-                        <span class="font-semibold text-gray-900">{{ number_format($stats['total_forecast'], 0) }}</span>
-                    </div>
-                </div>
+            <div class="mt-6 h-80">
+                <canvas id="monthlyChart"></canvas>
             </div>
         </div>
-        @endforeach
     </div>
-    @endif
 
-    <!-- Forecasting Charts -->
-    @if(!empty($chartData))
-    <div class="grid grid-cols-1 gap-6">
-        @foreach($chartData as $product => $data)
+    <!-- Ranking Produk Paling Laku -->
         <div class="bg-white shadow rounded-lg">
             <div class="px-4 py-5 sm:p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-900">
-                        {{ ucfirst($product) }} - Prediksi Penjualan Selanjutnya
-                        <span class="text-sm font-normal text-gray-500">
-                            ({{ $modelType == 'decision_tree' ? 'Decision Tree' : 'Regresi Linear' }})
-                        </span>
-                    </h3>
-                    <div class="flex items-center space-x-4 text-sm">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Ranking Produk Paling Laku</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ranking</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Produk</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Terjual</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Persentase</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @php
+                            $totalAll = $topProducts->sum('total_terjual');
+                        @endphp
+                        @foreach($topProducts as $product)
+                            @php
+                                $percentage = $totalAll > 0 ? ($product['total_terjual'] / $totalAll) * 100 : 0;
+                            @endphp
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
-                            <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                            <span class="text-gray-600">Data Historis</span>
+                                        @if($product['rank'] == 1)
+                                            <span class="text-2xl">🥇</span>
+                                        @elseif($product['rank'] == 2)
+                                            <span class="text-2xl">🥈</span>
+                                        @elseif($product['rank'] == 3)
+                                            <span class="text-2xl">🥉</span>
+                                        @else
+                                            <span class="text-lg font-semibold text-gray-600">#{{ $product['rank'] }}</span>
+                                        @endif
                         </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{ $product['nama_produk'] }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    {{ number_format($product['total_terjual']) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
-                            <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
-                            <span class="text-gray-600">{{ $modelType == 'decision_tree' ? 'Decision Tree' : 'Regresi Linear' }}</span>
+                                        <div class="w-full bg-gray-200 rounded-full h-2 mr-2">
+                                            <div class="bg-blue-600 h-2 rounded-full" style="width: {{ $percentage }}%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-600">{{ number_format($percentage, 1) }}%</span>
                         </div>
-                        <div class="flex items-center">
-                            <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
-                            <span class="text-gray-600">Prediksi Penjualan Selanjutnya</span>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Metrics -->
-                <div class="grid grid-cols-3 gap-4 mb-4 p-3 bg-gray-50 rounded-lg">
+    <!-- Generate Laporan Performa Penjualan -->
+    <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Generate Laporan Performa Penjualan</h3>
+            <form id="report-form" class="space-y-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                     <div>
-                        <p class="text-xs text-gray-500">R² Score</p>
-                        <p class="text-sm font-semibold text-gray-900">{{ number_format($data['metrics']['r2'], 4) }}</p>
+                        <label for="start_date" class="block text-sm font-medium text-gray-700">Tanggal Mulai</label>
+                        <input type="date" id="start_date" name="start_date" 
+                               value="{{ \Carbon\Carbon::now()->startOfMonth()->format('Y-m-d') }}"
+                               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     </div>
                     <div>
-                        <p class="text-xs text-gray-500">RMSE</p>
-                        <p class="text-sm font-semibold text-gray-900">{{ number_format($data['metrics']['rmse'], 2) }}</p>
+                        <label for="end_date" class="block text-sm font-medium text-gray-700">Tanggal Akhir</label>
+                        <input type="date" id="end_date" name="end_date" 
+                               value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     </div>
-                    <div>
-                        <p class="text-xs text-gray-500">MAE</p>
-                        <p class="text-sm font-semibold text-gray-900">{{ number_format($data['metrics']['mae'], 2) }}</p>
+                    <div class="flex items-end">
+                        <button type="button" onclick="generateReport()" 
+                                class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Generate Laporan
+                        </button>
                     </div>
                 </div>
-
-                <div class="h-80">
-                    <canvas id="chart-{{ $product }}"></canvas>
+            </form>
+            <div id="report-result" class="mt-6 hidden">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-md font-semibold text-gray-900">Hasil Laporan</h4>
+                        <button type="button" onclick="downloadReport()" 
+                                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Download Excel
+                        </button>
+                    </div>
+                    <div id="report-content"></div>
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
 
-    <!-- Sales History Table -->
+    <!-- Tabel Data Penjualan -->
     <div class="bg-white shadow rounded-lg">
         <div class="px-4 py-5 sm:p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Tabel Histori Penjualan</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Data Penjualan</h3>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -220,258 +349,323 @@
                                 {{ number_format($sale->jumlah_terjual, 0) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <form action="{{ route('sales-data.destroy', $sale->id) }}" 
-                                      method="POST" 
-                                      onsubmit="return confirm('Apakah Anda yakin ingin menghapus data penjualan ini?');"
-                                      class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" 
-                                            class="text-red-600 hover:text-red-900 inline-flex items-center">
+                                <div class="flex items-center space-x-2">
+                                    <button onclick="editSalesData({{ $sale->id }})" 
+                                            class="text-blue-600 hover:text-blue-900" 
+                                            title="Edit">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                         </svg>
-                                        <span class="ml-1">Hapus</span>
+                                    </button>
+                                    <form action="{{ route('sales-data.destroy', $sale->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900" title="Hapus">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
                                     </button>
                                 </form>
+                                </div>
                             </td>
                         </tr>
                         @empty
                         <tr>
                             <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">
-                                Belum ada data penjualan
+                                Belum ada data penjualan.
                             </td>
                         </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
-            @if($salesHistory->hasPages())
             <div class="mt-4">
                 {{ $salesHistory->links() }}
             </div>
-            @endif
+        </div>
         </div>
     </div>
 
-    <!-- Forecast Table -->
-    <div class="bg-white shadow rounded-lg">
-        <div class="px-4 py-5 sm:p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Tabel Prediksi Penjualan {{ $forecastDays }} Hari ke Depan</h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
-                            @foreach($products as $product)
-                                @if(isset($forecastResults[$product]) && $forecastResults[$product]['success'])
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ ucfirst($product) }}</th>
-                                @endif
-                            @endforeach
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @for($i = 0; $i < $forecastDays; $i++)
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                @if(isset($forecastResults['Agar']) && $forecastResults['Agar']['success'] && isset($forecastResults['Agar']['forecast'][$i]))
-                                    {{ \Carbon\Carbon::parse($forecastResults['Agar']['forecast'][$i]['date'])->format('d/m/Y') }}
-                                @endif
-                            </td>
-                            @php
-                                $rowTotal = 0;
-                            @endphp
-                            @foreach($products as $product)
-                                @if(isset($forecastResults[$product]) && $forecastResults[$product]['success'] && isset($forecastResults[$product]['forecast'][$i]))
-                                    @php
-                                        $quantity = $forecastResults[$product]['forecast'][$i]['quantity'];
-                                        $rowTotal += $quantity;
-                                    @endphp
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        {{ number_format($quantity, 0) }}
-                                    </td>
-                                @else
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-</td>
-                                @endif
-                            @endforeach
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                {{ number_format($rowTotal, 0) }}
-                            </td>
-                        </tr>
-                        @endfor
-                    </tbody>
-                </table>
+<!-- Modal Edit Data Penjualan -->
+<div id="editModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">Edit Data Penjualan</h3>
+                <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
+            <form id="editForm" method="POST" class="space-y-4">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label for="edit_tanggal_penjualan" class="block text-sm font-medium text-gray-700">Tanggal Penjualan</label>
+                    <input type="date" name="tanggal_penjualan" id="edit_tanggal_penjualan" required
+                           class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="edit_nama_produk" class="block text-sm font-medium text-gray-700">Nama Produk</label>
+                    <select name="nama_produk" id="edit_nama_produk" required
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <option value="">Pilih Produk</option>
+                        @foreach($products as $product)
+                            <option value="{{ $product }}">{{ $product }}</option>
+                        @endforeach
+                    </select>
         </div>
+                <div>
+                    <label for="edit_jumlah_terjual" class="block text-sm font-medium text-gray-700">Jumlah Terjual</label>
+                    <input type="number" name="jumlah_terjual" id="edit_jumlah_terjual" min="0" step="1" required
+                           class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           placeholder="0">
     </div>
-    @else
-    <div class="bg-white shadow rounded-lg p-12 text-center">
-        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-        </svg>
-        <h3 class="mt-2 text-sm font-medium text-gray-900">Belum ada data forecasting</h3>
-        <p class="mt-1 text-sm text-gray-500">Upload file Excel atau tambahkan data penjualan untuk memulai forecasting.</p>
-        <div class="mt-6">
-            <button onclick="document.getElementById('excel-upload').click()" 
-                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-                <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                </svg>
-                Upload File Excel
+                <div class="flex items-center justify-end space-x-3 pt-4">
+                    <button type="button" onclick="closeEditModal()" 
+                            class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        Batal
+                    </button>
+                    <button type="submit" 
+                            class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                        Simpan Perubahan
             </button>
+                </div>
+            </form>
         </div>
     </div>
-    @endif
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    @if(!empty($chartData))
-    @foreach($chartData as $product => $data)
-    const ctx{{ str_replace(' ', '', ucfirst($product)) }} = document.getElementById('chart-{{ $product }}');
-    const chart{{ str_replace(' ', '', ucfirst($product)) }} = new Chart(ctx{{ str_replace(' ', '', ucfirst($product)) }}, {
-        type: 'line',
-        data: {
-            labels: [
-                ...@json($data['historical']['labels']),
-                ...@json($data['forecast']['labels'])
-            ],
+    // Edit Sales Data Function
+    function editSalesData(id) {
+        fetch('{{ url("sales-data") }}/' + id + '/edit')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('editForm').action = '{{ url("sales-data") }}/' + id;
+                document.getElementById('edit_tanggal_penjualan').value = data.tanggal_penjualan;
+                document.getElementById('edit_nama_produk').value = data.nama_produk;
+                document.getElementById('edit_jumlah_terjual').value = data.jumlah_terjual;
+                document.getElementById('editModal').classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat memuat data');
+            });
+    }
+
+    function closeEditModal() {
+        document.getElementById('editModal').classList.add('hidden');
+        document.getElementById('editForm').reset();
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('editModal');
+        if (event.target == modal) {
+            closeEditModal();
+        }
+    }
+</script>
+<script>
+    // Monthly/Daily Chart
+    const monthlyCtx = document.getElementById('monthlyChart');
+    
+    @if($monthlyData['type'] == 'daily')
+        // Daily chart (per hari dalam bulan)
+        const chartData = {
+            labels: @json($monthlyData['data']->pluck('date')),
             datasets: [
+                @foreach($products as $index => $product)
                 {
-                    label: 'Data Historis',
-                    data: [
-                        ...@json($data['historical']['actual']),
-                        ...Array(@json(count($data['forecast']['labels']))).fill(null)
-                    ],
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    borderWidth: 2,
-                    pointRadius: 4,
-                    pointBackgroundColor: '#3b82f6',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    tension: 0.4,
+                    label: '{{ $product }}',
+                    data: @json($monthlyData['data']->map(function($day) use ($product) {
+                        return isset($day['data'][$product]) ? $day['data'][$product] : 0;
+                    })->values()),
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                    ][{{ $index }}],
+                    borderColor: [
+                        'rgb(239, 68, 68)',
+                        'rgb(34, 197, 94)',
+                        'rgb(59, 130, 246)',
+                        'rgb(251, 146, 60)',
+                    ][{{ $index }}],
+                    borderWidth: 1
                 },
-                {
-                    label: '{{ ($data['model_type'] ?? 'linear') == 'decision_tree' ? 'Decision Tree' : 'Regresi Linear' }}',
-                    data: [
-                        ...@json($data['historical']['predicted']),
-                        @if(isset($data['linear_regression_extended']))
-                        ...@json($data['linear_regression_extended'])
-                        @else
-                        ...@json($data['forecast']['values'])
-                        @endif
-                    ],
-                    borderColor: '#10b981',
-                    backgroundColor: 'transparent',
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    tension: 0.4,
-                },
-                @if(($data['model_type'] ?? 'linear') == 'linear')
-                {
-                    label: 'Prediksi Penjualan Selanjutnya',
-                    data: [
-                        ...Array(@json(count($data['historical']['labels']))).fill(null),
-                        ...@json($data['linear_regression_extended'] ?? $data['forecast']['values'])
-                    ],
-                    borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    tension: 0.4,
-                }
-                @else
-                {
-                    label: 'Prediksi Penjualan Selanjutnya',
-                    data: [
-                        ...Array(@json(count($data['historical']['labels']))).fill(null),
-                        ...@json($data['forecast']['values'])
-                    ],
-                    borderColor: '#ef4444',
-                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                    borderWidth: 3,
-                    pointRadius: 5,
-                    pointBackgroundColor: '#ef4444',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    tension: 0.4,
-                }
-                @endif
+                @endforeach
             ]
-        },
+        };
+    @else
+        // Monthly chart (per bulan dalam tahun)
+        const chartData = {
+            labels: @json($monthlyData['data']->pluck('month')),
+            datasets: [
+                @foreach($products as $index => $product)
+                {
+                    label: '{{ $product }}',
+                    data: @json($monthlyData['data']->map(function($month) use ($product) {
+                        return isset($month['data'][$product]) ? $month['data'][$product] : 0;
+                    })->values()),
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                    ][{{ $index }}],
+                    borderColor: [
+                        'rgb(239, 68, 68)',
+                        'rgb(34, 197, 94)',
+                        'rgb(59, 130, 246)',
+                        'rgb(251, 146, 60)',
+                    ][{{ $index }}],
+                    borderWidth: 1
+                },
+                @endforeach
+            ]
+        };
+    @endif
+    
+    const monthlyChart = new Chart(monthlyCtx, {
+        type: 'bar',
+        data: chartData,
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
-                },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false,
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed.y !== null) {
-                                label += Math.round(context.parsed.y);
-                            }
-                            return label;
-                        }
-                    }
-                }
-            },
             scales: {
-                x: {
-                    display: true,
-                    title: {
-                        display: true,
-                        text: 'Tanggal'
-                    },
-                    ticks: {
-                        maxRotation: 45,
-                        minRotation: 45,
-                        callback: function(value, index) {
-                            const label = this.getLabelForValue(value);
-                            if (label && label.includes('/')) {
-                                return label;
-                            }
-                            if (label && label.includes('-')) {
-                                const parts = label.split('-');
-                                if (parts.length === 3) {
-                                    return parts[2] + '/' + parts[1] + '/' + parts[0];
-                                }
-                            }
-                            return label;
-                        }
-                    }
-                },
                 y: {
-                    display: true,
-                    title: {
-                        display: true,
-                        text: 'Jumlah Penjualan'
-                    },
                     beginAtZero: true,
                     ticks: {
                         precision: 0
                     }
+                },
+                x: {
+                    ticks: {
+                        @if($monthlyData['type'] == 'daily')
+                        maxRotation: 45,
+                        minRotation: 45,
+                        @endif
+                    }
                 }
             },
-            interaction: {
-                mode: 'index',
-                intersect: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
             }
         }
     });
-    @endforeach
-    @endif
+
+    // Store report dates for download
+    let reportStartDate = '';
+    let reportEndDate = '';
+
+    // Generate Report
+    function generateReport() {
+        const startDate = document.getElementById('start_date').value;
+        const endDate = document.getElementById('end_date').value;
+        
+        if (!startDate || !endDate) {
+            alert('Mohon pilih tanggal mulai dan tanggal akhir');
+            return;
+        }
+        
+        // Store dates for download
+        reportStartDate = startDate;
+        reportEndDate = endDate;
+        
+        fetch('{{ route("sales-data.generate-report") }}?start_date=' + startDate + '&end_date=' + endDate)
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('report-result');
+                const contentDiv = document.getElementById('report-content');
+                
+                let html = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Penjualan</p>
+                            <p class="text-2xl font-bold text-gray-900">${data.summary.total_sales.toLocaleString()}</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Transaksi</p>
+                            <p class="text-2xl font-bold text-gray-900">${data.summary.total_transactions.toLocaleString()}</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <p class="text-sm text-gray-500">Rata-rata/Transaksi</p>
+                            <p class="text-2xl font-bold text-gray-900">${data.summary.avg_per_transaction.toLocaleString()}</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h5 class="font-semibold mb-2">Per Produk:</h5>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">Produk</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">Total</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">Transaksi</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">Rata-rata</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">Min</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500">Max</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                `;
+                
+                for (const [product, stats] of Object.entries(data.products)) {
+                    html += `
+                        <tr>
+                            <td class="px-4 py-2 text-sm">${product}</td>
+                            <td class="px-4 py-2 text-sm">${stats.total.toLocaleString()}</td>
+                            <td class="px-4 py-2 text-sm">${stats.count}</td>
+                            <td class="px-4 py-2 text-sm">${stats.avg.toFixed(2)}</td>
+                            <td class="px-4 py-2 text-sm">${stats.min}</td>
+                            <td class="px-4 py-2 text-sm">${stats.max}</td>
+                        </tr>
+                    `;
+                }
+                
+                html += `
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+                
+                contentDiv.innerHTML = html;
+                resultDiv.classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat generate laporan');
+            });
+    }
+
+    // Download Report as Excel
+    function downloadReport() {
+        const startDate = reportStartDate || document.getElementById('start_date').value;
+        const endDate = reportEndDate || document.getElementById('end_date').value;
+        
+        if (!startDate || !endDate) {
+            alert('Mohon generate laporan terlebih dahulu atau pilih tanggal mulai dan tanggal akhir');
+            return;
+        }
+        
+        // Create download URL
+        const downloadUrl = '{{ route("sales-data.download-report") }}?start_date=' + startDate + '&end_date=' + endDate;
+        
+        // Create temporary link and trigger download
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'Laporan_Performa_Penjualan_' + startDate + '_' + endDate + '.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 </script>
 @endsection

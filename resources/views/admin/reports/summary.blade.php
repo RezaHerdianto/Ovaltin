@@ -170,7 +170,7 @@
         <h2>{{ $sectionNumber++ }}. Statistik Pengguna Tahunan ({{ $reportYear }})</h2>
         @if ($userTrendChart)
             <div style="text-align:center; margin-bottom: 16px;">
-                <img src="data:image/png;base64,{{ $userTrendChart }}" alt="Diagram Pertumbuhan User" style="max-width: 100%; height: auto;">
+                <img src="{{ $userTrendChart }}" alt="Diagram Pertumbuhan User" style="max-width: 100%; height: auto;">
             </div>
         @endif
         <table>
@@ -195,7 +195,7 @@
         <h2>{{ $sectionNumber++ }}. Distribusi Status Produk</h2>
         @if ($productStatusChart)
             <div style="text-align:center; margin-bottom: 16px;">
-                <img src="data:image/png;base64,{{ $productStatusChart }}" alt="Diagram Status Produk" style="max-width: 80%; height: auto;">
+                <img src="{{ $productStatusChart }}" alt="Diagram Status Produk" style="max-width: 80%; height: auto;">
             </div>
         @endif
         <table>
@@ -252,7 +252,7 @@
         <h2>{{ $sectionNumber++ }}. Testimoni per Rating</h2>
         @if ($ratingChart)
             <div style="text-align:center; margin-bottom: 16px;">
-                <img src="data:image/png;base64,{{ $ratingChart }}" alt="Diagram Testimoni per Rating" style="max-width: 100%; height: auto;">
+                <img src="{{ $ratingChart }}" alt="Diagram Testimoni per Rating" style="max-width: 100%; height: auto;">
             </div>
         @endif
         <table>
@@ -281,7 +281,7 @@
         <h2>{{ $sectionNumber++ }}. Pertumbuhan Testimoni Tahunan ({{ $reportYear }})</h2>
         @if ($testimonialTrendChart)
             <div style="text-align:center; margin-bottom: 16px;">
-                <img src="data:image/png;base64,{{ $testimonialTrendChart }}" alt="Diagram Pertumbuhan Testimoni" style="max-width: 100%; height: auto;">
+                <img src="{{ $testimonialTrendChart }}" alt="Diagram Pertumbuhan Testimoni" style="max-width: 100%; height: auto;">
             </div>
         @endif
         <table>

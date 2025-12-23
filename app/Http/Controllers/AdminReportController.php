@@ -143,6 +143,7 @@ class AdminReportController extends Controller
         $tersediaCount = (int) ($productStats['active'] ?? 0);
         $tidakTersediaCount = (int) (($productStats['inactive'] ?? 0) + ($productStats['out_of_stock'] ?? 0));
 
+        // Generate charts (will return base64, DomPDF should handle it)
         $productStatusChart = $this->generateChartImage([
             'type' => 'doughnut',
             'data' => [
@@ -238,7 +239,20 @@ class AdminReportController extends Controller
             ],
         ]);
 
-        $pdf = Pdf::setOption(['isRemoteEnabled' => true])->loadView('admin.reports.summary', [
+        // Check if GD extension is available for image processing
+        if (!extension_loaded('gd')) {
+            // If GD is not available, set charts to null
+            $userTrendChart = null;
+            $testimonialTrendChart = null;
+            $productStatusChart = null;
+            $ratingChart = null;
+        }
+
+        $pdf = Pdf::setOption([
+            'isRemoteEnabled' => false, // Disable remote to avoid GD requirement
+            'isHtml5ParserEnabled' => true,
+            'isPhpEnabled' => false,
+        ])->loadView('admin.reports.summary', [
             'generatedAt' => $generatedAt,
             'reportStart' => $reportStart,
             'reportEnd' => $reportEnd,
@@ -280,15 +294,32 @@ class AdminReportController extends Controller
 
     protected function generateChartImage(array $config): ?string
     {
-        $response = Http::get('https://quickchart.io/chart', [
-            'width' => 700,
-            'height' => 300,
-            'format' => 'png',
-            'c' => json_encode($config),
-        ]);
+        try {
+            // Download image dari quickchart.io
+            $response = Http::timeout(10)->get('https://quickchart.io/chart', [
+                'width' => 700,
+                'height' => 300,
+                'format' => 'png',
+                'c' => json_encode($config),
+            ]);
 
-        if ($response->successful()) {
-            return base64_encode($response->body());
+            if ($response->successful()) {
+                // Simpan ke storage public directory
+                $storagePath = storage_path('app/public/charts');
+                if (!file_exists($storagePath)) {
+                    mkdir($storagePath, 0755, true);
+                }
+                
+                $fileName = 'chart_' . uniqid() . '_' . time() . '.png';
+                $filePath = $storagePath . '/' . $fileName;
+                
+                file_put_contents($filePath, $response->body());
+                
+                // Return absolute file path untuk DomPDF
+                return $filePath;
+            }
+        } catch (\Exception $e) {
+            \Log::error('Chart generation failed: ' . $e->getMessage());
         }
 
         return null;
