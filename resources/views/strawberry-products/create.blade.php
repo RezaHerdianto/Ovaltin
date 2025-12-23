@@ -120,6 +120,17 @@
                         @enderror
                     </div>
 
+                    <!-- Link WhatsApp Catalog -->
+                    <div>
+                        <label for="whatsapp_url" class="block text-sm font-medium text-gray-700">Link Katalog WhatsApp (opsional)</label>
+                        <input type="url" name="whatsapp_url" id="whatsapp_url" value="{{ old('whatsapp_url') }}"
+                            placeholder="https://wa.me/c/6285603454924"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm @error('whatsapp_url') border-red-300 @enderror">
+                        @error('whatsapp_url')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!-- Origin -->
                     <div>
                         <label for="origin" class="block text-sm font-medium text-gray-700">Asal Produk</label>

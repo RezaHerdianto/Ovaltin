@@ -21,7 +21,8 @@ class StrawberryProduct extends Model
         'status',
         'tokopedia_url',
         'shopee_url',
-        'lazada_url'
+        'lazada_url',
+        'whatsapp_url'
     ];
 
     protected $casts = [

@@ -43,6 +43,7 @@ class StrawberryProductController extends Controller
             'tokopedia_url' => 'nullable|url|max:255',
             'shopee_url' => 'nullable|url|max:255',
             'lazada_url' => 'nullable|url|max:255',
+            'whatsapp_url' => 'nullable|url|max:255',
         ]);
 
         // Pastikan checkbox yang tidak dicentang tersimpan sebagai false
@@ -95,6 +96,7 @@ class StrawberryProductController extends Controller
             'tokopedia_url' => 'nullable|url|max:255',
             'shopee_url' => 'nullable|url|max:255',
             'lazada_url' => 'nullable|url|max:255',
+            'whatsapp_url' => 'nullable|url|max:255',
         ]);
 
         // Pastikan checkbox yang tidak dicentang tersimpan sebagai false
