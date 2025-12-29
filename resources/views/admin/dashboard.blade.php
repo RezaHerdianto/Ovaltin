@@ -214,15 +214,15 @@
         </div>
     </div>
 
-    <!-- SOP WhatsApp Business PDF -->
+    <!-- User Guide WhatsApp PDF -->
     <div class="bg-white shadow rounded-lg">
         <div class="px-4 py-5 sm:p-6">
             <div class="flex items-center justify-between mb-4">
                 <div>
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">SOP WhatsApp Business</h3>
-                    <p class="mt-1 text-sm text-gray-500">Dokumen Standar Operasional Prosedur WhatsApp Business</p>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">User Guide WhatsApp</h3>
+                    <p class="mt-1 text-sm text-gray-500">Panduan penggunaan WhatsApp Business untuk pengguna</p>
                 </div>
-                <a href="{{ asset('documents/SOP-WhatsApp-Bisnis.pdf') }}" target="_blank" download class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <a href="{{ asset('documents/User-Guide-WhatsApp.pdf') }}" target="_blank" download class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                     <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
@@ -235,10 +235,10 @@
                         <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="text-sm font-medium text-gray-700">SOP-WhatsApp-Bisnis.pdf</span>
+                        <span class="text-sm font-medium text-gray-700">User-Guide-WhatsApp.pdf</span>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <a href="{{ asset('documents/SOP-WhatsApp-Bisnis.pdf') }}" target="_blank" class="text-sm text-gray-600 hover:text-gray-900 flex items-center space-x-1">
+                        <a href="{{ asset('documents/User-Guide-WhatsApp.pdf') }}" target="_blank" class="text-sm text-gray-600 hover:text-gray-900 flex items-center space-x-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                             </svg>
@@ -248,7 +248,7 @@
                 </div>
                 <div class="relative" style="height: 700px;">
                     <iframe 
-                        src="{{ asset('documents/SOP-WhatsApp-Bisnis.pdf') }}#toolbar=1&navpanes=1&scrollbar=1&zoom=page-width" 
+                        src="{{ asset('documents/User-Guide-WhatsApp.pdf') }}#toolbar=1&navpanes=1&scrollbar=1&zoom=page-width" 
                         class="w-full h-full" 
                         style="min-height: 700px;"
                         frameborder="0"
@@ -260,7 +260,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                             </svg>
                             <p class="text-gray-600 mb-4">Browser Anda tidak mendukung preview PDF langsung.</p>
-                            <a href="{{ asset('documents/SOP-WhatsApp-Bisnis.pdf') }}" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700">
+                            <a href="{{ asset('documents/User-Guide-WhatsApp.pdf') }}" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700">
                                 <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                 </svg>
