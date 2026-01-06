@@ -27,6 +27,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pelanggan</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rating</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Testimoni</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Balasan</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                                 <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                             </tr>
@@ -62,19 +63,36 @@
                                             <p class="truncate">{{ Str::limit($testimonial->message, 100) }}</p>
                                         </div>
                                     </td>
+                                    <td class="px-6 py-4">
+                                        @if($testimonial->reply)
+                                            <div class="text-sm text-gray-700 bg-green-50 p-2 rounded max-w-xs">
+                                                <p class="truncate">{{ Str::limit($testimonial->reply, 100) }}</p>
+                                                <p class="text-xs text-gray-500 mt-1">Dibalas {{ $testimonial->replied_at ? $testimonial->replied_at->format('d M Y') : '' }}</p>
+                                            </div>
+                                        @else
+                                            <span class="text-xs text-gray-400">Belum ada balasan</span>
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {{ $testimonial->formatted_date }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <form action="{{ route('admin.testimonials.destroy', $testimonial) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus testimoni ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-pink-600 hover:text-pink-900" title="Hapus">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button onclick="openReplyModal({{ $testimonial->id }}, '{{ addslashes($testimonial->name) }}', '{{ addslashes($testimonial->reply ?? '') }}')" class="text-blue-600 hover:text-blue-900" title="Balas">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
                                                 </svg>
                                             </button>
-                                        </form>
+                                            <form action="{{ route('admin.testimonials.destroy', $testimonial) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus testimoni ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-pink-600 hover:text-pink-900" title="Hapus">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -98,4 +116,51 @@
         </div>
     </div>
 </div>
+
+<!-- Reply Modal -->
+<div id="replyModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Balas Testimoni</h3>
+            <button type="button" onclick="closeReplyModal()" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <form id="replyForm" method="POST" class="space-y-4">
+            @csrf
+            <div>
+                <label for="reply_message" class="block text-sm font-medium text-gray-700 mb-2">Balasan untuk <span id="replyToName" class="font-semibold"></span></label>
+                <textarea name="reply" id="reply_message" rows="5" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+                    placeholder="Tuliskan balasan Anda di sini..."></textarea>
+            </div>
+            <div class="flex items-center justify-end space-x-3 pt-4">
+                <button type="button" onclick="closeReplyModal()" 
+                        class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                    Batal
+                </button>
+                <button type="submit" 
+                        class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700">
+                    Kirim Balasan
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openReplyModal(testimonialId, name, existingReply) {
+        document.getElementById('replyToName').textContent = name;
+        document.getElementById('reply_message').value = existingReply || '';
+        document.getElementById('replyForm').action = '{{ route("admin.testimonials.reply", ":id") }}'.replace(':id', testimonialId);
+        document.getElementById('replyModal').classList.remove('hidden');
+    }
+
+    function closeReplyModal() {
+        document.getElementById('replyModal').classList.add('hidden');
+        document.getElementById('reply_message').value = '';
+    }
+</script>
 @endsection

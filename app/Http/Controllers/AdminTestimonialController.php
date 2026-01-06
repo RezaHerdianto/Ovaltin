@@ -20,6 +20,24 @@ class AdminTestimonialController extends Controller
     }
 
     /**
+     * Reply to testimonial
+     */
+    public function reply(Request $request, Testimonial $testimonial)
+    {
+        $validated = $request->validate([
+            'reply' => 'required|string|max:1000',
+        ]);
+
+        $testimonial->update([
+            'reply' => $validated['reply'],
+            'replied_at' => now(),
+        ]);
+
+        return redirect()->route('admin.testimonials.index')
+            ->with('success', 'Balasan testimoni berhasil ditambahkan!');
+    }
+
+    /**
      * Remove the specified testimonial
      */
     public function destroy(Testimonial $testimonial)

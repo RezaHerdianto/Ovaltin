@@ -13,12 +13,14 @@ class Testimonial extends Model
         'email',
         'rating',
         'message',
+        'reply',
         'is_approved'
     ];
 
     protected $casts = [
         'rating' => 'integer',
         'is_approved' => 'boolean',
+        'replied_at' => 'datetime',
     ];
 
     public function user(): BelongsTo

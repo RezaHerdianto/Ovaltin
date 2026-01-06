@@ -4,17 +4,30 @@
 <div class="min-h-screen bg-gradient-to-br from-pink-50 to-pink-50 py-12 rounded-3xl mx-4 my-4 shadow-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
-        <div class="text-center mb-12">
+        <div class="relative text-center mb-12">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Ada pertanyaan tentang produk strawberry kami? Ingin memesan dalam jumlah besar? 
                 Jangan ragu untuk menghubungi tim Ovaltin!
             </p>
+
+            @auth
+                @if(auth()->user()->isAdmin())
+                    <div class="absolute top-0 right-0 z-10">
+                        <a href="{{ route('admin.contact.index') }}" class="inline-flex items-center px-4 py-2 bg-pink-600 border border-transparent rounded-xl font-semibold text-sm text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition duration-150 shadow-md">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                            Edit Informasi
+                        </a>
+                    </div>
+                @endif
+            @endauth
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Contact Information -->
-            <div class="space-y-8">
+            <!-- Left Column - Contact Information Only -->
+            <div>
                 <div class="bg-white rounded-3xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                         <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,8 +115,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Business Hours -->
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- Business Hours - Moved to Right Top -->
                 <div class="bg-white rounded-3xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                         <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,111 +150,65 @@
                         </p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Contact Form -->
-            <div class="bg-white rounded-3xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                    <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                    </svg>
-                    Kirim Pesan
-                </h2>
-
-                <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
-                    @csrf
-                    
-                    <!-- Name -->
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                        <input type="text" name="name" id="name" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('name') border-red-500 @enderror"
-                            value="{{ old('name') }}"
-                            placeholder="Masukkan nama lengkap Anda">
-                        @error('name')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Email -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" name="email" id="email" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('email') border-red-500 @enderror"
-                            value="{{ old('email') }}"
-                            placeholder="contoh@email.com">
-                        @error('email')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Phone -->
-                    <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">No. Telepon (Opsional)</label>
-                        <input type="tel" name="phone" id="phone"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('phone') border-red-500 @enderror"
-                            value="{{ old('phone') }}"
-                            placeholder="+62 856-0345-4924">
-                        @error('phone')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Subject -->
-                    <div>
-                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subjek</label>
-                        <select name="subject" id="subject" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('subject') border-red-500 @enderror">
-                            <option value="">Pilih subjek</option>
-                            <option value="Pemesanan Produk" {{ old('subject') == 'Pemesanan Produk' ? 'selected' : '' }}>Pemesanan Produk</option>
-                            <option value="Informasi Harga" {{ old('subject') == 'Informasi Harga' ? 'selected' : '' }}>Informasi Harga</option>
-                            <option value="Kerjasama Bisnis" {{ old('subject') == 'Kerjasama Bisnis' ? 'selected' : '' }}>Kerjasama Bisnis</option>
-                            <option value="Keluhan/Kritik" {{ old('subject') == 'Keluhan/Kritik' ? 'selected' : '' }}>Keluhan/Kritik</option>
-                            <option value="Lainnya" {{ old('subject') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
-                        </select>
-                        @error('subject')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Message -->
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
-                        <textarea name="message" id="message" rows="5" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition @error('message') border-red-500 @enderror"
-                            placeholder="Tuliskan pesan Anda di sini...">{{ old('message') }}</textarea>
-                        @error('message')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit"
-                        class="w-full bg-gradient-to-r from-pink-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-2xl hover:from-pink-700 hover:to-pink-700 focus:ring-4 focus:ring-pink-300 transition duration-200 flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                <!-- Media Sosial -->
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <svg class="w-6 h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                         </svg>
-                        Kirim Pesan
-                    </button>
-                </form>
-            </div>
-        </div>
+                        Media Sosial
+                    </h2>
+                    
+                    <div class="flex items-center justify-center space-x-4">
+                        <!-- Instagram -->
+                        <a href="{{ $contactInfo && $contactInfo->instagram_url ? $contactInfo->instagram_url : 'https://www.instagram.com/dapur.ovaltin/' }}" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-16 h-16 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group border-2 border-white shadow-md overflow-hidden">
+                            <img src="{{ asset('image.png') }}" alt="Instagram" class="w-full h-full object-cover">
+                        </a>
 
-        <!-- Map Section -->
-        <div class="mt-16">
-            <div class="bg-white rounded-3xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Lokasi Kebun Strawberry</h2>
-                <div class="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-                    <iframe 
-                        src="{{ $contactInfo && $contactInfo->map_embed_url ? $contactInfo->map_embed_url : 'https://maps.google.com/maps?q=-7.114057,107.422775&hl=id&z=17&output=embed' }}" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0; border-radius: 0.5rem;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                        <!-- TikTok -->
+                        <a href="{{ $contactInfo && $contactInfo->tiktok_url ? $contactInfo->tiktok_url : 'https://www.tiktok.com/@dapur_ovaltin?_t=8gilzzPgcCX&_r=1' }}" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group border-2 border-white shadow-md">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="{{ $contactInfo && $contactInfo->youtube_url ? $contactInfo->youtube_url : 'https://www.youtube.com/@dapurovaltinLM' }}" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group border-2 border-white shadow-md">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+
+
+        </div>
+    </div>
+
+    <!-- Map Section - Full Width -->
+    <div class="mt-16 -mx-4 sm:-mx-6 lg:-mx-8">
+        <div class="bg-white rounded-3xl shadow-lg p-8 mx-4 sm:mx-6 lg:mx-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Lokasi Kebun Strawberry</h2>
+            <div class="bg-gray-200 rounded-2xl h-96 lg:h-[500px] flex items-center justify-center w-full">
+                <iframe 
+                    src="{{ $contactInfo && $contactInfo->map_embed_url ? $contactInfo->map_embed_url : 'https://maps.google.com/maps?q=-7.114057,107.422775&hl=id&z=17&output=embed' }}" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; border-radius: 0.5rem;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </div>

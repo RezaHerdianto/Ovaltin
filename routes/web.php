@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\AdminFAQController;
 
 // Public routes
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('dashboard');
 });
 
 // Authentication routes
@@ -27,26 +27,32 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Protected routes
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('strawberry-products', StrawberryProductController::class);
-    Route::patch('strawberry-products/{strawberryProduct}/status', [StrawberryProductController::class, 'updateStatus'])->name('strawberry-products.update-status');
-    
-    // User product routes
-    Route::prefix('user')->name('user.')->group(function () {
-        Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
-        Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
-    });
-    
-    // Testimonial routes
-    Route::resource('testimonials', TestimonialController::class)->only(['index', 'create', 'store', 'show']);
-    
-    // FAQ routes
-    Route::get('/faq', [FAQController::class, 'index'])->name('faqs.index');
+// Public routes - tidak perlu login
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Sales Data routes dihapus dari group auth (dipindah ke admin)
+// Testimonial routes - index bisa diakses tanpa login
+Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+
+// Testimonial routes - create memerlukan login (HARUS sebelum route dengan parameter)
+Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create')->middleware('auth');
+
+// Testimonial routes - store memerlukan login
+Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store')->middleware('auth');
+
+// Testimonial routes - show bisa diakses tanpa login (setelah create)
+Route::get('/testimonials/{testimonial}', [TestimonialController::class, 'show'])->name('testimonials.show');
+
+Route::resource('strawberry-products', StrawberryProductController::class);
+Route::patch('strawberry-products/{strawberryProduct}/status', [StrawberryProductController::class, 'updateStatus'])->name('strawberry-products.update-status');
+
+// User product routes
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
+    Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
 });
+
+// FAQ routes
+Route::get('/faq', [FAQController::class, 'index'])->name('faqs.index');
 
 // Contact routes
 Route::get('/kontak', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
@@ -80,6 +86,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Admin testimonial routes
     Route::get('/testimonials', [AdminTestimonialController::class, 'index'])->name('testimonials.index');
+    Route::post('/testimonials/{testimonial}/reply', [AdminTestimonialController::class, 'reply'])->name('testimonials.reply');
     Route::delete('/testimonials/{testimonial}', [AdminTestimonialController::class, 'destroy'])->name('testimonials.destroy');
     
     // Admin contact routes
@@ -102,9 +109,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Admin FAQ routes
     Route::resource('faqs', AdminFAQController::class);
-});
 
-// Sales Data routes - hanya untuk admin
+
+});// Sales Data routes - hanya untuk admin
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/sales-data', [App\Http\Controllers\SalesDataController::class, 'index'])->name('sales-data.index');
     Route::post('/sales-data', [App\Http\Controllers\SalesDataController::class, 'store'])->name('sales-data.store');

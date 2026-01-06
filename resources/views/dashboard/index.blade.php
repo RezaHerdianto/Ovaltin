@@ -548,14 +548,23 @@ html {
                         </svg>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">Belum Ada Testimoni</h3>
                         <p class="text-gray-600 mb-4">Jadilah yang pertama memberikan testimoni untuk produk strawberry kami!</p>
-                        @if(!Auth::user()->isAdmin())
-                            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-500 text-white rounded-lg hover:from-pink-600 hover:to-pink-600 transition">
+                        @auth
+                            @if(!Auth::user()->isAdmin())
+                                <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-500 text-white rounded-lg hover:from-pink-600 hover:to-pink-600 transition">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    Berikan Testimoni
+                                </a>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-500 text-white rounded-lg hover:from-pink-600 hover:to-pink-600 transition">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                                    </svg>
-                                Berikan Testimoni
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                                </svg>
+                                Login untuk Berikan Testimoni
                             </a>
-                        @endif
+                        @endauth
                     </div>
                                                 </div>
                                             @endif

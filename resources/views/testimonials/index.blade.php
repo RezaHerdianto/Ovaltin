@@ -11,16 +11,25 @@
     </div>
 
     <!-- Add Testimonial Button -->
-    @if(!Auth::user()->isAdmin())
-        <div class="text-center">
-            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+    <div class="text-center">
+        @auth
+            @if(!Auth::user()->isAdmin())
+                <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    Berikan Testimoni
+                </a>
+            @endif
+        @else
+            <a href="{{ route('login') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
                 </svg>
-                Berikan Testimoni
+                Login untuk Berikan Testimoni
             </a>
-        </div>
-    @endif
+        @endauth
+    </div>
 
     <!-- Testimonials Grid -->
     <div class="bg-white shadow-lg rounded-xl overflow-hidden">
@@ -85,14 +94,23 @@
                     </svg>
                     <h3 class="text-lg font-medium text-gray-900 mb-2">Belum ada testimoni</h3>
                     <p class="text-gray-500 mb-6">Jadilah yang pertama memberikan testimoni tentang produk kami!</p>
-                    @if(!Auth::user()->isAdmin())
-                        <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition">
+                    @auth
+                        @if(!Auth::user()->isAdmin())
+                            <a href="{{ route('testimonials.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                Berikan Testimoni Pertama
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold rounded-lg hover:from-sky-600 hover:to-indigo-600 transition">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
                             </svg>
-                            Berikan Testimoni Pertama
+                            Login untuk Berikan Testimoni
                         </a>
-                    @endif
+                    @endauth
                 </div>
             @endif
         </div>

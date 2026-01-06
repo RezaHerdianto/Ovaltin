@@ -26,6 +26,12 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        // Pastikan user sudah login
+        if (!Auth::check()) {
+            return redirect()->route('login')
+                ->with('error', 'Silakan login terlebih dahulu untuk memberikan testimoni.');
+        }
+        
         // Admin tidak bisa memberikan testimoni
         if (Auth::user()->isAdmin()) {
             return redirect()->route('testimonials.index')
@@ -40,6 +46,12 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        // Pastikan user sudah login
+        if (!Auth::check()) {
+            return redirect()->route('login')
+                ->with('error', 'Silakan login terlebih dahulu untuk memberikan testimoni.');
+        }
+        
         // Admin tidak bisa memberikan testimoni
         if (Auth::user()->isAdmin()) {
             return redirect()->route('testimonials.index')
