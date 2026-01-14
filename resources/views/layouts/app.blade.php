@@ -14,8 +14,29 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Scripts -->
+@php
+    $manifestPath = public_path('build/manifest.json');
+    $useVite = false;
 
+    if (file_exists($manifestPath)) {
+        $manifest = json_decode(file_get_contents($manifestPath), true);
+
+        $cssFile = $manifest['resources/css/app.css']['file'] ?? null;
+        $jsFile  = $manifest['resources/js/app.js']['file'] ?? null;
+
+        $useVite = $cssFile && $jsFile
+            && file_exists(public_path("build/{$cssFile}"))
+            && file_exists(public_path("build/{$jsFile}"));
+    }
+@endphp
+
+@if($useVite)
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@else
+    {{-- Fallback kalau asset vite hilang/404 --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+@endif
 
     <style>
         /* Ensure navbar is full width - break out of container */
