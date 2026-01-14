@@ -36,6 +36,14 @@
 @else
     {{-- Fallback kalau asset vite hilang/404 --}}
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Ensure Tailwind is loaded before page renders
+        tailwind.config = {
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
 @endif
 
     <style>

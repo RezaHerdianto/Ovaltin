@@ -23,8 +23,15 @@ COPY . .
 # Install PHP deps
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Build Vite
-RUN npm ci && npm run build
+# Build Vite (fail if build fails)
+RUN npm ci && npm run build || (echo "Vite build failed!" && exit 1)
+
+# ✅ Verify build output exists and show contents
+RUN echo "=== Checking build output ===" && \
+    ls -la public/ && \
+    (test -d public/build && echo "✓ Build directory exists" || echo "✗ Build directory missing") && \
+    (test -f public/build/manifest.json && echo "✓ Manifest.json exists" || echo "✗ Manifest.json missing") && \
+    cat public/build/manifest.json 2>/dev/null || echo "Cannot read manifest.json"
 
 # ✅ Ensure Laravel runtime dirs exist
 RUN mkdir -p \
@@ -32,11 +39,13 @@ RUN mkdir -p \
     storage/framework/sessions \
     storage/framework/views \
     storage/logs \
-    bootstrap/cache
+    bootstrap/cache \
+    public/build
 
 # ✅ Permission
-RUN chown -R www-data:www-data storage bootstrap/cache \
- && chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache public/build \
+ && chmod -R 775 storage bootstrap/cache \
+ && chmod -R 755 public/build
 
 # ✅ Clear caches (biar gak nyangkut cache lama)
 RUN php artisan config:clear || true \
