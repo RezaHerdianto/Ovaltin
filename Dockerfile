@@ -24,14 +24,19 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Build Vite (fail if build fails)
+ENV NODE_ENV=production
 RUN npm ci && npm run build || (echo "Vite build failed!" && exit 1)
 
 # ✅ Verify build output exists and show contents
 RUN echo "=== Checking build output ===" && \
     ls -la public/ && \
-    (test -d public/build && echo "✓ Build directory exists" || echo "✗ Build directory missing") && \
-    (test -f public/build/manifest.json && echo "✓ Manifest.json exists" || echo "✗ Manifest.json missing") && \
-    cat public/build/manifest.json 2>/dev/null || echo "Cannot read manifest.json"
+    echo "---" && \
+    (test -d public/build && (echo "✓ Build directory exists" && ls -la public/build/) || echo "✗ Build directory missing") && \
+    echo "---" && \
+    (test -f public/build/manifest.json && (echo "✓ Manifest.json exists" && cat public/build/manifest.json) || echo "✗ Manifest.json missing") && \
+    echo "---" && \
+    echo "Build files:" && \
+    find public/build -type f -name "*.css" -o -name "*.js" | head -10
 
 # ✅ Ensure Laravel runtime dirs exist
 RUN mkdir -p \
