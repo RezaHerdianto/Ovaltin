@@ -26,6 +26,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --optimize-autoloader --no-interaction
+RUN composer install --no-interaction --optimize-autoloader
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+# Permission
+RUN chown -R www-data:www-data storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache
+
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
