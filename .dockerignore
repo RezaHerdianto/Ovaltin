@@ -1,10 +1,13 @@
+.git
 node_modules
 vendor
-.git
-.gitignore
-.env
-.env.*
 storage/logs
 storage/framework/cache
 storage/framework/sessions
 storage/framework/views
+.env
+.env.*
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+.vscode
