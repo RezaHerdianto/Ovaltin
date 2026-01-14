@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd pdo pdo_mysql mbstring zip \
     && rm -rf /var/lib/apt/lists/*
 
-# Node.js
+# Node.js for Vite
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get update && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Composer
@@ -21,14 +21,27 @@ WORKDIR /app
 COPY . .
 
 # Install PHP deps
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# ✅ BUILD VITE
+# Build Vite
 RUN npm ci && npm run build
 
-# Permission
+# ✅ Ensure Laravel runtime dirs exist
+RUN mkdir -p \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
+# ✅ Permission
 RUN chown -R www-data:www-data storage bootstrap/cache \
  && chmod -R 775 storage bootstrap/cache
+
+# ✅ Clear caches (biar gak nyangkut cache lama)
+RUN php artisan config:clear || true \
+ && php artisan cache:clear || true \
+ && php artisan view:clear || true
 
 EXPOSE 8080
 CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
