@@ -15,66 +15,26 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Scripts -->
-@php
-    $manifestPath = public_path('build/manifest.json');
-    $useVite = false;
-    $cssFile = null;
-    $jsFile = null;
-
-    if (file_exists($manifestPath)) {
-        $manifestContent = file_get_contents($manifestPath);
-        $manifest = json_decode($manifestContent, true);
-        
-        if ($manifest) {
-            // Try different possible keys in manifest (Vite can have different structures)
-            $cssEntry = $manifest['resources/css/app.css'] ?? null;
-            $jsEntry = $manifest['resources/js/app.js'] ?? null;
-            
-            // Handle different manifest structures
-            if ($cssEntry) {
-                $cssFile = is_array($cssEntry) ? ($cssEntry['file'] ?? null) : $cssEntry;
-            }
-            
-            if ($jsEntry) {
-                $jsFile = is_array($jsEntry) ? ($jsEntry['file'] ?? null) : $jsEntry;
-            }
-            
-            // Also try searching for files if direct keys don't work
-            if (!$cssFile || !$jsFile) {
-                foreach ($manifest as $key => $entry) {
-                    if (str_contains($key, 'app.css') && !$cssFile) {
-                        $cssFile = is_array($entry) ? ($entry['file'] ?? null) : $entry;
-                    }
-                    if (str_contains($key, 'app.js') && !$jsFile) {
-                        $jsFile = is_array($entry) ? ($entry['file'] ?? null) : $entry;
-                    }
-                }
-            }
-
-            // Check if files actually exist and build asset URLs
-            if ($cssFile && file_exists(public_path("build/{$cssFile}"))) {
-                $cssFile = asset("build/{$cssFile}");
-            } else {
-                $cssFile = null;
-            }
-            
-            if ($jsFile && file_exists(public_path("build/{$jsFile}"))) {
-                $jsFile = asset("build/{$jsFile}");
-            } else {
-                $jsFile = null;
-            }
-
-            $useVite = $cssFile && $jsFile;
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    {{-- Critical CSS untuk mencegah FOUC - Load FIRST --}}
+    <style>
+        * { box-sizing: border-box; }
+        html, body { 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            width: 100% !important;
+            font-family: system-ui, -apple-system, sans-serif !important;
         }
-    }
-@endphp
-
-@if($useVite)
-    {{-- Load Vite assets manually --}}
-    <link rel="stylesheet" href="{{ $cssFile }}">
-    <script type="module" src="{{ $jsFile }}"></script>
-@else
-    {{-- Fallback kalau asset vite hilang/404 --}}
+        body { 
+            background: linear-gradient(to bottom right, #f8fafc, #fce7f3, #f1f5f9) !important;
+            min-height: 100vh !important;
+        }
+        .min-h-screen { min-height: 100vh !important; }
+        nav { background: #E91E63 !important; }
+    </style>
+    
+    {{-- Tailwind CDN - Load synchronously untuk memastikan styles ter-apply --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -83,19 +43,6 @@
             }
         }
     </script>
-    <style>
-        /* Minimal fallback CSS while Tailwind loads */
-        * { box-sizing: border-box; }
-        body { 
-            margin: 0 !important; 
-            padding: 0 !important; 
-            font-family: system-ui, -apple-system, sans-serif !important;
-            background: linear-gradient(to bottom right, #f8fafc, #fce7f3, #f1f5f9) !important;
-        }
-        .min-h-screen { min-height: 100vh !important; }
-        nav { background: #E91E63 !important; }
-    </style>
-@endif
 
     <style>
         /* Ensure navbar is full width - break out of container */

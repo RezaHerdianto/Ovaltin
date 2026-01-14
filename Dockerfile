@@ -31,12 +31,14 @@ RUN npm ci && npm run build || (echo "Vite build failed!" && exit 1)
 RUN echo "=== Checking build output ===" && \
     ls -la public/ && \
     echo "---" && \
-    (test -d public/build && (echo "✓ Build directory exists" && ls -la public/build/) || echo "✗ Build directory missing") && \
+    (test -d public/build && (echo "✓ Build directory exists" && ls -la public/build/) || (echo "✗ Build directory missing" && exit 1)) && \
     echo "---" && \
-    (test -f public/build/manifest.json && (echo "✓ Manifest.json exists" && cat public/build/manifest.json) || echo "✗ Manifest.json missing") && \
+    (test -f public/build/manifest.json && (echo "✓ Manifest.json exists" && echo "Manifest content:" && cat public/build/manifest.json) || (echo "✗ Manifest.json missing" && exit 1)) && \
     echo "---" && \
     echo "Build files:" && \
-    find public/build -type f -name "*.css" -o -name "*.js" | head -10
+    find public/build -type f \( -name "*.css" -o -name "*.js" \) | head -10 && \
+    echo "---" && \
+    echo "✓ Build verification complete"
 
 # ✅ Ensure Laravel runtime dirs exist
 RUN mkdir -p \
