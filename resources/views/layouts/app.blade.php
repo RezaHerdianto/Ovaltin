@@ -14,35 +14,9 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
-    <!-- Scripts -->
-    @if(file_exists(public_path('build/manifest.json')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <!-- Fallback: Using CDN for Tailwind CSS -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            pink: {
-                                50: '#fdf2f8',
-                                100: '#fce7f3',
-                                200: '#fbcfe8',
-                                300: '#f9a8d4',
-                                400: '#f472b6',
-                                500: '#ec4899',
-                                600: '#db2777',
-                                700: '#be185d',
-                                800: '#9f1239',
-                                900: '#831843',
-                            }
-                        }
-                    }
-                }
-            }
-        </script>
-    @endif
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
     <style>
         /* Ensure navbar is full width - break out of container */
         nav.bg-gradient-to-r {
