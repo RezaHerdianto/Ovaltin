@@ -15,35 +15,34 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
-    {{-- Critical CSS untuk mencegah FOUC - Load FIRST --}}
-    <style>
-        * { box-sizing: border-box; }
-        html, body { 
-            margin: 0 !important; 
-            padding: 0 !important; 
-            width: 100% !important;
-            font-family: system-ui, -apple-system, sans-serif !important;
-        }
-        body { 
-            background: linear-gradient(to bottom right, #f8fafc, #fce7f3, #f1f5f9) !important;
-            min-height: 100vh !important;
-        }
-        .min-h-screen { min-height: 100vh !important; }
-        nav { background: #E91E63 !important; }
-    </style>
-    
-    {{-- Tailwind CDN - Load synchronously untuk memastikan styles ter-apply --}}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {}
+    @if(file_exists(public_path('build/manifest.json')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        <!-- Fallback: Using CDN for Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            pink: {
+                                50: '#fdf2f8',
+                                100: '#fce7f3',
+                                200: '#fbcfe8',
+                                300: '#f9a8d4',
+                                400: '#f472b6',
+                                500: '#ec4899',
+                                600: '#db2777',
+                                700: '#be185d',
+                                800: '#9f1239',
+                                900: '#831843',
+                            }
+                        }
+                    }
+                }
             }
-        }
-    </script>
-
+        </script>
+    @endif
     <style>
         /* Ensure navbar is full width - break out of container */
         nav.bg-gradient-to-r {
