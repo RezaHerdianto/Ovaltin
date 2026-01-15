@@ -1,27 +1,10 @@
-# Git
 .git
-.gitignore
-
-# Env
-.env
-.env.*
-
-# Node
 node_modules
-npm-debug.log
-yarn.lock
-
-# Laravel
 vendor
-storage/*.key
 storage/logs
 storage/framework/cache
 storage/framework/sessions
 storage/framework/views
-
-# Vite (INI PENTING)
-public/hot
-
-# OS
-.DS_Store
-Thumbs.db
+.env
+npm-debug.log
+yarn-error.log

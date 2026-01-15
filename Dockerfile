@@ -31,5 +31,10 @@ RUN npm ci && npm run build
 
 EXPOSE 8080
 
-# ✅ bikin storage folder tiap container start (WAJIB di Railway)
-CMD ["sh", "-lc", "mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cache && chmod -R 775 storage bootstrap/cache || true && php -S 0.0.0.0:8080 -t public"]
+# ✅ runtime init (Railway suka "reset" folder tertentu)
+CMD ["sh", "-lc", "\
+  mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cache public/build && \
+  chmod -R 775 storage bootstrap/cache || true && \
+  php artisan optimize:clear || true && \
+  php -S 0.0.0.0:8080 -t public \
+"]
