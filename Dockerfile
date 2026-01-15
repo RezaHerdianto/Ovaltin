@@ -17,11 +17,14 @@ COPY . .
 
 RUN composer install --optimize-autoloader --no-interaction --no-dev
 
-# Build Vite assets
 RUN npm install && npm run build
 
-# Cache config biar env kebaca bagus
-RUN php artisan config:clear && php artisan config:cache
+# permissions + clear cache
+RUN mkdir -p storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache \
+    && php artisan config:clear || true \
+    && php artisan route:clear || true \
+    && php artisan view:clear || true
 
 EXPOSE 8080
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
