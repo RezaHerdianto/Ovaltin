@@ -20,7 +20,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-# !!! pastikan hot ga ikut (kalau ada, hapus)
+# pastikan hot ga ikut (kalau ada, hapus)
 RUN rm -f public/hot || true
 
 # PHP deps
@@ -28,6 +28,10 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 # Frontend build (manifest.json dibuat)
 RUN npm ci && npm run build
+
+# ✅ WAJIB: buat folder storage laravel
+RUN mkdir -p storage/framework/{cache,sessions,views} \
+ && mkdir -p storage/logs
 
 # Permission
 RUN chown -R www-data:www-data storage bootstrap/cache \
