@@ -26,6 +26,8 @@ RUN rm -f public/hot || true
 # PHP deps
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
+RUN php artisan storage:link || true
+
 # Frontend build (manifest.json dibuat)
 RUN npm ci && npm run build
 
